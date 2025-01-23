@@ -12,3 +12,7 @@
   --active:#FCD2C2;
   --teritiary:#0F973D;
 }
+
+*{
+  font-family: "Work sans",sans-serif;
+}

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import ReduxProvider from "@/providers/Providers";
 import "@/styles/globals.css";
+import NpProgress from "@/components/common/np-progess";
 
 export const metadata: Metadata = {
   title: "skills challenge",
@@ -13,10 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`antialiased`}
-      >
-        {children}
+      <body className={`antialiased`}>
+        <ReduxProvider>
+          {children}
+          <NpProgress/>
+        </ReduxProvider>
       </body>
     </html>
   );
