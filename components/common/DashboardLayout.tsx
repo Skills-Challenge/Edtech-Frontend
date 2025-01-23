@@ -17,10 +17,10 @@ const DashboardLayout: FC<props> = ({ children }) => {
     user?.role === "admin" ? navLinks.adminRoutes : navLinks.talentRoutes;
 
   return (
-    <div className="flex h-screen">
+    <div className="flex flex-row min-h-screen relative">
       {/* dynamic sidebar */}
       <DynamicSidebar routes={currentRoutes} />
-      <main className="w-[80%] ">
+      <main className="flex-1 flex flex-col w-full xl:w-[calc(100%-320px)] 2xl:w-[calc(100%-380px)]">
         {/* topbar */}
         <TopBar/>
         {/* main content */}

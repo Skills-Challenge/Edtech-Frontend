@@ -33,7 +33,7 @@ const DynamicSidebar: FC<props> = ({ routes }) => {
     <>
       <div
         className={cn(
-          "hidden xl:block py-6 bg-primary min-w-[320px] w-[20%] max-h-screen",
+          "fixed xl:sticky top-0 xl:block py-6 bg-primary min-w-[320px] 2xl:w-[380px] h-[100vh] transition-all duration-150 z-50",
           isOpen ? 'translate-x-0' : ' -translate-x-80 xl:translate-x-0'
         )}
       >
@@ -72,6 +72,12 @@ const DynamicSidebar: FC<props> = ({ routes }) => {
           </div>
         </div>
       </div>
+      {isOpen && (
+        <div
+          onClick={handleSidebarClose}
+          className="fixed inset-0 bg-black backdrop-blur-sm opacity-10 z-40 xl:hidden"
+        ></div>
+      )}
     </>
   );
 };

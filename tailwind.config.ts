@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme"
 
 export default {
   content: [
@@ -19,6 +20,12 @@ export default {
       fontFamily:{
         workSans:["Work Sans","sans serif"]
       },
+      screens: {
+        "2xsm": "375px",
+        xsm: "425px",
+        "3xl": "2000px",
+        ...defaultTheme.screens,
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],

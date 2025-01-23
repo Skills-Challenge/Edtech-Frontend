@@ -13,7 +13,7 @@ const Avatar: FC<props> = ({ image, active }) => {
         src={image ? image : userImage}
         height={48}
         width={48}
-        className="h-12 w-12"
+        className="h-12 w-12 object-cover"
         alt="profile"
         objectFit="cover"
       />

@@ -34,17 +34,32 @@ const adminRoutes = [
 const talentRoutes = [
   {
     name: "Dashboard",
-    route: "/",
+    route: "/talent",
     icon: "lineicons:home-2",
   },
   {
     name: "challenges & hackathons",
-    route: "/challenges&hackathons",
+    route: "/talent/challenges&hackathons",
     icon: "lineicons:home-2",
   },
   {
     name: "community",
-    route: "/community",
+    route: "/talent/community",
+    icon: "lineicons:home-2",
+  },
+  {
+    name: "settings",
+    route: "/talent/settings",
+    icon: "lineicons:home-2",
+  },
+  {
+    name: "help center",
+    route: "/talent/help-center",
+    icon: "lineicons:home-2",
+  },
+  {
+    name: "Refer family & friends",
+    route: "/talent/refer",
     icon: "lineicons:home-2",
   },
 ];
