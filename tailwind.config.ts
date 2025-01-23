@@ -9,8 +9,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary:"var(--primary)",
+        darkPrimary:"var(--primary-dark)",
+        body:"var(--body)",
+        highlight:"var(--highlight)",
+        active:"var(--active)",
+        teritiary:"var(--teritiary)"
+      },
+      fontFamily:{
+        workSans:["Work Sans","sans serif"]
       },
     },
   },
