@@ -15,7 +15,9 @@ export default {
         body:"var(--body)",
         highlight:"var(--highlight)",
         active:"var(--active)",
-        teritiary:"var(--teritiary)"
+        teritiary:"var(--teritiary)",
+        text:"var(--text)",
+        border:"var(--border)"
       },
       fontFamily:{
         workSans:["Work Sans","sans serif"]

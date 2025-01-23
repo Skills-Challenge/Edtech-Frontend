@@ -19,7 +19,7 @@ const WelcomeBanner = () => {
           subHeading="Build your Work Exprience through Skills Challenges"
         />
       </div>
-      {isAdmin && (
+      {!isAdmin && (
         <Button className="px-[18px] py-4 h-[55px] self-end">
           <Link href={"/"} className="flex items-center gap-2">
             <Icon icon={"proicons:eye"} fontSize={24} className="text-white" />
