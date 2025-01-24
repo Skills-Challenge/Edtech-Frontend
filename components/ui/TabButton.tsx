@@ -16,7 +16,7 @@ const TabButton: FC<props> = ({ title, total, highlighted, setFilter }) => {
       variant={"outline"}
       onClick={() => setFilter(title)}
       className={cn(
-        "flex items-center gap-2 py-3 px-3 border",
+        "flex items-center gap-2 py-3 px-3 border h-11",
         highlighted
           ? "bg-highlight border-active"
           : "border-border bg-[#F0F2F5]"

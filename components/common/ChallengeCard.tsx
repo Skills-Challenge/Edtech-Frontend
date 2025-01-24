@@ -1,9 +1,12 @@
+"use client";
+
 import React, { FC } from "react";
-import umuravaLogo from "@/public/umuravaLogo.png";
-import { cn } from "@/lib/utils";
+import umuravaLogo from "@/public/umuravaLogo2.png";
+import { cn, generateSlug } from "@/lib/utils";
 import Image from "next/image";
 import { Button } from "../ui/Button";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type props = {
   status: "open" | "closed";
@@ -19,6 +22,8 @@ const ChallengeCard: FC<props> = ({
   skills,
   seniorityLevels,
 }) => {
+  const pathname = usePathname();
+  const currentPath = pathname.split("/")[0];
   return (
     <div className="py-5 bg-white border border-border rounded-xl">
       {/* challenge image */}
@@ -86,7 +91,9 @@ const ChallengeCard: FC<props> = ({
       {/* View button */}
       <div className="px-5">
         <Button className="py-2 px-4">
-          <Link href={""}>
+          <Link
+            href={`${pathname}/${generateSlug(title,123456789)}`}
+          >
             <h2 className="text-sm font-semibold leading-[19px] text-white">
               View Challenge
             </h2>

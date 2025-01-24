@@ -9,6 +9,8 @@ import { AppState, useAppDispatch, useAppSelector } from "@/store/store";
 import { Tuser } from "@/types/user";
 import { cn } from "@/lib/utils";
 import { setIsOpen } from "@/store/reducers/sidebarReducer";
+import Logo from "@/public/logo.png";
+import Image from "next/image";
 
 type props = {
   routes: {
@@ -34,14 +36,15 @@ const DynamicSidebar: FC<props> = ({ routes }) => {
       <div
         className={cn(
           "fixed xl:sticky top-0 xl:block py-6 bg-primary min-w-[320px] 2xl:w-[380px] h-[100vh] transition-all duration-150 z-50",
-          isOpen ? 'translate-x-0' : ' -translate-x-80 xl:translate-x-0'
+          isOpen ? "translate-x-0" : " -translate-x-80 xl:translate-x-0"
         )}
       >
         {/* top sidebar */}
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full gap-3">
           {/* logo container */}
-          <div className="px-6 py-2"></div>
-
+          <div className="px-6 py-2">
+            <Image src={Logo} alt="logo" />
+          </div>
           <div className="flex px-2 flex-col justify-between flex-1">
             {/* top navigators */}
             <div className="flex flex-col gap-1">
