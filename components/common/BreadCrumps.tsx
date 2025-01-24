@@ -27,13 +27,13 @@ const Breadcrumb = () => {
   };
 
   return (
-    <nav className="py-3 px-9 bg-white border border-border">
+    <nav className="py-3 px-9 bg-white border border-border sticky top-[72px]">
       <div className="flex items-center">
         <div className="flex">
           <Button
             variant={"ghost"}
             onClick={() => router.back()}
-            className=" flex items-center gap-3"
+            className=" flex items-center gap-3 pl-0"
           >
             <span className="border border-border rounded-md p-[6px]">
               <Icon icon={"proicons:arrow-left"} fontSize={12} />
