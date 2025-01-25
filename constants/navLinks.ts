@@ -64,4 +64,12 @@ const talentRoutes = [
   },
 ];
 
-export default { adminRoutes, talentRoutes };
+const homeNavLinks = [
+  { name: "Home", path: "/" },
+  { name: "Challenges & Hackathons", path: "/challenges" },
+  { name: "For Educational Institutions", path: "/institutions" },
+  { name: "About Us", path: "/challenges" },
+  { name: "Contact Us", path: "/contact" },
+];
+
+export default { adminRoutes, talentRoutes, homeNavLinks };
