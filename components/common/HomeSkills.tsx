@@ -1,9 +1,8 @@
 "use client";
 
 import React from 'react';
-import ReusableList from './ReusableList';
-import Slider from './Slider'; // Import Slider Component
-
+import Slider from './Slider';
+import ReusableList from '../reusable/ReusableList';
 const HomeSkills: React.FC = () => {
   const skillsData = [
     "UI/UX Design",

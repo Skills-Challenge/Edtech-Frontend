@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import ReusableHero from './ReusableHero';
+import ReusableHero from '../reusable/ReusableHero';
 
 const HomeHero: React.FC = () => {
   return (
@@ -12,7 +12,7 @@ const HomeHero: React.FC = () => {
         paragraph1="Enhance your Employability and Accelerate your Career Growth by working on Hands-on projects & hackathons from various businesses & organizations."
         // paragraph2="Join thousands of users who are already enjoying our services."
         buttonText="Get Started"
-        onButtonClick={() => alert('Button clicked!')}
+        // onButtonClick={() => navigate('/challenges')}
       />
 
       {/* <div className="mt-16">
