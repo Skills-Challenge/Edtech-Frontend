@@ -1,8 +1,8 @@
 "use client";
 
 import React from 'react';
-import ReusableBG from './ReusableBG';
 import CountUp from 'react-countup';
+import ReusableBG from '../reusable/ReusableBG';
 
 const stats = [
   { label: 'Years', value: 1 },

@@ -1,6 +1,6 @@
 import React from 'react';
-import ReusableGrid from './ReusableGrid';
-import { User, Briefcase, Globe } from 'lucide-react'; // Example icons
+import { User, Briefcase, Globe } from 'lucide-react';
+import ReusableGrid from '../reusable/ReusableGrid';
 
 const experienceData = [
   {

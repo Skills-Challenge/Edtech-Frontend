@@ -1,7 +1,7 @@
 import React from 'react';
-import ReusableBG from './ReusableBG';
 import Image from 'next/image';
 import Link from 'next/link';
+import ReusableBG from '../reusable/ReusableBG';
 
 const HomeCTA: React.FC = () => {
   return (
