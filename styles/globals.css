@@ -18,3 +18,10 @@
 *{
   font-family: "Work sans",sans-serif;
 }
+
+textarea::-webkit-resizer{
+  display: none;
+}
+textarea::-webkit-scrollbar{
+  display: none;
+}

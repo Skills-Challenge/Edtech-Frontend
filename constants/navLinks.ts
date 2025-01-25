@@ -3,6 +3,7 @@ const adminRoutes = [
     name: "Dashboard",
     route: "/admin",
     icon: "lineicons:home-2",
+    exact:true,
   },
   {
     name: "challenges & hackathons",
@@ -13,6 +14,7 @@ const adminRoutes = [
     name: "community",
     route: "/admin/community",
     icon: "lineicons:home-2",
+    modal:true
   },
   {
     name: "settings",

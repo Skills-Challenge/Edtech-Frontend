@@ -16,7 +16,7 @@ const TopBar = () => {
   };
 
   return (
-    <div className="px-9 bg-white sticky top-0 z-50">
+    <div className="px-9 bg-white sticky top-0 z-30">
       <div className="py-3 flex items-center justify-between">
         {/* search bar */}
         <div className="flex-1 flex items-center gap-2 xl:gap-0">
