@@ -1,16 +1,18 @@
-import Breadcrumb from '@/components/common/BreadCrumps'
-import ChallengeForm from '@/components/common/form/ChallengeForm'
-import React from 'react'
+"use client";
+import Breadcrumb from "@/components/common/BreadCrumps";
+import ChallengeForm from "@/components/common/form/ChallengeForm";
+import React, { useEffect, useState } from "react";
 
 const page = () => {
+  const handleSave = (data: any) => {
+    console.log(data);
+  };
   return (
     <div>
-        <Breadcrumb/>
-        <div className='px-9 py-8'>
-            <ChallengeForm/>
-        </div>
+      <Breadcrumb />
+      <ChallengeForm  onSubmit={handleSave} />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

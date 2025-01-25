@@ -3,7 +3,6 @@
 import React, { FC } from "react";
 import navLinks from "@/constants/navLinks";
 import LinkItem from "./LinkItem";
-import { log } from "console";
 import UserCard from "./userCard";
 import { AppState, useAppDispatch, useAppSelector } from "@/store/store";
 import { Tuser } from "@/types/user";
@@ -11,18 +10,21 @@ import { cn } from "@/lib/utils";
 import { setIsOpen } from "@/store/reducers/sidebarReducer";
 import Logo from "@/public/logo.png";
 import Image from "next/image";
+import { link } from "@/types/link";
+import { Button } from "../ui/Button";
+import { Icon } from "@iconify/react";
+import { setModalOpen } from "@/store/reducers/ModalReducer";
 
 type props = {
-  routes: {
-    name: string;
-    route: string;
-    icon: string;
-  }[];
+  routes: link[];
 };
 const DynamicSidebar: FC<props> = ({ routes }) => {
   // hooks
   const dispatch = useAppDispatch();
   const isOpen = useAppSelector((state) => state.sidebar.isOpen);
+  const isModalOpen = useAppSelector(
+    (state: AppState) => state.modal.isModalOpen
+  );
   const { user } = useAppSelector((state: AppState) => state.auth);
 
   const topRoutes = routes.slice(0, 3);
@@ -54,8 +56,33 @@ const DynamicSidebar: FC<props> = ({ routes }) => {
                   icon={route.icon}
                   name={route.name}
                   route={route.route}
+                  exact={route?.exact}
+                  modal={route?.modal}
                 />
               ))}
+              {/* <Button
+                onClick={()=>dispatch(setModalOpen(true))}
+                className={cn(
+                  "py-3 px-4 rounded-[4px] flex items-center justify-start gap-3 shadow-none",
+                  isModalOpen ? "bg-white " : "bg-inherit"
+                )}
+              >
+                <Icon
+                  icon={"lineicons:home-2"}
+                  className={cn(
+                    "text-[24px]",
+                    isModalOpen ? "text-primary" : "text-white"
+                  )}
+                />
+                <h2
+                  className={cn(
+                    "text-base font-normal text-white leading-[20.3px]",
+                    isModalOpen ? "text-primary" : "text-white"
+                  )}
+                >
+                  Community
+                </h2>
+              </Button> */}
             </div>
             {/* bottom navigators */}
             <div className="flex flex-col gap-1">
@@ -78,7 +105,7 @@ const DynamicSidebar: FC<props> = ({ routes }) => {
       {isOpen && (
         <div
           onClick={handleSidebarClose}
-          className="fixed inset-0 bg-black backdrop-blur-sm opacity-10 z-40 xl:hidden"
+          className="fixed inset-0 bg-black bg-opacity-10 backdrop-blur-[2px] z-40 xl:hidden"
         ></div>
       )}
     </>

@@ -23,7 +23,8 @@ const ChallengeCard: FC<props> = ({
   seniorityLevels,
 }) => {
   const pathname = usePathname();
-  const currentPath = pathname.split("/")[0];
+  const currentPath = pathname.split("/")[1];
+
   return (
     <div className="py-5 bg-white border border-border rounded-xl">
       {/* challenge image */}
@@ -92,7 +93,10 @@ const ChallengeCard: FC<props> = ({
       <div className="px-5">
         <Button className="py-2 px-4">
           <Link
-            href={`${pathname}/${generateSlug(title,123456789)}`}
+            href={`${currentPath}/challenges&hackathons/${generateSlug(
+              title,
+              123456789
+            )}`}
           >
             <h2 className="text-sm font-semibold leading-[19px] text-white">
               View Challenge

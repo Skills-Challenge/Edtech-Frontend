@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "../ui/Button";
 import { Icon } from "@iconify/react";
 import { useRouter } from "next/navigation";
+import path from "path";
 
 const Breadcrumb = () => {
   const pathname = usePathname();
@@ -12,11 +13,12 @@ const Breadcrumb = () => {
   const pathSegments = pathname.split("/").filter(Boolean);
 
   // Remove base paths from the segments
-  const adjustedSegments =
+  let adjustedSegments =
     pathSegments[0] === "admin" || pathSegments[0] === "talent"
       ? pathSegments.slice(1)
       : pathSegments;
 
+  adjustedSegments = adjustedSegments.filter((path) => isNaN(Number(path)));
   // Function to clean slugs (remove Ids if present)
   const formatSegment = (segment: string) => {
     const parts = segment.split("-");
