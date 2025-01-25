@@ -5,7 +5,7 @@ import ReusableHero from "@/components/reusable/ReusableHero";
 import { Briefcase, Globe, User } from "lucide-react";
 import React from "react";
 
-const experienceData = [
+const solveProblemsData = [
   {
     icon: User,
     title: "Bridging the Experience Gap",
@@ -46,12 +46,14 @@ const About = () => {
           paragraph2="Driven by our mission to place skilled and professional digital talent, we created Skills Challenges as a project-based learning solution  for talents to gain real-world experience, solve problems, and build portfolios so that they become ready for global job markets."
         />
       </div>
+
       <div className="py-16 lg:px-28 md:px-16 px-6 bg-[#F9FAFB]">
         <h1 className="text-black font-semibold text-center text-3xl mb-20">
           Why we are solving this problem
         </h1>
-        <ReusableGrid columns={2} rows={2} items={experienceData} />
+        <ReusableGrid columns={2} rows={2} items={solveProblemsData} />
       </div>
+
       <div className="py-5 lg:px-16 md:px-16 px-6">
         <ReusableHero
           media={
