@@ -2,6 +2,25 @@ import React, { FC } from "react";
 import { Icon } from "@iconify/react";
 import { cn, displayNumbers } from "@/lib/utils";
 import { IconButton } from "@/components/ui/IconButton";
+import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
+import {
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropDown";
+import { Button } from "@/components/ui/Button";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 type props = {
   title: string;
@@ -12,7 +31,28 @@ const AdminStat: FC<props> = ({ title, value, percentage }) => {
   return (
     <div className="bg-white py-3 px-5 border border-border flex flex-col gap-6 rounded-2xl">
       <div className="flex justify-end">
-
+        <Select>
+          <SelectTrigger className="w-fit border-none focus-visible:ring-0 shadow-none">
+            <SelectValue
+              placeholder="Select duration"
+              className="text-xs font-normal text-[#98A2B3]"
+            />
+          </SelectTrigger>
+          <SelectContent className="bg-white">
+            <SelectGroup>
+              <SelectLabel className="text-xs font-normal">filters</SelectLabel>
+              <SelectItem className="text-xs font-normal" value="this week">
+                this week
+              </SelectItem>
+              <SelectItem className="text-xs font-normal" value="last week">
+                last week
+              </SelectItem>
+              <SelectItem className="text-xs font-normal" value="last 30 days">
+                last 30 days
+              </SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
       <div className="flex items-center pb-8 gap-2">
         <IconButton variant={"lg"} className="bg-highlight">

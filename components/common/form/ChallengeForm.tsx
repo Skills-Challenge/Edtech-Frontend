@@ -58,7 +58,7 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
   }, [setValue]);
 
   return (
-    <div className=" w-[80%] 2xl:w-[60%] mx-auto mt-9 pt-8 px-6 pb-6 mb-20 bg-white rounded-xl border border-border">
+    <div className=" w-[90%] md:w-[80%] 2xl:w-[60%] mx-auto mt-9 pt-8 px-6 pb-6 mb-20 bg-white rounded-xl border border-border">
       <div className="flex flex-col gap-2 items-center">
         <ComponentHeader
           heading={initialData ? "Edit a Challenge" : "Create New Challenge"}

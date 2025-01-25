@@ -12,7 +12,7 @@ const WelcomeBanner = () => {
   const isAdmin = user?.role === "admin";
   
   return (
-    <div className="flex flex-row justify-between h-[100px]">
+    <div className="flex flex-col gap-4 md:gap-0 md:flex-row justify-between md:h-[100px]">
       <div className="self-start">
         <ComponentHeader
           heading={`Welcome Back ${user?.fullname},`}
