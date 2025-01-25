@@ -7,11 +7,14 @@ import { Button } from "../ui/Button";
 import { Icon } from "@iconify/react";
 import { Plus } from "lucide-react";
 import ChallengeCard from "../common/ChallengeCard";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export type filterValue = "all" | "completed" | "open" | "ongoing";
 
 const ChallengesContainer = () => {
   const [filter, setFilter] = useState<filterValue>("all");
+  const pathname = usePathname();
   return (
     <div>
       {/* tabs container */}
@@ -44,10 +47,15 @@ const ChallengesContainer = () => {
         </div>
         <div className="flex items-center">
           <Button className="rounded-lg py-4 px-[18px]">
-            <Plus fontSize={24} color="white" />
-            <h2 className="text-base font-medium leading-[23px] text-white">
-              Create New Challenge
-            </h2>
+            <Link
+              href={`${pathname}/create-challenge`}
+              className="flex items-center"
+            >
+              <Plus fontSize={24} color="white" />
+              <h2 className="text-base font-medium leading-[23px] text-white">
+                Create New Challenge
+              </h2>
+            </Link>
           </Button>
         </div>
       </div>
