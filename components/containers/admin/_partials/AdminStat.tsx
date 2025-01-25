@@ -29,10 +29,10 @@ type props = {
 };
 const AdminStat: FC<props> = ({ title, value, percentage }) => {
   return (
-    <div className="bg-white py-3 px-5 border border-border flex flex-col gap-6 rounded-2xl">
+    <div className="bg-white py-3 px-5 border border-border flex flex-col gap-4 rounded-2xl">
       <div className="flex justify-end">
-        <Select>
-          <SelectTrigger className="w-fit border-none focus-visible:ring-0 shadow-none">
+        <Select defaultValue="this week">
+          <SelectTrigger className="w-fit border-none focus-visible:ring-0 shadow-none py-1">
             <SelectValue
               placeholder="Select duration"
               className="text-xs font-normal text-[#98A2B3]"
