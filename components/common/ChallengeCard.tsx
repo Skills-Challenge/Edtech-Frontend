@@ -59,7 +59,7 @@ const ChallengeCard: FC<props> = ({
                 {skills.map((skill, idx) => (
                   <div
                     key={idx}
-                    className="py-[3.4px] px-[6.5px] rounded-[9.25px] border border-primary"
+                    className="py-[3.4px] px-[6.5px] rounded-[9.25px] border border-primary flex flex-col justify-center"
                   >
                     <h2 className="text-primary text-xs leading-[17px] text-center">
                       {skill}
@@ -93,7 +93,7 @@ const ChallengeCard: FC<props> = ({
       <div className="px-5">
         <Button className="py-2 px-4">
           <Link
-            href={`${currentPath}/challenges&hackathons/${generateSlug(
+            href={`/${currentPath}/challenges&hackathons/${generateSlug(
               title,
               123456789
             )}`}

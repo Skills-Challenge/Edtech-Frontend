@@ -18,8 +18,8 @@ const ChallengesContainer = () => {
   return (
     <div>
       {/* tabs container */}
-      <div className="py-[18px] flex items-center justify-between border-b border-b-border">
-        <div className="flex items-center gap-3 flex-1">
+      <div className="py-[18px] flex flex-col-reverse items-end md:items-center md:flex-row gap-5 justify-between border-b border-b-border mt-5 md:mt-0">
+        <div className="flex items-center gap-3 flex-1 w-full md:w-auto overflow-x-auto custom-scrollbar">
           <TabButton
             setFilter={setFilter}
             title="all"
@@ -60,7 +60,7 @@ const ChallengesContainer = () => {
         </div>
       </div>
       {/* challenges container */}
-      <div className="grid grid-cols-3 gap-[26px] pt-[18px]">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[26px] pt-[18px]">
         {[...Array(6)].map((_, idx) => (
           <ChallengeCard
             key={idx}
