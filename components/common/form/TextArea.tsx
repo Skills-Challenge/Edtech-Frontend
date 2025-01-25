@@ -1,3 +1,4 @@
+import { Textarea } from "@/components/ui/TextArea";
 import { TextareaHTMLAttributes } from "react";
 import { UseFormRegister } from "react-hook-form";
 
@@ -8,14 +9,14 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   name: string;
 }
 
-const TextArea = ({ label, error, register, name, ...rest }: TextAreaProps) => {
+const FormTextArea = ({ label, error, register, name, ...rest }: TextAreaProps) => {
   return (
     <div className="mb-4">
       <label className="block font-medium">{label}</label>
-      <textarea
+      <Textarea
         {...register(name)}
         {...rest}
-        className="border p-2 w-full rounded"
+        className="border text-base p-4 w-full rounded-md focus-visible:ring-1 ring-active min-h-[114px]"
         placeholder="Type here..."
       />
       {error && <p className="text-red-500 text-sm">{error}</p>}
@@ -23,4 +24,4 @@ const TextArea = ({ label, error, register, name, ...rest }: TextAreaProps) => {
   );
 };
 
-export default TextArea;
+export default FormTextArea;
