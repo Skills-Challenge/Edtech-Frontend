@@ -11,9 +11,9 @@ const SingleChallengeContainer = () => {
   return (
     <div className="p-9">
       {/* project description components */}
-      <div className="flex flex-row gap-6">
+      <div className="flex flex-col xmd:flex-row gap-6">
         {/* project brief */}
-        <div className="w-[60%] p-8 bg-white rounded-xl border border-border flex flex-col gap-6">
+        <div className="xmd:w-[60%] p-8 bg-white rounded-xl border border-border flex flex-col gap-6">
           {/* intro image */}
           <div className="w-full h-[296px] flex items-center justify-center rounded-xl bg-primary">
             <Image src={umuravaLogo} alt="umuravaLogo" />
@@ -54,7 +54,7 @@ const SingleChallengeContainer = () => {
           </div>
         </div>
         {/* instructions and participants */}
-        <div className="w-[40%] flex flex-col gap-6">
+        <div className="xmd:w-[40%] flex flex-col gap-6">
           <InstructionCard
             email={challengeData.email}
             category={challengeData.category}
