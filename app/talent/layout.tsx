@@ -1,11 +1,11 @@
-import DashboardLayout from "@/components/common/DashboardLayout";
+import MainLayout from "@/components/common/MainLayout";
 import React, { FC, ReactNode } from "react";
 
 type props = {
   children: ReactNode;
 };
 const layout: FC<props> = ({ children }) => {
-  return <DashboardLayout>{children}</DashboardLayout>;
+  return <MainLayout>{children}</MainLayout>;
 };
 
 export default layout;

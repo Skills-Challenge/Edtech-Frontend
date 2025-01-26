@@ -1,4 +1,4 @@
-import DashboardLayout from "@/components/common/DashboardLayout";
+import MainLayout from "@/components/common/MainLayout";
 import CommunityDialog from "@/components/containers/CommunityDialog";
 import React, { FC, ReactNode } from "react";
 
@@ -6,10 +6,12 @@ type props = {
   children: ReactNode;
 };
 const layout: FC<props> = ({ children }) => {
-  return <DashboardLayout>
-    {children}
-    <CommunityDialog/>
-  </DashboardLayout>;
+  return (
+    <MainLayout>
+      {children}
+      <CommunityDialog />
+    </MainLayout>
+  );
 };
 
 export default layout;

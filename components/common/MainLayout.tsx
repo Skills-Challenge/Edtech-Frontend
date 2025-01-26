@@ -9,7 +9,7 @@ import TopBar from "./TopBar";
 type props = {
   children: ReactNode;
 };
-const DashboardLayout: FC<props> = ({ children }) => {
+const MainLayout: FC<props> = ({ children }) => {
   const { user } = useAppSelector((state: AppState) => state.auth);
 
   //   getting the roles links
@@ -22,7 +22,7 @@ const DashboardLayout: FC<props> = ({ children }) => {
       <DynamicSidebar routes={currentRoutes} />
       <main className="flex-1 flex flex-col w-full xl:w-[calc(100%-320px)] 2xl:w-[calc(100%-380px)]">
         {/* topbar */}
-        <TopBar/>
+        <TopBar />
         {/* main content */}
         <div className="bg-body h-full">{children}</div>
       </main>
@@ -30,4 +30,4 @@ const DashboardLayout: FC<props> = ({ children }) => {
   );
 };
 
-export default DashboardLayout;
+export default MainLayout;

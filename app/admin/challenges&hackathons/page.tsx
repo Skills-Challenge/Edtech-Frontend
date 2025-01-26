@@ -1,16 +1,11 @@
 import ComponentHeader from '@/components/common/ComponentHeader';
 import ChallengesContainer from '@/components/containers/ChallengesContainer';
+import Challenge from '@/components/sharedLayout/Challenge';
 import React from 'react'
 
 const ChallengeHackathons = () => {
   return (
-    <div className="py-6 px-9">
-      <ComponentHeader
-        heading="Challenges"
-        subHeading="Join a challenge or a hackathon to gain valuable work experience,"
-      />
-      <ChallengesContainer/>
-    </div>
+    <Challenge/>
   )
 }
 
