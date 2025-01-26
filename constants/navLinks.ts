@@ -12,7 +12,7 @@ const adminRoutes = [
   },
   {
     name: "community",
-    route: "/admin/community",
+    route: "",
     icon: "lineicons:home-2",
     modal:true
   },
@@ -38,6 +38,7 @@ const talentRoutes = [
     name: "Dashboard",
     route: "/talent",
     icon: "lineicons:home-2",
+    exact:true,
   },
   {
     name: "challenges & hackathons",
@@ -46,8 +47,9 @@ const talentRoutes = [
   },
   {
     name: "community",
-    route: "/talent/community",
+    route: "",
     icon: "lineicons:home-2",
+    modal:true
   },
   {
     name: "settings",

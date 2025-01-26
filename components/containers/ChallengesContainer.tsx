@@ -1,20 +1,23 @@
 "use client";
 
 import React, { useState } from "react";
-import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 import TabButton from "../ui/TabButton";
 import { Button } from "../ui/Button";
-import { Icon } from "@iconify/react";
 import { Plus } from "lucide-react";
 import ChallengeCard from "../common/ChallengeCard";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { AppState, useAppSelector } from "@/store/store";
 
 export type filterValue = "all" | "completed" | "open" | "ongoing";
 
 const ChallengesContainer = () => {
   const [filter, setFilter] = useState<filterValue>("all");
   const pathname = usePathname();
+
+  const user = useAppSelector((state:AppState)=>state.auth.user)
+  
+  const isAdmin = user?.role === "admin";
   return (
     <div>
       {/* tabs container */}
@@ -45,7 +48,7 @@ const ChallengesContainer = () => {
             highlighted={filter === "open"}
           />
         </div>
-        <div className="flex items-center">
+        {isAdmin && <div className="flex items-center">
           <Button className="rounded-lg py-4 px-[18px]">
             <Link
               href={`${pathname}/create-challenge`}
@@ -57,7 +60,7 @@ const ChallengesContainer = () => {
               </h2>
             </Link>
           </Button>
-        </div>
+        </div>}
       </div>
       {/* challenges container */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[26px] pt-[18px]">

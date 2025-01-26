@@ -1,16 +1,15 @@
-import WelcomeBanner from '@/components/common/WelcomeBanner';
-import RecentChallengesContainer from '@/components/containers/RecentChallengesContainer';
-import TalentStatsContainer from '@/components/containers/talent/TalentStatsContainer';
-import React from 'react'
+import WelcomeBanner from "@/components/common/WelcomeBanner";
+import Dashboard from "@/components/sharedLayout/DashboardLayout";
+import RecentChallengesContainer from "@/components/containers/RecentChallengesContainer";
+import TalentStatsContainer from "@/components/containers/talent/TalentStatsContainer";
+import React from "react";
 
-const Dashboard = () => {
+const Page = () => {
   return (
-    <div className='py-6 px-9'>
-      <WelcomeBanner/>
-      <TalentStatsContainer/>
-      <RecentChallengesContainer/>
-    </div>
-  )
-}
+    <Dashboard>
+      <TalentStatsContainer />
+    </Dashboard>
+  );
+};
 
-export default Dashboard;
+export default Page;
