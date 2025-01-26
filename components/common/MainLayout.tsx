@@ -5,6 +5,7 @@ import DynamicSidebar from "./DynamicSidebar";
 import { AppState, useAppSelector } from "@/store/store";
 import navLinks from "@/constants/navLinks";
 import TopBar from "./TopBar";
+import CommunityDialog from "../containers/CommunityDialog";
 
 type props = {
   children: ReactNode;
@@ -26,6 +27,7 @@ const MainLayout: FC<props> = ({ children }) => {
         {/* main content */}
         <div className="bg-body h-full">{children}</div>
       </main>
+      <CommunityDialog />
     </div>
   );
 };

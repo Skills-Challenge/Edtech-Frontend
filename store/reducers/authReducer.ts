@@ -10,7 +10,7 @@ const initialState: authstate = {
   user: {
     email:"test@gmail.com",
     fullname:"test user",
-    role:"admin"
+    role:"talent"
   },
   isAuthenticated: false,
   isAuthenticating: false,

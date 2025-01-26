@@ -9,7 +9,6 @@ const layout: FC<props> = ({ children }) => {
   return (
     <MainLayout>
       {children}
-      <CommunityDialog />
     </MainLayout>
   );
 };
