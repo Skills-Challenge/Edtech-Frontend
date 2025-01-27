@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import TabButton from "../ui/TabButton";
-import { Button } from "../ui/Button";
+import { Button } from "../ui/button";
 import { Plus } from "lucide-react";
 import ChallengeCard from "../common/ChallengeCard";
 import Link from "next/link";
@@ -15,8 +15,8 @@ const ChallengesContainer = () => {
   const [filter, setFilter] = useState<filterValue>("all");
   const pathname = usePathname();
 
-  const user = useAppSelector((state:AppState)=>state.auth.user)
-  
+  const user = useAppSelector((state: AppState) => state.auth.user);
+
   const isAdmin = user?.role === "admin";
   return (
     <div>
@@ -48,19 +48,21 @@ const ChallengesContainer = () => {
             highlighted={filter === "open"}
           />
         </div>
-        {isAdmin && <div className="flex items-center">
-          <Button className="rounded-lg py-4 px-[18px]">
-            <Link
-              href={`${pathname}/create-challenge`}
-              className="flex items-center"
-            >
-              <Plus fontSize={24} color="white" />
-              <h2 className="text-base font-medium leading-[23px] text-white">
-                Create New Challenge
-              </h2>
-            </Link>
-          </Button>
-        </div>}
+        {isAdmin && (
+          <div className="flex items-center">
+            <Button className="rounded-lg py-4 px-[18px]">
+              <Link
+                href={`${pathname}/create-challenge`}
+                className="flex items-center"
+              >
+                <Plus fontSize={24} color="white" />
+                <h2 className="text-base font-medium leading-[23px] text-white">
+                  Create New Challenge
+                </h2>
+              </Link>
+            </Button>
+          </div>
+        )}
       </div>
       {/* challenges container */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[26px] pt-[18px]">

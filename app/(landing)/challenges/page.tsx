@@ -1,4 +1,4 @@
-import HomeChallengeCard from '@/components/common/HomeChallengeCard'
+import ChallengeCard from '@/components/common/ChallengeCard'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -13,7 +13,7 @@ const Challenges = () => {
       </Link>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[26px] pt-[18px]">
         {[...Array(12)].map((_, idx) => (
-          <HomeChallengeCard
+          <ChallengeCard
             key={idx}
             title="Design a Dashboard for SokoFund for a Fintech Product"
             status="open"

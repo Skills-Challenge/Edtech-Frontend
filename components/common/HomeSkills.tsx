@@ -1,8 +1,9 @@
 "use client";
 
-import React from 'react';
-import Slider from './Slider';
-import ReusableList from '../reusable/ReusableList';
+import React from "react";
+import Slider from "./Slider";
+import ReusableList from "../reusable/ReusableList";
+
 const HomeSkills: React.FC = () => {
   const skillsData = [
     "UI/UX Design",
@@ -49,19 +50,25 @@ const HomeSkills: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 px-6">
-      <div className="px-48">
-        <h1 className="text-4xl font-bold text-center mb-2">
+    <section className="py-8 px-4 sm:py-16 sm:px-6 md:px-16 lg:px-24">
+      <div className="text-center mb-8">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-4">
           Skills Challenges Cover various in-demand skills and Careers for the digital economy
         </h1>
-        <p className="text-center mb-16">
+        <p className="text-base sm:text-lg mb-8">
           Explore the projects that various talents are working on.
         </p>
       </div>
-      <div className="px-52">
+
+      {/* ReusableList Section */}
+      <div className="mb-8">
         <ReusableList items={skillsData} />
       </div>
-      <Slider slides={slidesData} />
+
+      {/* Slider Section */}
+      <div className="mb-16">
+        <Slider slides={slidesData} />
+      </div>
     </section>
   );
 };

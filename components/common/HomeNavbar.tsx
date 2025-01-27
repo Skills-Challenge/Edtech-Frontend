@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Button } from "../ui/Button";
+import { Button } from "../ui/button";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
@@ -63,7 +63,11 @@ const HomeNavbar = () => {
           className="text-gray-700 focus:outline-none"
           aria-label="Toggle menu"
         >
-          {isMenuOpen ? <X className="w-6 h-6 z-50" /> : <Menu className="w-6 h-6" />}
+          {isMenuOpen ? (
+            <X className="w-6 h-6 z-50" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
         </button>
       </div>
 
@@ -87,7 +91,9 @@ const HomeNavbar = () => {
               </li>
             ))}
             <li>
-              <Button onClick={toggleMenu} className="text-white">Join the Program</Button>
+              <Button onClick={toggleMenu} className="text-white">
+                Join the Program
+              </Button>
             </li>
           </ul>
         </div>
