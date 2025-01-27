@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import ListHeader from "./ListHeader";
 import ListItem from "./Listitem";
 import InstructionAvatar from "./InstructionAvatar";
-import { Button } from "../ui/Button";
+import { Button } from "../ui/button";
 import Link from "next/link";
 
 type props = {
@@ -41,10 +41,15 @@ const InstructionCard: FC<props> = ({
               </h2>
             </Button>
             <Button className="h-[50px] w-full">
-              <Link className="w-full" href={"/admin/challenges&hackathons/update-challenge/1234567890"}>
-              <h2 className="text-base font-semibold leading-[23.5px]">
-                Edit
-              </h2>
+              <Link
+                className="w-full"
+                href={
+                  "/admin/challenges&hackathons/update-challenge/1234567890"
+                }
+              >
+                <h2 className="text-base font-semibold leading-[23.5px]">
+                  Edit
+                </h2>
               </Link>
             </Button>
           </>

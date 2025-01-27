@@ -9,7 +9,7 @@ import TextAreaWithList from "./TextAreaWithList";
 import { challengeSchema } from "@/schemas/ChallengeSchema";
 import FormInput from "./FormInput";
 import FormTextArea from "./TextArea";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import ListHeader from "../ListHeader";
 import ComponentHeader from "../ComponentHeader";
 import { init } from "next/dist/compiled/webpack/webpack";

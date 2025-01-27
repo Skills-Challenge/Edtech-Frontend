@@ -1,6 +1,6 @@
 import React from "react";
 import ListHeader from "./ListHeader";
-import { Button } from "../ui/Button";
+import { Button } from "../ui/button";
 import UserCard1 from "./UserCard1";
 
 const ParticipantsCard = ({

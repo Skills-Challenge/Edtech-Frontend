@@ -1,8 +1,9 @@
 "use client";
 
-import React from 'react';
-import Slider from './Slider';
-import ReusableList from '../reusable/ReusableList';
+import React from "react";
+import Slider from "./Slider";
+import ReusableList from "../reusable/ReusableList";
+
 const HomeSkills: React.FC = () => {
   const skillsData = [
     "UI/UX Design",
@@ -19,49 +20,45 @@ const HomeSkills: React.FC = () => {
 
   const slidesData = [
     {
-      icon: <div className="text-4xl text-blue-600">🎨</div>,
-      description: "Enhance your skills in UI/UX Design",
-      buttonText: "Learn More",
+      icon: "/slideIcon.png",
+      description: "The Embedded Finance Platform and Payroll Management Software Solutions for your organization and Workforce.",
       imageSrc: "/slider1.png",
-      imageAlt: "UI/UX Design",
     },
     {
-      icon: <div className="text-4xl text-blue-600">💡</div>,
-      description: "Discover Data Science & Analysis",
-      buttonText: "Learn More",
+      icon: "/slideIcon.png",
+      description: "The Embedded Finance Platform and Payroll Management Software Solutions for your organization and Workforce.s",
       imageSrc: "/slider1.png",
-      imageAlt: "Data Science",
     },
     {
-      icon: <div className="text-4xl text-blue-600">📸</div>,
-      description: "Photography and Videography Skills",
-      buttonText: "Learn More",
+      icon: "/slideIcon.png",
+      description: "The Embedded Finance Platform and Payroll Management Software Solutions for your organization and Workforce.",
       imageSrc: "/slider1.png",
-      imageAlt: "Videography & Photography",
     },
     {
-      icon: <div className="text-4xl text-blue-600">📊</div>,
-      description: "Get involved in Data Analytics",
-      buttonText: "Learn More",
+      icon: "/slideIcon.png",
+      description: "The Embedded Finance Platform and Payroll Management Software Solutions for your organization and Workforce.",
       imageSrc: "/slider1.png",
-      imageAlt: "Data Analytics",
     },
   ];
 
   return (
-    <section className="py-16 px-6">
-      <div className="px-48">
-        <h1 className="text-4xl font-bold text-center mb-2">
+    <section className="py-8 px-4 sm:py-16 sm:px-6 md:px-16 lg:px-24">
+      <div className="text-center mb-8">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-4">
           Skills Challenges Cover various in-demand skills and Careers for the digital economy
         </h1>
-        <p className="text-center mb-16">
+        <p className="text-base sm:text-lg mb-8">
           Explore the projects that various talents are working on.
         </p>
       </div>
-      <div className="px-52">
+
+      <div className="mb-8">
         <ReusableList items={skillsData} />
       </div>
-      <Slider slides={slidesData} />
+
+      <div className="mt-16">
+        <Slider slides={slidesData} />
+      </div>
     </section>
   );
 };
