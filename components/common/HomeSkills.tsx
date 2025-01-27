@@ -20,32 +20,24 @@ const HomeSkills: React.FC = () => {
 
   const slidesData = [
     {
-      icon: <div className="text-4xl text-blue-600">🎨</div>,
-      description: "Enhance your skills in UI/UX Design",
-      buttonText: "Learn More",
+      icon: "/slideIcon.png",
+      description: "The Embedded Finance Platform and Payroll Management Software Solutions for your organization and Workforce.",
       imageSrc: "/slider1.png",
-      imageAlt: "UI/UX Design",
     },
     {
-      icon: <div className="text-4xl text-blue-600">💡</div>,
-      description: "Discover Data Science & Analysis",
-      buttonText: "Learn More",
+      icon: "/slideIcon.png",
+      description: "The Embedded Finance Platform and Payroll Management Software Solutions for your organization and Workforce.s",
       imageSrc: "/slider1.png",
-      imageAlt: "Data Science",
     },
     {
-      icon: <div className="text-4xl text-blue-600">📸</div>,
-      description: "Photography and Videography Skills",
-      buttonText: "Learn More",
+      icon: "/slideIcon.png",
+      description: "The Embedded Finance Platform and Payroll Management Software Solutions for your organization and Workforce.",
       imageSrc: "/slider1.png",
-      imageAlt: "Videography & Photography",
     },
     {
-      icon: <div className="text-4xl text-blue-600">📊</div>,
-      description: "Get involved in Data Analytics",
-      buttonText: "Learn More",
+      icon: "/slideIcon.png",
+      description: "The Embedded Finance Platform and Payroll Management Software Solutions for your organization and Workforce.",
       imageSrc: "/slider1.png",
-      imageAlt: "Data Analytics",
     },
   ];
 
@@ -60,13 +52,11 @@ const HomeSkills: React.FC = () => {
         </p>
       </div>
 
-      {/* ReusableList Section */}
       <div className="mb-8">
         <ReusableList items={skillsData} />
       </div>
 
-      {/* Slider Section */}
-      <div className="mb-16">
+      <div className="mt-16">
         <Slider slides={slidesData} />
       </div>
     </section>
