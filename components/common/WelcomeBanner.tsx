@@ -15,7 +15,7 @@ const WelcomeBanner = () => {
     <div className="flex flex-col gap-4 md:gap-0 md:flex-row justify-between md:h-[100px]">
       <div className="self-start">
         <ComponentHeader
-          heading={`Welcome Back ${user?.fullname},`}
+          heading={`Welcome Back ${user?.name},`}
           subHeading="Build your Work Exprience through Skills Challenges"
         />
       </div>

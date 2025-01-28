@@ -8,10 +8,36 @@ export function cn(...inputs: ClassValue[]) {
 export function generateSlug(input: string): string {
   return input
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)+/g, '')
-}
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "")}-${id}`;
+};
 
-export function displayNumbers(num: number): string {
-  return num.toLocaleString();
-}
+
+export const setCookie = (name: string, value: string, days: number) => {
+  if (typeof document !== "undefined") {
+    const date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    const expires = `expires=${date.toUTCString()}`;
+    document.cookie = `${name}=${value};${expires};path=/`;
+  }
+};
+
+export const getCookie = (name: string): string => {
+  if (typeof document !== "undefined") {
+    const cookieName = `${name}=`;
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+      let cookie = cookies[i].trim();
+      if (cookie.startsWith(cookieName)) {
+        return cookie.substring(cookieName.length, cookie.length);
+      }
+    }
+  }
+  return "";
+};
+
+export const deleteCookie = (name: string) => {
+  if (typeof document !== "undefined") {
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  }
+};
