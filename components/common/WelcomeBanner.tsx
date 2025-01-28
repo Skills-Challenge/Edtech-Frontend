@@ -4,13 +4,13 @@ import React from "react";
 import ComponentHeader from "./ComponentHeader";
 import { AppState, useAppSelector } from "@/store/store";
 import { Icon } from "@iconify/react";
-import { Button } from "../ui/Button";
+import { Button } from "../ui/button";
 import Link from "next/link";
 
 const WelcomeBanner = () => {
   const { user } = useAppSelector((state: AppState) => state.auth);
   const isAdmin = user?.role === "admin";
-  
+
   return (
     <div className="flex flex-col gap-4 md:gap-0 md:flex-row justify-between md:h-[100px]">
       <div className="self-start">

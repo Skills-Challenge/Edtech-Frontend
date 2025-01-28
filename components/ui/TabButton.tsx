@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Button } from "./Button";
+import { Button } from "./button";
 import { Icon } from "@iconify/react";
 import { cn } from "@/lib/utils";
 import { filterValue } from "../containers/ChallengesContainer";

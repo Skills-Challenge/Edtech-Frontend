@@ -1,6 +1,6 @@
 import React from "react";
 import ComponentHeader from "../common/ComponentHeader";
-import { Button } from "../ui/Button";
+import { Button } from "../ui/button";
 import Link from "next/link";
 import ChallengeCard from "../common/ChallengeCard";
 
@@ -23,8 +23,8 @@ const RecentChallengesContainer = () => {
             key={idx}
             title="Design a Dashboard for SokoFund for a Fintech Product"
             status="open"
-            skills={["UI/UX Design","User Research","User Research"]}
-            seniorityLevels={["Junior","Intermediate","Senior"]}
+            skills={["UI/UX Design", "User Research", "User Research"]}
+            seniorityLevels={["Junior", "Intermediate", "Senior"]}
             timeline="10 days"
           />
         ))}
