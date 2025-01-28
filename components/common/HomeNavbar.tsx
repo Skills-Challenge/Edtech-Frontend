@@ -53,7 +53,13 @@ const HomeNavbar = () => {
             </li>
           ))}
         </ul>
-        <Button className="text-white">Join the Program</Button>
+        <Button className="text-white">
+          <Link
+           href="/auth/login"
+          >
+          Join the Program
+          </Link>
+        </Button>
       </nav>
 
       {/* MOBILE MENU ICON */}

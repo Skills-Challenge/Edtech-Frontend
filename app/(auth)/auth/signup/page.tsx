@@ -3,22 +3,27 @@
 import ComponentHeader from "@/components/common/ComponentHeader";
 import FormInput from "@/components/common/form/FormInput";
 import { Button } from "@/components/ui/Button";
+import { signup } from "@/lib/actions/auth.action";
+import { useAppDispatch } from "@/store/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const registerSchema = z.object({
-  username: z
+  name: z
     .string()
-    .min(3, "enter a longer username")
-    .max(30, "enter a smaller username"),
+    .min(3, "enter a longer name")
+    .max(30, "enter a smaller name"),
   email: z.string().email().min(1, "enter a valid email"),
   password: z.string().min(1, "password is required"),
 });
 
 const page = () => {
+  const router = useRouter();
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
@@ -26,14 +31,19 @@ const page = () => {
   } = useForm({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      username: "",
+      name: "",
       email: "",
       password: "",
     },
   });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async(data: any) => {
+     try{
+            await signup(data.name,data.email, data.password, dispatch)
+            router.push("/auth/login")
+          }catch(error: any){
+            console.error("Login Failed!", error?.message)
+          }
   };
   return (
     <div className="p-5">
@@ -49,11 +59,11 @@ const page = () => {
         className="p-4 flex flex-col gap-6"
       >
         <FormInput
-          name="username"
-          label="Username"
+          name="name"
+          label="Full Names"
           register={register}
-          placeholder="Enter your username"
-          error={errors.username && errors?.username.message}
+          placeholder="Enter your full name"
+          error={errors.name && errors?.name.message}
         />
         <FormInput
           name="email"
@@ -65,6 +75,7 @@ const page = () => {
         <FormInput
           name="password"
           label="Password"
+          type="password"
           register={register}
           placeholder="Enter your password"
           error={errors.password && errors?.password.message}

@@ -1,6 +1,6 @@
 export type Tuser = {
     image?:string;
-    fullname:string;
+    name:string;
     email:string;
     password?:string;
     role:"admin"|"talent"

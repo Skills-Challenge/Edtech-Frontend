@@ -9,7 +9,7 @@ type authstate = {
 const initialState: authstate = {
   user: {
     email:"test@gmail.com",
-    fullname:"test user",
+    name:"test user",
     role:"talent"
   },
   isAuthenticated: false,
