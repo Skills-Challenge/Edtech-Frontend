@@ -1,7 +1,7 @@
 import HomeChallenges from '@/components/common/HomeChallenges';
 import HomeCTA from '@/components/common/HomeCTA';
 import HomeExperience from '@/components/common/HomeExperience';
-import HomeGetStarted from '@/components/common/HomeGetStarted';
+import { HomeGetStarted } from '@/components/common/HomeGetStarted';
 import HomeHero from '@/components/common/HomeHero';
 import HomeProfits from '@/components/common/HomeProfits';
 import HomeSkills from '@/components/common/HomeSkills';
