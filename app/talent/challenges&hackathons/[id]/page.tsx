@@ -7,4 +7,4 @@ const SingleChallenge = () => {
   )
 }
 
-export default SingleChallenge
+export default SingleChallenge;
