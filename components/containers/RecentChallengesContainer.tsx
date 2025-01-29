@@ -1,6 +1,6 @@
 import React from "react";
 import ComponentHeader from "../common/ComponentHeader";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import ChallengeCard from "../common/ChallengeCard";
 

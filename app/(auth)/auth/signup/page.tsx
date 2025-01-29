@@ -37,13 +37,13 @@ const page = () => {
     },
   });
 
-  const onSubmit = async(data: any) => {
-     try{
-            await signup(data.name,data.email, data.password, dispatch)
-            router.push("/auth/login")
-          }catch(error: any){
-            console.error("Login Failed!", error?.message)
-          }
+  const onSubmit = async (data: any) => {
+    try {
+      await signup(data.name, data.email, data.password, dispatch);
+      router.push("/auth/login");
+    } catch (error: any) {
+      console.error("Login Failed!", error?.message);
+    }
   };
   return (
     <div className="p-5">

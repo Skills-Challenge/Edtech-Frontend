@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/Button";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
@@ -54,11 +54,7 @@ const HomeNavbar = () => {
           ))}
         </ul>
         <Button className="text-white">
-          <Link
-           href="/auth/login"
-          >
-          Join the Program
-          </Link>
+          <Link href="/auth/login">Join the Program</Link>
         </Button>
       </nav>
 

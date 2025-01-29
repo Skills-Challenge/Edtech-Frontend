@@ -2,7 +2,7 @@ import ReusableBG from "@/components/reusable/ReusableBG";
 import ReusableGrid from "@/components/reusable/ReusableGrid";
 import ReusableHero from "@/components/reusable/ReusableHero";
 import ReusableList from "@/components/reusable/ReusableList";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { Briefcase, Globe, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";

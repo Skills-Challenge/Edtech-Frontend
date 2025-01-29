@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/Button";
 import { Icon } from "@iconify/react";
 import { useRouter } from "next/navigation";
 import path from "path";

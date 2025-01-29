@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import ListHeader from "./ListHeader";
 import ListItem from "./Listitem";
 import InstructionAvatar from "./InstructionAvatar";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 
 type props = {

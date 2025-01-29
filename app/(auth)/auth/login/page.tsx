@@ -20,7 +20,7 @@ const loginSchema = z.object({
 const page = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -34,10 +34,10 @@ const page = () => {
   });
 
   const onSubmit = async (data: any) => {
-    setLoading(true); 
+    setLoading(true);
     try {
       await login(data.email, data.password, dispatch);
-      setLoading(false); 
+      setLoading(false);
 
       const user = store.getState().auth.user;
       if (user && user.role === "admin") {
@@ -46,7 +46,7 @@ const page = () => {
         router.push("/talent");
       }
     } catch (error: any) {
-      setLoading(false); 
+      setLoading(false);
       console.error("Login Failed!", error?.message);
     }
   };
@@ -83,9 +83,9 @@ const page = () => {
           <Button
             type="submit"
             className="py-4 w-full text-white font-semibold leading-[23.5px] rounded-lg"
-            disabled={loading} 
+            disabled={loading}
           >
-            {loading ? "Logging in..." : "Login"} 
+            {loading ? "Logging in..." : "Login"}
           </Button>
           <div className="flex items-center justify-end gap-2">
             <h2 className="text-sm">Don't have an account?</h2>

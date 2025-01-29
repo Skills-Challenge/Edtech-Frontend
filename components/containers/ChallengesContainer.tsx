@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import TabButton from "../ui/TabButton";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/Button";
 import { Plus } from "lucide-react";
 import ChallengeCard from "../common/ChallengeCard";
 import Link from "next/link";

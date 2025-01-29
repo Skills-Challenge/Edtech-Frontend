@@ -4,7 +4,7 @@ import React, { FC } from "react";
 import umuravaLogo from "@/public/umuravaLogo2.png";
 import { cn, generateSlug } from "@/lib/utils";
 import Image from "next/image";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

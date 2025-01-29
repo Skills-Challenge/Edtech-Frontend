@@ -4,7 +4,7 @@ import React from "react";
 import ComponentHeader from "./ComponentHeader";
 import { AppState, useAppSelector } from "@/store/store";
 import { Icon } from "@iconify/react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 
 const WelcomeBanner = () => {
