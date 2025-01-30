@@ -13,7 +13,7 @@ type props = {
   category: string;
   duration: string;
   prize: string;
-  userRole: "admin" | "talent";
+  userRole: string;
 };
 
 const InstructionCard: FC<props> = ({

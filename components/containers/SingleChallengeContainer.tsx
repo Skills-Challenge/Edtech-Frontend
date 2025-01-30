@@ -10,11 +10,13 @@ import ParticipantsCard from "../common/ParticipantsCard";
 import { useParams } from "next/navigation";
 import { TChallenge } from "@/types/challenge";
 import { getChallengeById } from "@/lib/actions/challenge.action";
+import { useAppSelector } from "@/store/store";
 
 const SingleChallengeContainer = () => {
   const [challenge, setChallenge] = useState<TChallenge | null>(null);
   const { id } = useParams();
   const challengeId = typeof id === 'string' ? id.split("-").pop() : undefined;
+  const { user } = useAppSelector((state) => state.auth)
 
   useEffect(() => {
      const fetchChallenge = async() => {
@@ -89,7 +91,7 @@ const SingleChallengeContainer = () => {
             category={challengeData.category}
             duration={challenge.duration}
             prize={challenge.prize}
-            userRole="admin"
+            userRole={user?.role || "talent"}
           />
           <ParticipantsCard participants={challengeData.participants} />
         </div>

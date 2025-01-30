@@ -3,7 +3,7 @@ import axios from "axios";
 import { getCookie } from "./utils";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: "https://edtech-backend-00ii.onrender.com",
   withCredentials: true,
 });
 

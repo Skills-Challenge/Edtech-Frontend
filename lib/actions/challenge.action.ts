@@ -1,6 +1,6 @@
 import { AppThunk } from "@/store/store";
 import axios from "../axios.config";
-import { setChallenges, setError, setLoading } from "@/store/reducers/challengeReducer";
+import { setChallenges, setError, setLoading, setStats } from "@/store/reducers/challengeReducer";
 import { TChallenge } from "@/types/challenge";
 
 
@@ -62,4 +62,22 @@ export const updateChallenge = async(id: string, data: TChallenge) => {
    } catch(error: any){
      console.error("Error while updating challenge: ", error?.message);
    }
+}
+
+
+export const getChallengeStats = (): AppThunk => async (dispatch: any) => {
+  try{
+    const response = await axios.get("/challenge/stats");
+    const { totalOngoing , totalCompleted , totalOpen } = response.data.challengeStats
+
+
+    dispatch(setStats({ totalOngoing , totalCompleted , totalOpen}))
+    return {
+      totalOngoing,
+      totalCompleted,
+      totalOpen
+    };
+  }catch(error: any){
+    console.error("Error while getting challenge stats: ", error?.message)
+  }
 }
