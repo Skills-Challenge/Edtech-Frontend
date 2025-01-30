@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { deleteChallenge } from "@/lib/actions/challenge.action";
+import { toast } from "sonner";
 
 type props = {
   email: string;
@@ -31,12 +32,14 @@ const InstructionCard: FC<props> = ({
     try {
       if (challengeId) {
         const challenge = await deleteChallenge(challengeId);
+        toast.success("Successfully Deleted Challenge")
         console.log("Challenge deleted:", challenge);
         router.replace("/admin/challenges&hackathons")
       } else {
         console.error("Challenge ID is undefined");
       }
     } catch (error: any) {
+      toast.error("Failed to delete challenge")
       console.error("Failed to delete challenge", error?.message);
     }
   };
