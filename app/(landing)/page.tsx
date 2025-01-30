@@ -1,3 +1,4 @@
+"use client"
 import HomeChallenges from '@/components/common/HomeChallenges';
 import HomeCTA from '@/components/common/HomeCTA';
 import HomeExperience from '@/components/common/HomeExperience';

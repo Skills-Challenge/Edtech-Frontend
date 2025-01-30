@@ -7,9 +7,9 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
   role,
   location,
   isVisible,
-  index,
+  index = 0,
   currentSlide,
-  totalSlides
+  totalSlides = 0
 }) => {
   const getOpacity = () => {
     if (currentSlide === totalSlides - 1) {

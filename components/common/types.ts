@@ -7,6 +7,9 @@ export interface TestimonialData {
 
 export interface TestimonialCardProps extends TestimonialData {
   isVisible: boolean;
+  index?: number;
+  currentSlide?: number;
+  totalSlides?: number;
 }
 
 export interface DotIndicatorProps {

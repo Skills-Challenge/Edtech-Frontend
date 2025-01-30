@@ -8,6 +8,11 @@ type ChallengeState = {
     loading: boolean;
     error: string | null;
     totalChallenges: number;
+    stats: {
+        totalOngoing: number,
+        totalCompleted: number,
+        totalOpen: number
+    }
 }
 
 const initialState: ChallengeState = {
@@ -15,6 +20,11 @@ const initialState: ChallengeState = {
     loading: false,
     error: null,
     totalChallenges: 0,
+    stats: {
+        totalOngoing: 0,
+        totalCompleted: 0,
+        totalOpen: 0,
+      },
 }
 
 
@@ -32,10 +42,20 @@ const challengeSlice = createSlice({
         setError: ( state , action: PayloadAction<string | null>) => {
             state.error = action.payload
         },
+        setStats: (
+            state,
+            action: PayloadAction<{
+              totalOngoing: number;
+              totalCompleted: number;
+              totalOpen: number;
+            }>
+          ) => {
+            state.stats = action.payload;
+          },
     }
 })
 
 
-export const { setChallenges , setLoading, setError } = challengeSlice.actions;
+export const { setChallenges , setLoading, setError , setStats } = challengeSlice.actions;
 
 export default challengeSlice.reducer
