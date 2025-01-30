@@ -73,7 +73,7 @@ const LandingPage = () => {
       <HomeStatistics />
       <HomeSkills />
       <HomeChallenges />
-      <HomeProfits />
+      {/* <HomeProfits /> */}
       <TestimonialSlider testimonials={testimonialData} />
       <HomeGetStarted />
       <HomeCTA />

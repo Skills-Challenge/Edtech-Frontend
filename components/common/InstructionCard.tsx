@@ -1,9 +1,12 @@
-import React, { FC } from "react";
+"use client";
+import React, { FC, useEffect } from "react";
 import ListHeader from "./ListHeader";
 import ListItem from "./Listitem";
 import InstructionAvatar from "./InstructionAvatar";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
+import { deleteChallenge } from "@/lib/actions/challenge.action";
 
 type props = {
   email: string;
@@ -20,6 +23,23 @@ const InstructionCard: FC<props> = ({
   prize,
   userRole,
 }) => {
+  const router = useRouter()
+  const { id } = useParams();
+  const challengeId = typeof id === "string" ? id.split("-").pop() : undefined;
+
+  const handleDeleteChallenge = async () => {
+    try {
+      if (challengeId) {
+        const challenge = await deleteChallenge(challengeId);
+        console.log("Challenge deleted:", challenge);
+        router.replace("/admin/challenges&hackathons")
+      } else {
+        console.error("Challenge ID is undefined");
+      }
+    } catch (error: any) {
+      console.error("Failed to delete challenge", error?.message);
+    }
+  };
   return (
     <div className="p-6 rounded-xl border border-border bg-white flex flex-col gap-12">
       <div className="flex flex-col gap-4">
@@ -35,7 +55,7 @@ const InstructionCard: FC<props> = ({
       <div className="flex gap-5 text-white">
         {userRole === "admin" ? (
           <>
-            <Button className="h-[50px] bg-[#E5533C] w-full">
+            <Button className="h-[50px] bg-[#E5533C] w-full" onClick={handleDeleteChallenge}>
               <h2 className="text-base font-semibold leading-[23.5px]">
                 Delete
               </h2>
@@ -44,7 +64,7 @@ const InstructionCard: FC<props> = ({
               <Link
                 className="w-full"
                 href={
-                  "/admin/challenges&hackathons/update-challenge/1234567890"
+                  `/admin/challenges&hackathons/update-challenge/${challengeId}`
                 }
               >
                 <h2 className="text-base font-semibold leading-[23.5px]">
