@@ -4,6 +4,7 @@ import Avatar from "./Avatar";
 import { Icon } from "@iconify/react";
 import { useAppDispatch } from "@/store/store";
 import { logout } from "@/lib/actions/auth.action";
+import { toast } from "sonner";
 
 type props = {
   user: Tuser;
@@ -15,6 +16,7 @@ const UserCard: FC<props> = ({ user }) => {
   const handleLogout = async() => {
      try{
         await logout(dispatch);
+        toast.success("Successfully logged out")
      }catch(err: any){
       console.error("Error while logging out: ", err?.message)
      }
