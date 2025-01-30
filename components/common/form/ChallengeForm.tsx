@@ -1,13 +1,15 @@
 "use client";
 
-
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import TextAreaWithList from "./TextAreaWithList";
-import { challengeSchema, updateChallengeSchema } from "@/schemas/ChallengeSchema";
+import {
+  challengeSchema,
+  updateChallengeSchema,
+} from "@/schemas/ChallengeSchema";
 import FormInput from "./FormInput";
 import FormTextArea from "./TextArea";
-import { Button } from "@/components/ui/Button";;
+import { Button } from "@/components/ui/Button";
 import ComponentHeader from "../ComponentHeader";
 import { useEffect } from "react";
 
@@ -16,7 +18,10 @@ interface ChallengeFormProps {
   onSubmit: (data: any) => void;
 }
 
-const ChallengeForm: React.FC<ChallengeFormProps> = ({ initialData, onSubmit }) => {
+const ChallengeForm: React.FC<ChallengeFormProps> = ({
+  initialData,
+  onSubmit,
+}) => {
   const {
     register,
     handleSubmit,
@@ -39,7 +44,6 @@ const ChallengeForm: React.FC<ChallengeFormProps> = ({ initialData, onSubmit }) 
     },
   });
 
-  // Reset form if initialData changes (for updates)
   useEffect(() => {
     if (initialData) {
       reset(initialData);
@@ -47,12 +51,15 @@ const ChallengeForm: React.FC<ChallengeFormProps> = ({ initialData, onSubmit }) 
   }, [initialData, reset]);
 
   const handleSubmitWithPartialData = (data: any) => {
-    const updatedData = Object.keys(data).reduce((acc: Record<string, any>, key) => {
-      if ((data as any)[key] !== (initialData as any)?.[key]) {
-        acc[key] = data[key];
-      }
-      return acc;
-    }, {});
+    const updatedData = Object.keys(data).reduce(
+      (acc: Record<string, any>, key) => {
+        if ((data as any)[key] !== (initialData as any)?.[key]) {
+          acc[key] = data[key];
+        }
+        return acc;
+      },
+      {}
+    );
     onSubmit(updatedData);
   };
 
@@ -85,7 +92,6 @@ const ChallengeForm: React.FC<ChallengeFormProps> = ({ initialData, onSubmit }) 
             placeholder="Date"
             defaultValue={initialData?.deadline}
             error={errors.deadline && errors?.deadline.message}
-            
           />
           <FormInput
             name="duration"
@@ -124,16 +130,16 @@ const ChallengeForm: React.FC<ChallengeFormProps> = ({ initialData, onSubmit }) 
           name="description"
           register={register}
           setValue={setValue}
-          value={Array.isArray(initialData?.description) ? initialData.description : []}
-          error={errors.description && errors.description.message}
-          defaultValues={watch("description")}
+          value={watch("description") || []}
+          error={errors.description?.message}
         />
+
         <TextAreaWithList
           label="Project Requirements"
           name="requirements"
           register={register}
           setValue={setValue}
-          value={Array.isArray(initialData?.requirements) ? initialData.requirements : []}
+          value={watch("requirements") || []}
           error={errors.requirements && errors.requirements.message}
           defaultValues={watch("requirements")}
         />
@@ -141,7 +147,7 @@ const ChallengeForm: React.FC<ChallengeFormProps> = ({ initialData, onSubmit }) 
           label="Deliverables"
           name="deliverables"
           register={register}
-          value={Array.isArray(initialData?.deliverables) ? initialData.deliverables : []}
+          value={watch("deliverables") || []}
           setValue={setValue}
           error={errors.deliverables && errors.deliverables.message}
           defaultValues={watch("deliverables")}
