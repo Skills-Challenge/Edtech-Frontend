@@ -7,11 +7,7 @@ type authstate = {
   isAuthenticating: boolean;
 };
 const initialState: authstate = {
-  user: {
-    email:"test@gmail.com",
-    name:"test user",
-    role:"talent"
-  },
+  user: null,
   isAuthenticated: false,
   isAuthenticating: false,
 };

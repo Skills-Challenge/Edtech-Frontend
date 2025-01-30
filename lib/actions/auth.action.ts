@@ -4,10 +4,6 @@ import { useAppDispatch } from "@/store/store"
 import axios from "../axios.config";
 import { deleteCookie, setCookie } from "../utils";
 
-
-
-
-
 export const login = async(email: string , password: string , dispatch: any) => {
     try{
         dispatch(setIsAuthenticating(true));
