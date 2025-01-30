@@ -12,3 +12,14 @@ export const challengeSchema = z.object({
     deliverables: z.array(z.string()).nonempty("At least one deliverable is required"),
   });
 
+export const updateChallengeSchema = z.object({
+    title: z.string().optional(),
+    deadline: z.string().optional(),
+    duration: z.string().optional(),
+    prize: z.string().optional(),
+    contactEmail: z.string().optional(),
+    description: z.array(z.string()).optional(),
+    brief: z.string().optional(),
+    requirements: z.array(z.string()).optional(),
+    deliverables: z.array(z.string()).optional(),
+});

@@ -9,13 +9,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 type props = {
-  status: "open" | "closed";
+  _id: string;
+  status: string;
   title: string;
   skills: string[];
   seniorityLevels: string[];
   timeline: string;
 };
 const ChallengeCard: FC<props> = ({
+  _id,
   status,
   title,
   timeline,
@@ -71,18 +73,18 @@ const ChallengeCard: FC<props> = ({
             {/* seniority */}
             <div className="flex items-center">
               <h2 className="text-xs leading-[17px] font-semibold text-[#25272B]">
-                skills required:{" "}
+                Experience:{" "}
                 <span className="text-[#475367] text-xs font-normal capitalize">
                   ({seniorityLevels.join(", ")})
                 </span>
               </h2>
             </div>
             {/* timeline */}
-            <div className="flex items-center">
+            <div className="flex items-center space-x-1">
               <h2 className="text-xs leading-[17px] font-semibold text-[#25272B]">
-                skills required:
+                Duration:
               </h2>
-              <p className="text-[#475367] text-xs font-normal">{timeline}</p>
+              <p className="text-[#475367] text-xs font-normal"> {timeline}</p>
             </div>
           </div>
         </div>
@@ -95,7 +97,7 @@ const ChallengeCard: FC<props> = ({
           <Link
             href={`/${currentPath}/challenges&hackathons/${generateSlug(
               title,
-              123456789
+              `${_id}`
             )}`}
           >
             <h2 className="text-sm font-semibold leading-[19px] text-white">

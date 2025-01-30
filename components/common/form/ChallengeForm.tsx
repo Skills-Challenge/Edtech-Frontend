@@ -1,33 +1,31 @@
 "use client";
 
-import { useEffect } from "react";
-import * as z from "zod";
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import TextArea from "./TextArea";
 import TextAreaWithList from "./TextAreaWithList";
-import { challengeSchema } from "@/schemas/ChallengeSchema";
+import { challengeSchema, updateChallengeSchema } from "@/schemas/ChallengeSchema";
 import FormInput from "./FormInput";
 import FormTextArea from "./TextArea";
-import { Button } from "@/components/ui/Button";
-import ListHeader from "../ListHeader";
+import { Button } from "@/components/ui/Button";;
 import ComponentHeader from "../ComponentHeader";
-import { init } from "next/dist/compiled/webpack/webpack";
+import { useEffect } from "react";
 
 interface ChallengeFormProps {
-  initialData?: typeof challengeSchema._type | null; // Challenge data for update
+  initialData?: typeof updateChallengeSchema._type | null;
   onSubmit: (data: any) => void;
 }
 
-const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
+const ChallengeForm: React.FC<ChallengeFormProps> = ({ initialData, onSubmit }) => {
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
     watch,
+    reset,
   } = useForm({
-    resolver: zodResolver(challengeSchema),
+    resolver: initialData ? undefined : zodResolver(challengeSchema),
     defaultValues: initialData || {
       title: "",
       deadline: "",
@@ -41,21 +39,22 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
     },
   });
 
-  // Load from localStorage if updating
+  // Reset form if initialData changes (for updates)
   useEffect(() => {
-    const savedChallenge = localStorage.getItem("challengeData");
-    if (savedChallenge) {
-      const challengeData = JSON.parse(savedChallenge);
-      Object.keys(challengeData).forEach((key) => {
-        if (key in challengeSchema.shape) {
-          setValue(
-            key as keyof typeof challengeSchema._type,
-            challengeData[key]
-          );
-        }
-      });
+    if (initialData) {
+      reset(initialData);
     }
-  }, [setValue]);
+  }, [initialData, reset]);
+
+  const handleSubmitWithPartialData = (data: any) => {
+    const updatedData = Object.keys(data).reduce((acc: Record<string, any>, key) => {
+      if ((data as any)[key] !== (initialData as any)?.[key]) {
+        acc[key] = data[key];
+      }
+      return acc;
+    }, {});
+    onSubmit(updatedData);
+  };
 
   return (
     <div className=" w-[90%] md:w-[80%] 2xl:w-[60%] mx-auto mt-9 pt-8 px-6 pb-6 mb-20 bg-white rounded-xl border border-border">
@@ -67,7 +66,7 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
         />
       </div>
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(handleSubmitWithPartialData)}
         className="p-4 flex flex-col gap-6"
       >
         <FormInput
@@ -75,6 +74,7 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
           label="Challenge/Hackhaton Title"
           register={register}
           placeholder="Enter Title"
+          defaultValue={initialData?.title}
           error={errors.title && errors?.title.message}
         />
         <div className="grid grid-cols-2 gap-x-[18px] gap-y-6">
@@ -83,13 +83,16 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
             label="Deadline"
             register={register}
             placeholder="Date"
+            defaultValue={initialData?.deadline}
             error={errors.deadline && errors?.deadline.message}
+            
           />
           <FormInput
             name="duration"
             label="Duration"
             register={register}
             placeholder="duration"
+            defaultValue={initialData?.duration}
             error={errors.duration && errors.duration.message}
           />
           <FormInput
@@ -97,6 +100,7 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
             label="Prize"
             register={register}
             placeholder="Prize"
+            defaultValue={initialData?.prize}
             error={errors.prize && errors.prize.message}
           />
           <FormInput
@@ -104,6 +108,7 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
             label="Contact Email"
             register={register}
             placeholder="Contact Email"
+            defaultValue={initialData?.contactEmail}
             error={errors.prize && errors.prize.message}
           />
         </div>
@@ -111,6 +116,7 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
           label="Project Brief"
           name="brief"
           error={errors.brief?.message}
+          defaultValue={initialData?.brief}
           register={register}
         />
         <TextAreaWithList
@@ -118,6 +124,7 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
           name="description"
           register={register}
           setValue={setValue}
+          value={Array.isArray(initialData?.description) ? initialData.description : []}
           error={errors.description && errors.description.message}
           defaultValues={watch("description")}
         />
@@ -126,6 +133,7 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
           name="requirements"
           register={register}
           setValue={setValue}
+          value={Array.isArray(initialData?.requirements) ? initialData.requirements : []}
           error={errors.requirements && errors.requirements.message}
           defaultValues={watch("requirements")}
         />
@@ -133,6 +141,7 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
           label="Deliverables"
           name="deliverables"
           register={register}
+          value={Array.isArray(initialData?.deliverables) ? initialData.deliverables : []}
           setValue={setValue}
           error={errors.deliverables && errors.deliverables.message}
           defaultValues={watch("deliverables")}
