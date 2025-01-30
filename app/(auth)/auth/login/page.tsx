@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const loginSchema = z.object({
@@ -38,7 +39,10 @@ const page = () => {
     try {
       await login(data.email, data.password, dispatch);
       setLoading(false);
-
+      toast.success("Successfully Logged In", {
+        description: "Welcome back! 🎉",
+      });
+      
       const user = store.getState().auth.user;
       if (user && user.role === "admin") {
         router.push("/admin");
@@ -48,6 +52,9 @@ const page = () => {
     } catch (error: any) {
       setLoading(false);
       console.error("Login Failed!", error?.message);
+      toast.error("Incorrect Email or Password", {
+        description: "Please provide correct credentials",
+      });
     }
   };
 

@@ -8,6 +8,7 @@ import { TChallenge } from "@/types/challenge";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import { z } from "zod";
 
 type ChallengeType = z.infer<typeof challengeSchema>;
@@ -47,12 +48,15 @@ const UpdateChallenge = () => {
       if (id) {
         const challenge = await updateChallenge(id, data);
         router.replace("/admin/challenges&hackathons")
+        toast.success("Successfully updated challenge")
         return challenge
       } else {
         console.error("Invalid challenge ID");
+        toast.error("Invalid Challenge ID");
       }
     }catch(error: any){
       console.error("Failed to update challenge: ", error?.message)
+      toast.error("Failed to update Challenge")
     }
   };
   return (

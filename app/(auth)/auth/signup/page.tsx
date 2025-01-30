@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const registerSchema = z.object({
@@ -40,9 +41,16 @@ const page = () => {
   const onSubmit = async (data: any) => {
     try {
       await signup(data.name, data.email, data.password, dispatch);
+      toast.success("Account Created", {
+        description: "Welcome! Your account has been successfully registered. 🎉",
+      });
+      
       router.push("/auth/login");
     } catch (error: any) {
-      console.error("Login Failed!", error?.message);
+      console.error("SignUp Failed", error?.message);
+      toast.error("Sign up failed", {
+        description: `${error?.message}`
+      })
     }
   };
   return (
