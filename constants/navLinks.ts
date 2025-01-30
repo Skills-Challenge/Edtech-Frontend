@@ -18,17 +18,17 @@ const adminRoutes = [
   },
   {
     name: "settings",
-    route: "/admin/settings",
+    route: "/admin#",
     icon: "lineicons:home-2",
   },
   {
     name: "help center",
-    route: "/help-center",
+    route: "/admin#",
     icon: "lineicons:home-2",
   },
   {
     name: "Refer family & friends",
-    route: "/refer",
+    route: "/admin#",
     icon: "lineicons:home-2",
   },
 ];
@@ -53,17 +53,17 @@ const talentRoutes = [
   },
   {
     name: "settings",
-    route: "/talent/settings",
+    route: "/talent#",
     icon: "lineicons:home-2",
   },
   {
     name: "help center",
-    route: "/talent/help-center",
+    route: "/talent#",
     icon: "lineicons:home-2",
   },
   {
     name: "Refer family & friends",
-    route: "/talent/refer",
+    route: "/talent#",
     icon: "lineicons:home-2",
   },
 ];

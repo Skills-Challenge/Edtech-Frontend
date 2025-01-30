@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import umuravaLogo from "@/public/umuravaLogo2.png";
 import Image from "next/image";
@@ -11,34 +11,48 @@ import { useParams } from "next/navigation";
 import { TChallenge } from "@/types/challenge";
 import { getChallengeById } from "@/lib/actions/challenge.action";
 import { useAppSelector } from "@/store/store";
+import FadeLoader from "react-spinners/FadeLoader";
 
 const SingleChallengeContainer = () => {
   const [challenge, setChallenge] = useState<TChallenge | null>(null);
   const { id } = useParams();
-  const challengeId = typeof id === 'string' ? id.split("-").pop() : undefined;
-  const { user } = useAppSelector((state) => state.auth)
+  const challengeId = typeof id === "string" ? id.split("-").pop() : undefined;
+  const { user } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
-     const fetchChallenge = async() => {
-        if (challengeId) {
-          try{
-            const challenge = await getChallengeById(challengeId);
-            console.log("here is the challenge: ", challenge)
-            setChallenge(challenge);
-          }catch(error: any){
-            console.error("Error while fetching the challenge: ", error?.message);
-          }
-        } else {
-          console.error("Challenge ID is undefined");
+    const fetchChallenge = async () => {
+      if (challengeId) {
+        try {
+          const challenge = await getChallengeById(challengeId);
+          console.log("here is the challenge: ", challenge);
+          setChallenge(challenge);
+        } catch (error: any) {
+          console.error("Error while fetching the challenge: ", error?.message);
         }
-     }
+      } else {
+        console.error("Challenge ID is undefined");
+      }
+    };
 
-     fetchChallenge()
-  }, [])
+    fetchChallenge();
+  }, [challengeId]);
 
-  if(!challenge){
-     return <div>No challenge found with that id ${id}</div>
+  if (!challenge) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center">
+        <FadeLoader
+          color="#0000FF"
+          loading={true}
+          cssOverride={{}}
+          height={15}
+          width={5}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </div>
+    );
   }
+
   return (
     <div className="p-9">
       {/* project description components */}
