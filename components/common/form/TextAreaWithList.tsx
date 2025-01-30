@@ -87,6 +87,7 @@ const TextAreaWithList = ({
           ref={textareaRef}
           onFocus={() => setActive(true)}
           onBlur={() => setActive(false)}
+          defaultValue={defaultValues}
           onInput={handleInput}
           className="px-4 pb-2 w-full rounded border-none shadow-none"
           placeholder="Type and press Enter..."
