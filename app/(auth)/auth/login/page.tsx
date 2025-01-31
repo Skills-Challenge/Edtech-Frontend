@@ -2,6 +2,7 @@
 
 import ComponentHeader from "@/components/common/ComponentHeader";
 import FormInput from "@/components/common/form/FormInput";
+import { Icons } from "@/components/common/icons";
 import { Button } from "@/components/ui/Button";
 import { login } from "@/lib/actions/auth.action";
 import { store, useAppDispatch } from "@/store/store";
@@ -92,7 +93,8 @@ const page = () => {
             className="py-4 w-full text-white font-semibold leading-[23.5px] rounded-lg"
             disabled={loading}
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading && <Icons.spinner className="animate-spin w-10 h-10 mr-2 text-white" />}
+            Login
           </Button>
           <div className="flex items-center justify-end gap-2">
             <h2 className="text-sm">Don't have an account?</h2>

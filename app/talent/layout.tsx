@@ -9,10 +9,13 @@ type props = {
 };
 const layout: FC<props> = ({ children }) => {
   const router = useRouter();
-  const { isAuthenticated } = useAppSelector((state) => state.auth);
+  const { isAuthenticated,user } = useAppSelector((state) => state.auth);
 
+  const isAdmin = user?.role === "admin";
+
+  // allowing only the normal users to access the talents pages
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!isAuthenticated || isAdmin) {
       router.replace("/auth/login"); 
     }
   }, [isAuthenticated, router]);

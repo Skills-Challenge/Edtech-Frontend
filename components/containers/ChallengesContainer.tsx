@@ -9,9 +9,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AppState, useAppDispatch, useAppSelector } from "@/store/store";
 import { getChallenges } from "@/lib/actions/challenge.action";
+import ChallengeCardSkeleton from "../skeletons/ChallengeCardSkeleton";
 
 export type filterValue = "all" | "completed" | "open" | "ongoing";
-
 
 const ChallengesContainer = () => {
   const [filter, setFilter] = useState<filterValue>("all");
@@ -19,13 +19,12 @@ const ChallengesContainer = () => {
   const dispatch = useAppDispatch();
   const [page, setPage] = useState(1);
 
-
   const user = useAppSelector((state: AppState) => state.auth.user);
   const { challenges, loading, error, totalChallenges } = useAppSelector(
     (state) => state.challenges
   );
 
- const CHALLENGE_PER_PAGE  = 6
+  const CHALLENGE_PER_PAGE = 6;
 
   const lastPage = Math.ceil(totalChallenges / CHALLENGE_PER_PAGE);
   const isAdmin = user?.role === "admin";
@@ -33,12 +32,10 @@ const ChallengesContainer = () => {
   const chall = challenges
     .filter((ch) => ch.status === "completed")
     .length.toString();
-  console.log("here are completed challenges: ", chall);
 
   useEffect(() => {
     dispatch(getChallenges(page));
   }, [dispatch, page]);
-  console.log("Here are all challenges: ", challenges);
   return (
     <div>
       {/* tabs container */}
@@ -93,19 +90,27 @@ const ChallengesContainer = () => {
       </div>
       {/* challenges container */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[26px] pt-[18px]">
-        {challenges
-          .filter((ch) => filter === "all" || ch.status === filter)
-          .map((challenge) => (
-            <ChallengeCard
-              key={challenge._id}
-              _id={challenge._id}
-              title={challenge.title}
-              status={challenge.status}
-              skills={["UI/UX Design", "User Research", "User Research"]}
-              seniorityLevels={["Junior", "Intermediate", "Senior"]}
-              timeline={challenge.duration}
-            />
-          ))}
+        {loading ? (
+          <>
+            {[...Array(6)].map((_, idx) => (
+              <ChallengeCardSkeleton key={idx} />
+            ))}
+          </>
+        ) : (
+          challenges
+            .filter((ch) => filter === "all" || ch.status === filter)
+            .map((challenge) => (
+              <ChallengeCard
+                key={challenge._id}
+                _id={challenge._id}
+                title={challenge.title}
+                status={challenge.status}
+                skills={["UI/UX Design", "User Research", "User Research"]}
+                seniorityLevels={["Junior", "Intermediate", "Senior"]}
+                timeline={challenge.duration}
+              />
+            ))
+        )}
       </div>
 
       {/* pagination buttons */}

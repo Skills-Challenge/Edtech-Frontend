@@ -2,7 +2,11 @@
 
 import Breadcrumb from "@/components/common/BreadCrumps";
 import ChallengeForm from "@/components/common/form/ChallengeForm";
-import { getChallengeById, updateChallenge } from "@/lib/actions/challenge.action";
+import { Icons } from "@/components/common/icons";
+import {
+  getChallengeById,
+  updateChallenge,
+} from "@/lib/actions/challenge.action";
 import { challengeSchema } from "@/schemas/ChallengeSchema";
 import { TChallenge } from "@/types/challenge";
 import { useParams } from "next/navigation";
@@ -19,50 +23,80 @@ const UpdateChallenge = () => {
     null
   );
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
+
   const params = useParams();
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
 
-  console.log(id);
+  const fetchChallenge = async () => {
+    try {
+      setIsLoading(true);
+      if (id) {
+        const challenge = await getChallengeById(id);
+        setChallengeData(challenge);
+        setIsLoading(false);
+        return challenge;
+      } else {
+        console.error("Invalid challenge Id");
+      }
+    } catch (error: any) {
+      console.error("Failed to fetch challenge");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchChallenge = async() => {
-      try{
-        if(id){
-          const challenge = await getChallengeById(id)
-          setChallengeData(challenge);
-          return challenge
-        }else{
-          console.error("Invalid challenge Id")
-        }
-      }catch(error: any){
-        console.error("Failed to fetch challenge")
-      }
-    }
-
     fetchChallenge();
   }, []);
 
-  const handleSave = async(data: TChallenge) => {
-    try{
-      console.log(data)
+  const handleSave = async (data: TChallenge) => {
+    try {
+      setIsUpdating(true);
       if (id) {
         const challenge = await updateChallenge(id, data);
-        router.replace("/admin/challenges&hackathons")
-        toast.success("Successfully updated challenge")
-        return challenge
+        toast.success("Successfully updated challenge");
+        setIsLoading(false);
+        router.replace("/admin/challenges&hackathons");
+        return challenge;
       } else {
         console.error("Invalid challenge ID");
         toast.error("Invalid Challenge ID");
       }
-    }catch(error: any){
-      console.error("Failed to update challenge: ", error?.message)
-      toast.error("Failed to update Challenge")
+    } catch (error: any) {
+      console.error("Failed to update challenge: ", error?.message);
+      toast.error("Failed to update Challenge");
+    } finally {
+      setIsUpdating(false);
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-full">
+        <Icons.spinner className="animate-spin w-10 h-10 text-teal-1000" />
+      </div>
+    );
+  }
+
+  if (!challengeData) {
+    return (
+      <div className="flex justify-center items-center h-full">
+        <h2 className="text-base font-workSans text-primary">
+          No challenge with {id} found
+        </h2>
+      </div>
+    );
+  }
   return (
     <div>
       <Breadcrumb />
-      <ChallengeForm initialData={challengeData} onSubmit={handleSave} />
+      <ChallengeForm
+        initialData={challengeData}
+        onSubmit={handleSave}
+        isSavingUpdating={isUpdating}
+      />
     </div>
   );
 };

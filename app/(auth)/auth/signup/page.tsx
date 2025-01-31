@@ -2,13 +2,14 @@
 
 import ComponentHeader from "@/components/common/ComponentHeader";
 import FormInput from "@/components/common/form/FormInput";
+import { Icons } from "@/components/common/icons";
 import { Button } from "@/components/ui/Button";
 import { signup } from "@/lib/actions/auth.action";
-import { useAppDispatch } from "@/store/store";
+import { AppState, useAppDispatch, useAppSelector } from "@/store/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -25,6 +26,9 @@ const registerSchema = z.object({
 const page = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
+
+  const [loading,setLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -40,17 +44,21 @@ const page = () => {
 
   const onSubmit = async (data: any) => {
     try {
-      await signup(data.name, data.email, data.password, dispatch);
+      setLoading(true);
+       await signup(data.name, data.email, data.password, dispatch);
       toast.success("Account Created", {
-        description: "Welcome! Your account has been successfully registered. 🎉",
+        description:
+          "Welcome! Your account has been successfully registered. 🎉",
       });
-      
+
       router.push("/auth/login");
     } catch (error: any) {
       console.error("SignUp Failed", error?.message);
       toast.error("Sign up failed", {
-        description: `${error?.message}`
-      })
+        description: `${error?.message}`,
+      });
+    }finally{
+      setLoading(false)
     }
   };
   return (
@@ -93,6 +101,9 @@ const page = () => {
             type="submit"
             className="py-4 w-full text-white font-semibold leading-[23.5px] rounded-lg"
           >
+            {loading && (
+              <Icons.spinner className="animate-spin w-10 h-10 mr-2 text-white" />
+            )}
             Register
           </Button>
           <div className="flex items-center justify-end gap-2">

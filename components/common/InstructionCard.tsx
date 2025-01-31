@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import ListHeader from "./ListHeader";
 import ListItem from "./Listitem";
 import InstructionAvatar from "./InstructionAvatar";
@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { deleteChallenge } from "@/lib/actions/challenge.action";
 import { toast } from "sonner";
+import { Icons } from "./icons";
 
 type props = {
   email: string;
@@ -24,23 +25,29 @@ const InstructionCard: FC<props> = ({
   prize,
   userRole,
 }) => {
-  const router = useRouter()
+  const router = useRouter();
   const { id } = useParams();
   const challengeId = typeof id === "string" ? id.split("-").pop() : undefined;
+  const [isDeleting, setIslDeleting] = useState(false);
 
   const handleDeleteChallenge = async () => {
     try {
+      setIslDeleting(true);
       if (challengeId) {
         const challenge = await deleteChallenge(challengeId);
-        toast.success("Successfully Deleted Challenge")
-        console.log("Challenge deleted:", challenge);
-        router.replace("/admin/challenges&hackathons")
+        if (challenge) {
+          toast.success("Successfully Deleted Challenge");
+          setIslDeleting(false);
+          router.replace("/admin/challenges&hackathons");
+        }
       } else {
         console.error("Challenge ID is undefined");
       }
     } catch (error: any) {
-      toast.error("Failed to delete challenge")
+      toast.error("Failed to delete challenge");
       console.error("Failed to delete challenge", error?.message);
+    } finally {
+      setIslDeleting(false);
     }
   };
   return (
@@ -58,7 +65,11 @@ const InstructionCard: FC<props> = ({
       <div className="flex gap-5 text-white">
         {userRole === "admin" ? (
           <>
-            <Button className="h-[50px] bg-[#E5533C] w-full" onClick={handleDeleteChallenge}>
+            <Button
+              disabled={isDeleting}
+              className="h-[50px] bg-[#E5533C] w-full"
+              onClick={handleDeleteChallenge}
+            >{isDeleting && <Icons.spinner className="w-4 h-4 text-white mr-2"/>}
               <h2 className="text-base font-semibold leading-[23.5px]">
                 Delete
               </h2>
@@ -66,9 +77,7 @@ const InstructionCard: FC<props> = ({
             <Button className="h-[50px] w-full">
               <Link
                 className="w-full"
-                href={
-                  `/admin/challenges&hackathons/update-challenge/${challengeId}`
-                }
+                href={`/admin/challenges&hackathons/update-challenge/${challengeId}`}
               >
                 <h2 className="text-base font-semibold leading-[23.5px]">
                   Edit

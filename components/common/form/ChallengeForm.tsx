@@ -12,15 +12,18 @@ import FormTextArea from "./TextArea";
 import { Button } from "@/components/ui/Button";
 import ComponentHeader from "../ComponentHeader";
 import { useEffect } from "react";
+import { Icons } from "../icons";
 
 interface ChallengeFormProps {
   initialData?: typeof updateChallengeSchema._type | null;
   onSubmit: (data: any) => void;
+  isSavingUpdating?: boolean;
 }
 
 const ChallengeForm: React.FC<ChallengeFormProps> = ({
   initialData,
   onSubmit,
+  isSavingUpdating,
 }) => {
   const {
     register,
@@ -49,6 +52,8 @@ const ChallengeForm: React.FC<ChallengeFormProps> = ({
       reset(initialData);
     }
   }, [initialData, reset]);
+
+  console.log("isSavingUpdating: ",isSavingUpdating);
 
   const handleSubmitWithPartialData = (data: any) => {
     const updatedData = Object.keys(data).reduce(
@@ -122,7 +127,7 @@ const ChallengeForm: React.FC<ChallengeFormProps> = ({
           label="Project Brief"
           name="brief"
           error={errors.brief?.message}
-          defaultValue={initialData?.brief}
+          value={initialData?.brief}
           register={register}
         />
         <TextAreaWithList
@@ -162,8 +167,12 @@ const ChallengeForm: React.FC<ChallengeFormProps> = ({
           </Button>
           <Button
             type="submit"
+            disabled={isSavingUpdating}
             className="py-4 w-[60%] text-white font-semibold leading-[23.5px] rounded-lg"
           >
+            {isSavingUpdating && (
+              <Icons.spinner className="w-4 h-4 text-white mr-2" />
+            )}
             {initialData ? "Update Challenge" : "Create Challenge"}
           </Button>
         </div>

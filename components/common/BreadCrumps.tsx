@@ -22,12 +22,12 @@ const Breadcrumb = () => {
   // Function to clean slugs (remove Ids if present)
   const formatSegment = (segment: string) => {
     const parts = segment.split("-");
-    if (parts.length > 1 && !isNaN(Number(parts[parts.length - 1]))) {
+    if (parts.length > 1 && /^[a-f0-9]{12,}$/.test(parts[parts.length - 1])) {
       parts.pop();
     }
     return decodeURIComponent(parts.join(" "));
   };
-
+  
   return (
     <nav className="py-3 px-9 bg-white border border-border sticky top-[72px]">
       <div className="flex items-center">
