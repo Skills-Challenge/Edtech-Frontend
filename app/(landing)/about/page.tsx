@@ -1,31 +1,8 @@
 "use client";
 
-import ReusableGrid from "@/components/reusable/ReusableGrid";
 import ReusableHero from "@/components/reusable/ReusableHero";
 import { Briefcase, Globe, User } from "lucide-react";
 import React from "react";
-
-const solveProblemsData = [
-  {
-    icon: User,
-    title: "Bridging the Experience Gap",
-    description:
-      "Many talents acquired theoretical knowledge and are rejected from jobs because they lack work experience and are not able to put in actions what they acquired in the schools.",
-    colSpan: 2,
-  },
-  {
-    icon: Briefcase,
-    title: "Bridging Education and Employment",
-    description:
-      "Traditional education doesnt’ always prepare talents for the demands of the tech and digital economy and we are providing in-demand skills through Skills Challenges.",
-  },
-  {
-    icon: Globe,
-    title: "Preparing Talents for Global Job Markets",
-    description:
-      "We are ensuring that African talents shine globally and that’s why we are equipping them with global technical experience and shandout globally. ",
-  },
-];
 
 const About = () => {
   return (
@@ -51,7 +28,41 @@ const About = () => {
         <h1 className="text-black font-semibold text-center text-3xl mb-20">
           Why we are solving this problem
         </h1>
-        <ReusableGrid columns={2} rows={2} items={solveProblemsData} />
+        <div className="grid gap-6">
+          <div className="p-4 bg-primary rounded-lg shadow hover:shadow-lg transition md:col-span-2">
+            <User className="h-10 w-10 text-blue-600 mb-4 bg-white p-2 rounded-sm" />
+            <h3 className="text-xl font-semibold text-white mb-2">
+              Bridging the Experience Gap
+            </h3>
+            <p className="text-white">
+              Many talents acquired theoretical knowledge and are rejected from
+              jobs because they lack work experience and are not able to put in
+              actions what they acquired in the schools.
+            </p>
+          </div>
+          <div className="p-4 bg-primary rounded-lg shadow hover:shadow-lg transition">
+            <Briefcase className="h-10 w-10 text-blue-600 mb-4 bg-white p-2 rounded-sm" />
+            <h3 className="text-xl font-semibold text-white mb-2">
+              Bridging Education and Employment
+            </h3>
+            <p className="text-white">
+              Traditional education doesnt’ always prepare talents for the
+              demands of the tech and digital economy and we are providing
+              in-demand skills through Skills Challenges.
+            </p>
+          </div>
+          <div className="p-4 bg-primary rounded-lg shadow hover:shadow-lg transition">
+            <Globe className="h-10 w-10 text-blue-600 mb-4 bg-white p-2 rounded-sm" />
+            <h3 className="text-xl font-semibold text-white mb-2">
+              Preparing Talents for Global Job Markets
+            </h3>
+            <p className="text-white">
+              We are ensuring that African talents shine globally and that’s why
+              we are equipping them with global technical experience and
+              shandout globally.
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="py-5 lg:px-16 md:px-16 px-6">
