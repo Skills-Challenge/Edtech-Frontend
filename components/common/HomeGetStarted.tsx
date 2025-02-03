@@ -6,14 +6,14 @@ const stepsData = [
     stepNumber: 1,
     title: "Sign up on Umurava Platform",
     description: "Submit your completed project for evaluation",
-    imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/9185c6ec48bd439790a80f61f41d1c1b993dd37288349de7618a63065ee8dae3?placeholderIfAbsent=true&apiKey=edf548e1318b457ebc4bcd0a8af84b35",
+    imageSrc: "/img1.png",
     imageAlt: "Sign up illustration"
   },
   {
     stepNumber: 2,
     title: "Browse Open Challenges",
     description: "Explore the range of challenges and hackathons and choose one that aligns with your interests and career goals",
-    imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/4c09c157788b0c8772b4768980d3202e6f9ed6bcde5b9e224a334a190a6f3c7c?placeholderIfAbsent=true&apiKey=edf548e1318b457ebc4bcd0a8af84b35",
+    imageSrc: "/img2.png",
     imageAlt: "Browse challenges illustration"
   },
   {
