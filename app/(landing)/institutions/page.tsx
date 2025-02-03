@@ -1,46 +1,10 @@
 import ReusableBG from "@/components/reusable/ReusableBG";
-import ReusableGrid from "@/components/reusable/ReusableGrid";
 import ReusableHero from "@/components/reusable/ReusableHero";
 import ReusableList from "@/components/reusable/ReusableList";
 import { Button } from "@/components/ui/Button";
 import { Briefcase, Globe, User } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-
-const offeringsData = [
-  {
-    icon: User,
-    title: "Employability and Career Development Opportunities",
-    description:
-      "Students gain hands-on experience working on real-world challenges and help them build professional networks that increase their chances and readiness of landing job opportunities and this lead to career advancement and long-term succes..",
-  },
-  {
-    icon: Briefcase,
-    title: "Practical Application of Classroom Knowledge",
-    description:
-      "The Skills Challenges bridge the gap between theoretical learning and practical application, reinforcing what students learn in their academic courses. ",
-  },
-  {
-    icon: Globe,
-    title: "Students & Trainees Engagement",
-    description:
-      "Embed and incorporate Skills Challenges into your courses to give students and trainees hands-on projects and practices  that enhance their learning experience and skills mastery. Competitive and project-based challenges keep students motivated and actively engaged in their learning journey.",
-  },
-  {
-    icon: User,
-    title: "Access to the Industry Experts & Mentors",
-    description:
-      "Skills Challenges expose students to industry experts and mentors who offer guidance, support, and insights on the trends of digital careers. This can help students gain a deep understanding of their chosen field.",
-    colSpan: 2,
-  },
-  {
-    icon: Briefcase,
-    title: "Skills Assessments",
-    description:
-      "Embed our projects based tests and skills assessments directly into your curriculum.",
-  },
-];
 
 const institutionsData = [
   { src: "/institutions/1.png", alt: "img" },
@@ -58,12 +22,24 @@ const institutionsData = [
 ];
 
 const challenges = [
-  { icon: "/icons/num1.svg", desc: "As Career Development and Job Readiness Program" },
-  { icon: "/icons/num2.svg", desc: "As Skills Assessments Method after a course or a term" },
-  { icon: "/icons/num3.svg", desc: "As extracurricular activities to complement academic courses" },
+  {
+    icon: "/icons/num1.svg",
+    desc: "As Career Development and Job Readiness Program",
+  },
+  {
+    icon: "/icons/num2.svg",
+    desc: "As Skills Assessments Method after a course or a term",
+  },
+  {
+    icon: "/icons/num3.svg",
+    desc: "As extracurricular activities to complement academic courses",
+  },
   { icon: "/icons/num4.svg", desc: "As the portfolio of the Students" },
-  { icon: "/icons/num5.svg", desc: "As part of Capstone Projects or final-year assignments " },
-]
+  {
+    icon: "/icons/num5.svg",
+    desc: "As part of Capstone Projects or final-year assignments ",
+  },
+];
 
 const LearningInstitutions = () => {
   return (
@@ -89,7 +65,63 @@ const LearningInstitutions = () => {
         <h1 className="text-black font-semibold text-center text-3xl mb-20">
           Key Offerings & Benefits:
         </h1>
-        <ReusableGrid columns={3} rows={2} items={offeringsData} />
+        <div className="grid md:grid-cols-3 md:gird-rows-2 gap-6">
+          <div className="p-4 bg-primary rounded-lg shadow hover:shadow-lg transition">
+            <User className="h-10 w-10 text-blue-600 mb-4 bg-white p-2 rounded-sm" />
+            <h3 className="text-xl font-semibold text-white mb-2">
+              Bridging the Experience Gap
+            </h3>
+            <p className="text-white">
+              Many talents acquired theoretical knowledge and are rejected from
+              jobs because they lack work experience and are not able to put in
+              actions what they acquired in the schools.
+            </p>
+          </div>
+          <div className="p-4 bg-primary rounded-lg shadow hover:shadow-lg transition">
+            <Briefcase className="h-10 w-10 text-blue-600 mb-4 bg-white p-2 rounded-sm" />
+            <h3 className="text-xl font-semibold text-white mb-2">
+              Bridging Education and Employment
+            </h3>
+            <p className="text-white">
+              Traditional education doesnt’ always prepare talents for the
+              demands of the tech and digital economy and we are providing
+              in-demand skills through Skills Challenges.
+            </p>
+          </div>
+          <div className="p-4 bg-primary rounded-lg shadow hover:shadow-lg transition">
+            <Globe className="h-10 w-10 text-blue-600 mb-4 bg-white p-2 rounded-sm" />
+            <h3 className="text-xl font-semibold text-white mb-2">
+              Preparing Talents for Global Job Markets
+            </h3>
+            <p className="text-white">
+              We are ensuring that African talents shine globally and that’s why
+              we are equipping them with global technical experience and
+              shandout globally.
+            </p>
+          </div>
+          <div className="p-4 bg-primary rounded-lg shadow hover:shadow-lg transition md:col-span-2">
+            <Globe className="h-10 w-10 text-blue-600 mb-4 bg-white p-2 rounded-sm" />
+            <h3 className="text-xl font-semibold text-white mb-2">
+              Preparing Talents for Global Job Markets
+            </h3>
+            <p className="text-white">
+              We are ensuring that African talents shine globally and that’s why
+              we are equipping them with global technical experience and
+              shandout globally.
+            </p>
+          </div>
+          <div className="p-4 bg-primary rounded-lg shadow hover:shadow-lg transition">
+            <Globe className="h-10 w-10 text-blue-600 mb-4 bg-white p-2 rounded-sm" />
+            <h3 className="text-xl font-semibold text-white mb-2">
+              Preparing Talents for Global Job Markets
+            </h3>
+            <p className="text-white">
+              We are ensuring that African talents shine globally and that’s why
+              we are equipping them with global technical experience and
+              shandout globally.
+            </p>
+          </div>
+        </div>
       </section>
 
       <section className="lg:px-24">
@@ -100,7 +132,10 @@ const LearningInstitutions = () => {
       </section>
 
       <section className="py-16 lg:px-28 md:px-16 px-6 bg-[#F9FAFB] my-10">
-        <h1 className="text-center font-bold lg:text-3xl text-2xl lg:w-[50%] mx-auto text-[#03192E] my-10">How Skills Challenges Program can Be Integrated into your Learning Institution</h1>
+        <h1 className="text-center font-bold lg:text-3xl text-2xl lg:w-[50%] mx-auto text-[#03192E] my-10">
+          How Skills Challenges Program can Be Integrated into your Learning
+          Institution
+        </h1>
         <div className="flex justify-between flex-col lg:flex-row">
           <div>
             {challenges.map((item, index) => (
@@ -110,7 +145,12 @@ const LearningInstitutions = () => {
               </div>
             ))}
           </div>
-          <Image src="/institutions2.png" alt="image" width={500} height={500} />
+          <Image
+            src="/institutions2.png"
+            alt="image"
+            width={500}
+            height={500}
+          />
         </div>
       </section>
 
