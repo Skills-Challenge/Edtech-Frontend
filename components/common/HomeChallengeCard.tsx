@@ -26,7 +26,7 @@ const HomeChallengeCard: FC<props> = ({
   const currentPath = pathname.split("/")[1];
 
   return (
-    <div className="py-5 bg-white border border-border rounded-xl">
+    <div className="py-5 bg-white border border-border rounded-xl z-[-1]">
       {/* challenge image */}
       <div className="px-4 flex flex-col gap-7">
         <div className="h-[198px] relative flex items-center justify-center rounded-xl bg-primary">

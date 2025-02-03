@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "../ui/Button";
 
 
 
@@ -45,7 +44,7 @@ const Slider = ({ slides }) => {
       {/* Dots Navigation */}
       <div className="flex justify-center gap-2 mt-4">
         {slides.map((_, index) => (
-          <Button
+          <button
             key={index}
             className={`h-3 w-3 rounded-full transition-all duration-300 ${activeIndex === index ? "bg-blue-600 w-6" : "bg-gray-400 w-3"}`}
             onClick={() => handleDotClick(index)}
