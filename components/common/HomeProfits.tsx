@@ -43,7 +43,7 @@ const HomeProfits = () => {
       <div className="flex flex-col xl:flex-row justify-between gap-10">
         <div className="grid md:grid-cols-2 grid-cols-1 grid-rows-2 gap-5">
           {data.map((profit, index) => (
-            <div className="flex flex-col items-center md:items-start gap-5">
+            <div className="flex flex-col items-center md:items-start gap-5" key={index}>
               <img src={profit.icon} alt="icon" />
               <h1 className="font-bold text-xl">{profit.name}</h1>
               <p className="text-[#687588]">{profit.description}</p>
