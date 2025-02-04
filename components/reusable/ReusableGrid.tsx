@@ -18,7 +18,7 @@ const ReusableGrid: React.FC<ReusableGridProps> = ({ columns, rows, items }) => 
 
   return (
     <div
-      className="grid gap-6"
+      className="grid gap-6 max-w-[1072px] mx-auto"
       style={{
         gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
         gridAutoRows: '1fr',
@@ -27,15 +27,17 @@ const ReusableGrid: React.FC<ReusableGridProps> = ({ columns, rows, items }) => 
       {items.slice(0, columns * rows).map((item, index) => (
         <div
           key={index}
-          className="p-4 bg-blue-600 rounded-lg shadow hover:shadow-lg transition sm:col-span-1 sm:row-span-1"
+          className="p-12 bg-primary rounded-lg shadow hover:shadow-lg transition sm:col-span-1 sm:row-span-1 flex flex-col gap-6"
           style={{
             gridColumn: `span ${item.colSpan || 1}`,
             gridRow: `span ${item.rowSpan || 1}`,
           }}
         >
-          <item.icon className="h-10 w-10 text-blue-600 mb-4 bg-white p-2 rounded-sm" />
-          <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
-          <p className="text-white">{item.description}</p>
+          <div className='bg-white w-[63px] h-[62px] flex items-center justify-center rounded-[5px]'>
+          <item.icon className="h-6 w-6 text-primary rounded-sm" />
+          </div>
+          <h3 className="text-2xl leading-7 font-semibold text-white mb-2">{item.title}</h3>
+          <p className="text-white text-base">{item.description}</p>
         </div>
       ))}
     </div>

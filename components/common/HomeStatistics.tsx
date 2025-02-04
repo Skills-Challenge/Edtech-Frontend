@@ -18,12 +18,12 @@ const formatNumber = (value: number) => {
 
 const HomeStatistics: React.FC = () => {
   return (
-    <section className="lg:py-16 md:p-14 p-5 lg:px-28">
-      <ReusableBG className="lg:py-20 py-10 lg:px-24 px-5">
+    <section className="lg:py-16 container">
+      <ReusableBG className="lg:py-[100px] py-10 lg:px-24 px-5">
         <div className="flex flex-wrap lg:justify-between justify-center lg:gap-12 gap-5 w-full">
           {stats.map((stat, index) => (
-            <div key={index} className="text-center">
-              <h2 className="text-4xl font-bold text-white">
+            <div key={index} className="text-center flex flex-col gap-2">
+              <h2 className="text-[40px] leading-[48px] font-bold text-white">
                 <CountUp
                   end={stat.value}
                   duration={2.5}
@@ -32,7 +32,7 @@ const HomeStatistics: React.FC = () => {
                   className="inline-block"
                 />
               </h2>
-              <p className="text-lg text-gray-300">{stat.label}</p>
+              <p className="text-lg leading-8 text-white">{stat.label}</p>
             </div>
           ))}
         </div>

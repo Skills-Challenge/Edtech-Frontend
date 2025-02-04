@@ -63,7 +63,7 @@ const AdminStat: FC<props> = ({ title, value, percentage }) => {
           />
         </IconButton>
         <div className="flex flex-col">
-          <h2 className="text-text font-normal text-base leading344054-5">
+          <h2 className="text-text font-normal text-base leading-5">
             {title}
           </h2>
           <div className="flex items-center gap-[10px]">

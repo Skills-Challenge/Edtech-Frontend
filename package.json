@@ -18,6 +18,11 @@
     "@reduxjs/toolkit": "^2.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+<<<<<<< Updated upstream
+=======
+    "embla-carousel-autoplay": "^8.5.2",
+    "embla-carousel-react": "^8.5.2",
+>>>>>>> Stashed changes
     "lucide-react": "^0.473.0",
     "next": "15.1.6",
     "next-nprogress-bar": "^2.4.3",

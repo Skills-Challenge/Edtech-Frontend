@@ -3,26 +3,24 @@ import HomeCTA from '@/components/common/HomeCTA';
 import HomeExperience from '@/components/common/HomeExperience';
 import HomeGetStarted from '@/components/common/HomeGetStarted';
 import HomeHero from '@/components/common/HomeHero';
-import HomeProfits from '@/components/common/HomeProfits';
 import HomeSkills from '@/components/common/HomeSkills';
 import HomeStatistics from '@/components/common/HomeStatistics';
-import HomeTestimonials from '@/components/common/HomeTestimonials';
-import React from 'react'
+import { TestimonialSlider } from '@/components/common/HomeTestimonials';
+import WhatWeOffer from '@/components/home/WhatWeOffer';
+
 
 const LandingPage = () => {
   return (
     <div>
-      {/* <HomeNavbar /> */}
       <HomeHero />
       <HomeExperience />
       <HomeStatistics />
       <HomeSkills />
       <HomeChallenges />
-      <HomeProfits />
-      <HomeTestimonials />
+      <WhatWeOffer/>
+      <TestimonialSlider  />
       <HomeGetStarted />
       <HomeCTA />
-      {/* <Footer /> */}
     </div>
   )
 }

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "../ui/Button";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import umuravaLogo from "@/public/umuravaLogo.png";
 
 const HomeNavbar = () => {
   const [isClient, setIsClient] = useState(false);
@@ -29,70 +30,83 @@ const HomeNavbar = () => {
   }, []);
 
   return (
-    <header className="flex items-center justify-between px-4 py-2 shadow-md bg-white md:px-8">
+    <nav className="shadow-sm bg-white sticky top-0 z-50">
       {/* LOGO */}
-      <Link href="/" className="flex items-center">
-        <Image src="/umuravaLogo.png" alt="Logo" width={150} height={150} />
-      </Link>
+      <div className="container flex items-center justify-between py-6">
+        <Link href="/" className="flex items-center">
+          <Image src={umuravaLogo} alt="Logo" width={125} height={37} />
+        </Link>
 
-      {/* DESKTOP MENU */}
-      <nav className="hidden md:flex justify-between items-center lg:gap-60 space-x-6">
-        <ul className="flex items-center space-x-6">
-          {navLinks.map((link, index) => (
-            <li key={index}>
-              <Link
-                href={link.path}
-                className={`${
-                  isClient && pathname === link.path
-                    ? "text-primary font-semibold"
-                    : "text-gray-700"
-                } hover:text-primary transition-colors`}
-              >
-                {link.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <Button className="text-white">Join the Program</Button>
-      </nav>
-
-      {/* MOBILE MENU ICON */}
-      <div className="md:hidden">
-        <button
-          onClick={toggleMenu}
-          className="text-gray-700 focus:outline-none"
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X className="w-6 h-6 z-50" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </div>
-
-      {/* MOBILE MENU */}
-      {isMenuOpen && (
-        <div className="absolute top-20 left-0 w-full bg-white shadow-lg transition-all">
-          <ul className="flex flex-col items-start py-4 px-5 space-y-4">
+        {/* DESKTOP MENU */}
+        <div className="hidden xlg:block">
+          <ul className="flex items-center gap-8">
             {navLinks.map((link, index) => (
               <li key={index}>
                 <Link
                   href={link.path}
                   className={`${
                     isClient && pathname === link.path
-                      ? "text-primary font-semibold"
-                      : "text-gray-700"
+                      ? "text-primary font-medium"
+                      : "text-text_dark"
                   } hover:text-primary transition-colors`}
-                  onClick={toggleMenu}
                 >
                   {link.name}
                 </Link>
               </li>
             ))}
-            <li>
-              <Button onClick={toggleMenu} className="text-white">Join the Program</Button>
-            </li>
           </ul>
         </div>
-      )}
-    </header>
+        <Link
+          href="/auth/login"
+          className="text-white py-[12.5px] px-[19px] bg-[#041738] rounded-md text-sm font-medium hidden xlg:block"
+        >
+          Join the Program
+        </Link>
+
+        {/* MOBILE MENU ICON */}
+        <div className="xlg:hidden">
+          <button
+            onClick={toggleMenu}
+            className="text-text_dark focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? (
+              <X className="w-6 h-6 z-50" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
+        </div>
+
+        {/* MOBILE MENU */}
+        {isMenuOpen && (
+          <div className="absolute top-20 left-0 w-full bg-white shadow-lg transition-all xlg:hidden">
+            <ul className="flex flex-col items-start py-4 px-5 space-y-4">
+              {navLinks.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={link.path}
+                    className={`${
+                      isClient && pathname === link.path
+                        ? "text-primary font-semibold"
+                        : "text-text_dark"
+                    } hover:text-primary transition-colors`}
+                    onClick={toggleMenu}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link href={"/auth/login"} onClick={toggleMenu} className="text-white py-[12.5px] px-[19px] bg-[#041738] rounded-md text-sm font-medium block">
+                  Join the Program
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
+      </div>
+    </nav>
   );
 };
 
