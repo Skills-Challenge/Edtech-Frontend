@@ -28,7 +28,7 @@ const ReusableList: React.FC<ReusableListProps> = ({ items }) => {
                 index === selectedIndex
                   ? 'bg-blue-600 text-white p-2 rounded-md'
                   : 'text-[#687588] bg-[#F1F1F1] p-2 rounded-md'
-              }`}
+              } text-sm sm:text-base md:text-lg`}
               onClick={() => handleClick(index)}
             >
               {item}
@@ -36,8 +36,8 @@ const ReusableList: React.FC<ReusableListProps> = ({ items }) => {
           ) : (
             <div className="relative overflow-hidden">
               <Image
-                width={100}
-                height={100}
+                width={80}
+                height={80}
                 src={item.src}
                 alt={item.alt}
                 className="w-full h-full transform transition-transform duration-300 hover:scale-125"

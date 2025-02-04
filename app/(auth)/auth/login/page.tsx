@@ -2,18 +2,27 @@
 
 import ComponentHeader from "@/components/common/ComponentHeader";
 import FormInput from "@/components/common/form/FormInput";
+import { Icons } from "@/components/common/icons";
 import { Button } from "@/components/ui/Button";
+import { login } from "@/lib/actions/auth.action";
+import { store, useAppDispatch } from "@/store/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const loginSchema = z.object({
-  email: z.string().email().min(1, "enter a valid email"),
-  password: z.string().min(1, "password is required"),
+  email: z.string().email().min(1, "Enter a valid email"),
+  password: z.string().min(1, "Password is required"),
 });
+
 const page = () => {
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -26,15 +35,36 @@ const page = () => {
     },
   });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: any) => {
+    setLoading(true);
+    try {
+      await login(data.email, data.password, dispatch);
+      setLoading(false);
+      toast.success("Successfully Logged In", {
+        description: "Welcome back! 🎉",
+      });
+      
+      const user = store.getState().auth.user;
+      if (user && user.role === "admin") {
+        router.push("/admin");
+      } else if (user) {
+        router.push("/talent");
+      }
+    } catch (error: any) {
+      setLoading(false);
+      console.error("Login Failed!", error?.message);
+      toast.error("Incorrect Email or Password", {
+        description: "Please provide correct credentials",
+      });
+    }
   };
+
   return (
     <div className="p-5">
       <div>
         <ComponentHeader
           heading="Sign in"
-          subHeading="sign in to take on the current challenges"
+          subHeading="Sign in to take on the current challenges"
           center
         />
       </div>
@@ -52,6 +82,7 @@ const page = () => {
         <FormInput
           name="password"
           label="Password"
+          type="password"
           register={register}
           placeholder="Enter your password"
           error={errors.password && errors?.password.message}
@@ -60,13 +91,15 @@ const page = () => {
           <Button
             type="submit"
             className="py-4 w-full text-white font-semibold leading-[23.5px] rounded-lg"
+            disabled={loading}
           >
-            Register
+            {loading && <Icons.spinner className="animate-spin w-10 h-10 mr-2 text-white" />}
+            Login
           </Button>
           <div className="flex items-center justify-end gap-2">
             <h2 className="text-sm">Don't have an account?</h2>
             <Link href={"/auth/signup"} className="text-primary text-sm">
-              sign up
+              Sign up
             </Link>
           </div>
         </div>

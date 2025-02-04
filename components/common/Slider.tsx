@@ -23,11 +23,6 @@ const Slider = () => {
     if (!api) {
       return;
     }
-
-<<<<<<< Updated upstream
-const Slider: React.FC<SliderProps> = ({ slides }) => {
-  return <div>Slider</div>;
-=======
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
 
@@ -101,7 +96,6 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
       </div>
     </div>
   );
->>>>>>> Stashed changes
 };
 
 export default Slider;

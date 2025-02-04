@@ -2,6 +2,7 @@ import React from "react";
 import TalentStat from "./_partials/TalentStat";
 
 const TalentStatsContainer = () => {
+  
   return (
     <div className="grid grid-cols-3 gap-5 mt-[34px]">
       <TalentStat title="completed challenges" value="05" />

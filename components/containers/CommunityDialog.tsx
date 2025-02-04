@@ -15,7 +15,7 @@ import { AppState, useAppDispatch, useAppSelector } from "@/store/store";
 import send from "@/public/send.svg";
 import Image from "next/image";
 import ComponentHeader from "../common/ComponentHeader";
-import { Button } from "../ui/Button";
+import { Button } from "@/components/ui/Button";
 
 const CommunityDialog = () => {
   const dispatch = useAppDispatch();

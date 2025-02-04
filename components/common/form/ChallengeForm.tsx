@@ -1,33 +1,39 @@
 "use client";
 
-import { useEffect } from "react";
-import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import TextArea from "./TextArea";
 import TextAreaWithList from "./TextAreaWithList";
-import { challengeSchema } from "@/schemas/ChallengeSchema";
+import {
+  challengeSchema,
+  updateChallengeSchema,
+} from "@/schemas/ChallengeSchema";
 import FormInput from "./FormInput";
 import FormTextArea from "./TextArea";
 import { Button } from "@/components/ui/Button";
-import ListHeader from "../ListHeader";
 import ComponentHeader from "../ComponentHeader";
-import { init } from "next/dist/compiled/webpack/webpack";
+import { useEffect } from "react";
+import { Icons } from "../icons";
 
 interface ChallengeFormProps {
-  initialData?: typeof challengeSchema._type | null; // Challenge data for update
+  initialData?: typeof updateChallengeSchema._type | null;
   onSubmit: (data: any) => void;
+  isSavingUpdating?: boolean;
 }
 
-const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
+const ChallengeForm: React.FC<ChallengeFormProps> = ({
+  initialData,
+  onSubmit,
+  isSavingUpdating,
+}) => {
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
     watch,
+    reset,
   } = useForm({
-    resolver: zodResolver(challengeSchema),
+    resolver: initialData ? undefined : zodResolver(challengeSchema),
     defaultValues: initialData || {
       title: "",
       deadline: "",
@@ -41,21 +47,26 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
     },
   });
 
-  // Load from localStorage if updating
   useEffect(() => {
-    const savedChallenge = localStorage.getItem("challengeData");
-    if (savedChallenge) {
-      const challengeData = JSON.parse(savedChallenge);
-      Object.keys(challengeData).forEach((key) => {
-        if (key in challengeSchema.shape) {
-          setValue(
-            key as keyof typeof challengeSchema._type,
-            challengeData[key]
-          );
-        }
-      });
+    if (initialData) {
+      reset(initialData);
     }
-  }, [setValue]);
+  }, [initialData, reset]);
+
+  console.log("isSavingUpdating: ",isSavingUpdating);
+
+  const handleSubmitWithPartialData = (data: any) => {
+    const updatedData = Object.keys(data).reduce(
+      (acc: Record<string, any>, key) => {
+        if ((data as any)[key] !== (initialData as any)?.[key]) {
+          acc[key] = data[key];
+        }
+        return acc;
+      },
+      {}
+    );
+    onSubmit(updatedData);
+  };
 
   return (
     <div className=" w-[90%] md:w-[80%] 2xl:w-[60%] mx-auto mt-9 pt-8 px-6 pb-6 mb-20 bg-white rounded-xl border border-border">
@@ -67,7 +78,7 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
         />
       </div>
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(handleSubmitWithPartialData)}
         className="p-4 flex flex-col gap-6"
       >
         <FormInput
@@ -75,6 +86,7 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
           label="Challenge/Hackhaton Title"
           register={register}
           placeholder="Enter Title"
+          defaultValue={initialData?.title}
           error={errors.title && errors?.title.message}
         />
         <div className="grid grid-cols-2 gap-x-[18px] gap-y-6">
@@ -83,6 +95,7 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
             label="Deadline"
             register={register}
             placeholder="Date"
+            defaultValue={initialData?.deadline}
             error={errors.deadline && errors?.deadline.message}
           />
           <FormInput
@@ -90,6 +103,7 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
             label="Duration"
             register={register}
             placeholder="duration"
+            defaultValue={initialData?.duration}
             error={errors.duration && errors.duration.message}
           />
           <FormInput
@@ -97,6 +111,7 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
             label="Prize"
             register={register}
             placeholder="Prize"
+            defaultValue={initialData?.prize}
             error={errors.prize && errors.prize.message}
           />
           <FormInput
@@ -104,6 +119,7 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
             label="Contact Email"
             register={register}
             placeholder="Contact Email"
+            defaultValue={initialData?.contactEmail}
             error={errors.prize && errors.prize.message}
           />
         </div>
@@ -111,6 +127,7 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
           label="Project Brief"
           name="brief"
           error={errors.brief?.message}
+          value={initialData?.brief}
           register={register}
         />
         <TextAreaWithList
@@ -118,14 +135,16 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
           name="description"
           register={register}
           setValue={setValue}
-          error={errors.description && errors.description.message}
-          defaultValues={watch("description")}
+          value={watch("description") || []}
+          error={errors.description?.message}
         />
+
         <TextAreaWithList
           label="Project Requirements"
           name="requirements"
           register={register}
           setValue={setValue}
+          value={watch("requirements") || []}
           error={errors.requirements && errors.requirements.message}
           defaultValues={watch("requirements")}
         />
@@ -133,6 +152,7 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
           label="Deliverables"
           name="deliverables"
           register={register}
+          value={watch("deliverables") || []}
           setValue={setValue}
           error={errors.deliverables && errors.deliverables.message}
           defaultValues={watch("deliverables")}
@@ -147,8 +167,12 @@ const ChallengeForm = ({ initialData, onSubmit }: ChallengeFormProps) => {
           </Button>
           <Button
             type="submit"
+            disabled={isSavingUpdating}
             className="py-4 w-[60%] text-white font-semibold leading-[23.5px] rounded-lg"
           >
+            {isSavingUpdating && (
+              <Icons.spinner className="w-4 h-4 text-white mr-2" />
+            )}
             {initialData ? "Update Challenge" : "Create Challenge"}
           </Button>
         </div>

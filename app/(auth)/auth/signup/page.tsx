@@ -2,23 +2,33 @@
 
 import ComponentHeader from "@/components/common/ComponentHeader";
 import FormInput from "@/components/common/form/FormInput";
+import { Icons } from "@/components/common/icons";
 import { Button } from "@/components/ui/Button";
+import { signup } from "@/lib/actions/auth.action";
+import { AppState, useAppDispatch, useAppSelector } from "@/store/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const registerSchema = z.object({
-  username: z
+  name: z
     .string()
-    .min(3, "enter a longer username")
-    .max(30, "enter a smaller username"),
+    .min(3, "enter a longer name")
+    .max(30, "enter a smaller name"),
   email: z.string().email().min(1, "enter a valid email"),
   password: z.string().min(1, "password is required"),
 });
 
 const page = () => {
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+
+  const [loading,setLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -26,14 +36,30 @@ const page = () => {
   } = useForm({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      username: "",
+      name: "",
       email: "",
       password: "",
     },
   });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: any) => {
+    try {
+      setLoading(true);
+       await signup(data.name, data.email, data.password, dispatch);
+      toast.success("Account Created", {
+        description:
+          "Welcome! Your account has been successfully registered. 🎉",
+      });
+
+      router.push("/auth/login");
+    } catch (error: any) {
+      console.error("SignUp Failed", error?.message);
+      toast.error("Sign up failed", {
+        description: `${error?.message}`,
+      });
+    }finally{
+      setLoading(false)
+    }
   };
   return (
     <div className="p-5">
@@ -49,11 +75,11 @@ const page = () => {
         className="p-4 flex flex-col gap-6"
       >
         <FormInput
-          name="username"
-          label="Username"
+          name="name"
+          label="Full Names"
           register={register}
-          placeholder="Enter your username"
-          error={errors.username && errors?.username.message}
+          placeholder="Enter your full name"
+          error={errors.name && errors?.name.message}
         />
         <FormInput
           name="email"
@@ -65,6 +91,7 @@ const page = () => {
         <FormInput
           name="password"
           label="Password"
+          type="password"
           register={register}
           placeholder="Enter your password"
           error={errors.password && errors?.password.message}
@@ -74,6 +101,9 @@ const page = () => {
             type="submit"
             className="py-4 w-full text-white font-semibold leading-[23.5px] rounded-lg"
           >
+            {loading && (
+              <Icons.spinner className="animate-spin w-10 h-10 mr-2 text-white" />
+            )}
             Register
           </Button>
           <div className="flex items-center justify-end gap-2">

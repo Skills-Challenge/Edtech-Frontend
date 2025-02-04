@@ -96,14 +96,12 @@ const LearningInstitutions = () => {
       <div className="lg:py-16 md:p-14 p-5 lg:px-28">
         <ReusableBG className="xl:py-10 px-5 xl:px-20 lg:px-10 py-5">
           <div className="flex flex-col items-center justify-center gap-10">
-              <h1 className="font-bold text-3xl md:text-4xl text-white lg:w-[70%] mx-auto text-center">
+            <h1 className="font-bold text-3xl md:text-4xl text-white lg:w-[70%] mx-auto text-center">
               Ready to transform your learning institution?
-              </h1>
-              <Button
-                className="bg-white text-blue-600 w-fit px-8 py-2 rounded-md mx-auto lg:mx-0"
-              >
-                Let's Partner
-              </Button>
+            </h1>
+            <Button className="bg-white text-blue-600 w-fit px-8 py-2 rounded-md mx-auto lg:mx-0">
+              Let's Partner
+            </Button>
           </div>
         </ReusableBG>
       </div>

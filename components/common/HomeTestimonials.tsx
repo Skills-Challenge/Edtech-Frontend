@@ -31,7 +31,6 @@ export const TestimonialSlider = () => {
     });
   }, [api]);
 
-const HomeTestimonials = () => {
   return (
     <div className="flex overflow-hidden flex-col items-center pt-28 pb-16 bg-white container">
       <div className="flex flex-col w-full  max-md:max-w-full">

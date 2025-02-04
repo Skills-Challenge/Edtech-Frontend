@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import { Button } from "./Button";
 import { Icon } from "@iconify/react";
 import { cn } from "@/lib/utils";
 import { filterValue } from "../containers/ChallengesContainer";
+import { Button } from "./Button";
 
 type props = {
   title: filterValue;

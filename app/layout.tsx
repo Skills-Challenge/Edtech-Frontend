@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ReduxProvider from "@/providers/Providers";
 import "@/styles/globals.css";
 import NpProgress from "@/components/common/np-progess";
-
+import { Toaster } from "sonner";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -22,6 +22,7 @@ export default function RootLayout({
         <ReduxProvider>
           {children}
           <NpProgress/>
+          <Toaster position="bottom-right" richColors />
         </ReduxProvider>
       </body>
     </html>

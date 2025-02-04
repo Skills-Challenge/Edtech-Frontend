@@ -1,6 +1,8 @@
+"use client";
+
 import { Textarea } from "@/components/ui/TextArea";
 import { cn } from "@/lib/utils";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { UseFormRegister, UseFormSetValue } from "react-hook-form";
 
 interface TextAreaWithListProps {
@@ -10,6 +12,7 @@ interface TextAreaWithListProps {
   register: UseFormRegister<any>;
   setValue: UseFormSetValue<any>;
   defaultValues?: string[];
+  value: string[];
 }
 
 const TextAreaWithList = ({
@@ -19,11 +22,16 @@ const TextAreaWithList = ({
   error,
   setValue,
   defaultValues = [],
+  value = [], 
 }: TextAreaWithListProps) => {
   const [text, setText] = useState("");
-  const [sentences, setSentences] = useState<string[]>(defaultValues);
+  const [sentences, setSentences] = useState<string[]>(value); 
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    setSentences(value);
+  }, [value]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter") {
@@ -31,22 +39,22 @@ const TextAreaWithList = ({
       if (text.trim()) {
         const newSentences = [...sentences, text.trim()];
         setSentences(newSentences);
-        setValue(name, newSentences);
-        setText("");
+        setValue(name, newSentences); 
+        setText(""); 
       }
     }
   };
 
   const startEditing = (index: number) => {
     setText(sentences[index]);
-    setSentences(sentences.filter((_, i) => i !== index));
+    setSentences(sentences.filter((_, i) => i !== index)); // Remove the sentence from the list for editing
   };
 
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const textarea = textareaRef.current;
     if (textarea) {
       textarea.style.height = "auto";
-      textarea.style.height = `${textarea.scrollHeight}px`;
+      textarea.style.height = `${textarea.scrollHeight}px`; // Auto-adjust height of textarea
     }
   };
 
@@ -74,13 +82,14 @@ const TextAreaWithList = ({
         <Textarea
           {...register(name)}
           value={text}
-          onChange={(e) => setText(e.target.value)}
+          onChange={(e) => setText(e.target.value)} // Update text input state
           onKeyDown={handleKeyDown}
           ref={textareaRef}
           onFocus={() => setActive(true)}
           onBlur={() => setActive(false)}
+          defaultValue={defaultValues}
           onInput={handleInput}
-          className=" px-4 pb-2 w-full rounded border-none shadow-none"
+          className="px-4 pb-2 w-full rounded border-none shadow-none"
           placeholder="Type and press Enter..."
         />
       </div>
