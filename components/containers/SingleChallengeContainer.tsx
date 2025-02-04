@@ -1,18 +1,17 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { challengeData } from "@/constants/data";
+import { getChallengeById } from "@/lib/actions/challenge.action";
 import umuravaLogo from "@/public/umuravaLogo2.png";
+import { useAppSelector } from "@/store/store";
+import { TChallenge } from "@/types/challenge";
 import Image from "next/image";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import Breadcrumb from "../common/BreadCrumps";
+import InstructionCard from "../common/InstructionCard";
 import ListHeader from "../common/ListHeader";
 import ListItem from "../common/Listitem";
-import { challengeData } from "@/constants/data";
-import InstructionCard from "../common/InstructionCard";
 import ParticipantsCard from "../common/ParticipantsCard";
-import { useParams } from "next/navigation";
-import { TChallenge } from "@/types/challenge";
-import { getChallengeById } from "@/lib/actions/challenge.action";
-import { useAppSelector } from "@/store/store";
-import FadeLoader from "react-spinners/FadeLoader";
-import Breadcrumb from "../common/BreadCrumps";
 import ProjectDetailsSkeleton from "../skeletons/ProjectDetailsSkeleton";
 
 const SingleChallengeContainer = () => {

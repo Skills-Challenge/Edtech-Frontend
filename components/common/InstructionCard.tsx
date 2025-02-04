@@ -1,14 +1,14 @@
 "use client";
-import React, { FC, useEffect, useState } from "react";
-import ListHeader from "./ListHeader";
-import ListItem from "./Listitem";
-import InstructionAvatar from "./InstructionAvatar";
 import { Button } from "@/components/ui/Button";
+import { deleteChallenge } from "@/lib/actions/challenge.action";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { deleteChallenge } from "@/lib/actions/challenge.action";
+import { FC, useState } from "react";
 import { toast } from "sonner";
 import { Icons } from "./icons";
+import InstructionAvatar from "./InstructionAvatar";
+import ListHeader from "./ListHeader";
+import ListItem from "./Listitem";
 
 type props = {
   email: string;

@@ -1,13 +1,16 @@
 "use client"; // Required for Next.js App Router
 
-import { usePathname } from "next/navigation";
-import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
 import { Icon } from "@iconify/react";
-import { useRouter } from "next/navigation";
-import path from "path";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { FC } from "react";
 
-const Breadcrumb = () => {
+type props = {
+  border?: boolean;
+};
+const Breadcrumb: FC<props> = ({ border = true }) => {
   const pathname = usePathname();
   const router = useRouter();
   const pathSegments = pathname.split("/").filter(Boolean);
@@ -27,9 +30,14 @@ const Breadcrumb = () => {
     }
     return decodeURIComponent(parts.join(" "));
   };
-  
+
   return (
-    <nav className="py-3 px-9 bg-white border border-border sticky top-[72px]">
+    <nav
+      className={cn(
+        "py-3 bg-white sticky top-[72px]",
+        border ? "border border-border px-9" : ""
+      )}
+    >
       <div className="flex items-center">
         <div className="flex">
           <Button

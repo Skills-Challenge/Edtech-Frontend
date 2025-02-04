@@ -1,4 +1,3 @@
-import { FC } from "react";
 
 type IconProps = React.HTMLAttributes<SVGElement>;
 

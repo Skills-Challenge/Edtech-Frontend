@@ -3,11 +3,11 @@ import Breadcrumb from "@/components/common/BreadCrumps";
 import ChallengeForm from "@/components/common/form/ChallengeForm";
 import { createChallenge } from "@/lib/actions/challenge.action";
 import { TChallenge } from "@/types/challenge";
-import React, { useEffect, useState } from "react";
-import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "sonner";
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const [isSaving, setIsSaving] = useState(false);
 
@@ -35,4 +35,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

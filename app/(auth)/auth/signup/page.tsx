@@ -5,11 +5,11 @@ import FormInput from "@/components/common/form/FormInput";
 import { Icons } from "@/components/common/icons";
 import { Button } from "@/components/ui/Button";
 import { signup } from "@/lib/actions/auth.action";
-import { AppState, useAppDispatch, useAppSelector } from "@/store/store";
+import { useAppDispatch } from "@/store/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -23,7 +23,7 @@ const registerSchema = z.object({
   password: z.string().min(1, "password is required"),
 });
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
 
@@ -118,4 +118,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

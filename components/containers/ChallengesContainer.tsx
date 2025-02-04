@@ -20,7 +20,7 @@ const ChallengesContainer = () => {
   const [page, setPage] = useState(1);
 
   const user = useAppSelector((state: AppState) => state.auth.user);
-  const { challenges, loading, error, totalChallenges } = useAppSelector(
+  const { challenges, loading, totalChallenges } = useAppSelector(
     (state) => state.challenges
   );
 
@@ -29,9 +29,9 @@ const ChallengesContainer = () => {
   const lastPage = Math.ceil(totalChallenges / CHALLENGE_PER_PAGE);
   const isAdmin = user?.role === "admin";
 
-  const chall = challenges
-    .filter((ch) => ch.status === "completed")
-    .length.toString();
+  // const chall = challenges
+  //   .filter((ch) => ch.status === "completed")
+  //   .length.toString();
 
   useEffect(() => {
     dispatch(getChallenges(page));

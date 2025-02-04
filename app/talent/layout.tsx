@@ -1,5 +1,5 @@
 "use client"
-import MainLayout from "@/components/common/MainLayout";
+import MainLayout from "@/components/sharedLayout/MainLayout";
 import { useAppSelector } from "@/store/store";
 import { useRouter } from "next/navigation";
 import React, { FC, ReactNode, useEffect } from "react";
@@ -7,7 +7,7 @@ import React, { FC, ReactNode, useEffect } from "react";
 type props = {
   children: ReactNode;
 };
-const layout: FC<props> = ({ children }) => {
+const Layout: FC<props> = ({ children }) => {
   const router = useRouter();
   const { isAuthenticated,user } = useAppSelector((state) => state.auth);
 
@@ -26,4 +26,4 @@ const layout: FC<props> = ({ children }) => {
   return <MainLayout>{children}</MainLayout>;
 };
 
-export default layout;
+export default Layout;

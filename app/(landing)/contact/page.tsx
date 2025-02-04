@@ -14,7 +14,7 @@ const Contact = () => {
             </p>
             <div>
               <h3 className="text-xl font-semibold text-primary">Our Location</h3>
-              <p className="text-gray-600">1234 Your Street, City, Country</p>
+              <p className="text-gray-600">Kigali, Rwanda</p>
             </div>
           </div>
 

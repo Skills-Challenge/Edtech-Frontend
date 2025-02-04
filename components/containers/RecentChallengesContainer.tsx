@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import ComponentHeader from "../common/ComponentHeader";
 import { Button } from "@/components/ui/Button";
-import Link from "next/link";
-import ChallengeCard from "../common/ChallengeCard";
-import { TChallenge } from "@/types/challenge";
 import { getChallenges } from "@/lib/actions/challenge.action";
 import { useAppDispatch, useAppSelector } from "@/store/store";
+import Link from "next/link";
+import { useEffect } from "react";
+import ChallengeCard from "../common/ChallengeCard";
+import ComponentHeader from "../common/ComponentHeader";
 import ChallengeCardSkeleton from "../skeletons/ChallengeCardSkeleton";
 
 const RecentChallengesContainer = () => {

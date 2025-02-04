@@ -1,55 +1,98 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import {
   Carousel,
+  type CarouselApi,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+import learn from "@/public/learn.svg";
+import SkillsCard from "./SkillsCard";
+import { skillsData, slidesData } from "@/constants/data";
 
+const Slider = () => {
+  const [api, setApi] = React.useState<CarouselApi>();
+  const [current, setCurrent] = React.useState(0);
+  const [count, setCount] = React.useState(0);
 
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
 
-
-const Slider = ({ slides }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const handleDotClick = (index) => {
-    setActiveIndex(index);
-  };
-
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
   return (
-    <div className="relative w-full max-w-6xl mx-auto">
-      <Carousel>
-        <CarouselContent className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${activeIndex * 100}%)` }}>
-          {slides.map((item, index) => (
-            <CarouselItem
+    <div className="flex flex-col gap-[100px]">
+      <div className="flex flex-col gap-4 max-w-[972px] mx-auto">
+        <div className="flex gap-4 justify-center">
+          {skillsData.slice(0, 2).map((item, index) => (
+            <SkillsCard
+              api={api}
+              current={current}
+              index={index}
+              item={item}
               key={index}
-              className="flex flex-col-reverse lg:flex-row items-center justify-between bg-[#F1F1F1] p-10 lg:p-20 gap-6 lg:gap-10 w-full shrink-0"
-            >
-              <div className="flex flex-col gap-6 lg:gap-10 lg:w-[50%] text-center lg:text-left">
-                <img src={item.icon} alt="icon" width={50} height={50} className="mx-auto lg:mx-0" />
-                <p className="text-[#687588] text-sm lg:text-lg">{item.description}</p>
-                <Link href="/" className="flex items-center gap-2 justify-center lg:justify-start">
-                  <p className="text-blue-600 font-semibold">Learn more </p>
-                  <Image src="/learn.svg" alt="icon" width={20} height={20} />
-                </Link>
-              </div>
-              <img src={item.imageSrc} alt="image" width={300} height={300} className="w-full max-w-xs lg:max-w-md" />
-            </CarouselItem>
+            />
           ))}
-        </CarouselContent>
-      </Carousel>
-      {/* Dots Navigation */}
-      <div className="flex justify-center gap-2 mt-4">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            className={`h-3 w-3 rounded-full transition-all duration-300 ${activeIndex === index ? "bg-blue-600 w-6" : "bg-gray-400 w-3"}`}
-            onClick={() => handleDotClick(index)}
-          />
-        ))}
+        </div>
+        <div className="flex flex-wrap gap-4 justify-center">
+          {skillsData.slice(2).map((item, index) => (
+            <SkillsCard
+              api={api}
+              current={current}
+              index={index + 2} // Maintain correct index
+              item={item}
+              key={index + 2}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-5">
+        <Carousel
+          setApi={setApi}
+          className="bg-[#F1F1F1] rounded-xl overflow-hidden"
+        >
+          <CarouselContent className="gap-2">
+            {slidesData.map((item, index) => (
+              <CarouselItem
+                key={index}
+                className="flex items-center justify-between bg-[#F1F1F1] rounded-xl p-20 lg:gap-10"
+              >
+                <div className="flex flex-col gap-10 lg:w-[50%]">
+                  <Image src={item.icon} alt="icon" width={70} height={70} className="object-contain" />
+                  <p className="text-[#687588] text-lg">{item.description}</p>
+                  <Link href="/" className="flex items-center gap-2">
+                    <p className="text-blue-600 font-semibold">Learn more </p>
+                    <Image src={learn} alt="icon" />
+                  </Link>
+                </div>
+                <Image src={item.imageSrc} alt="image" />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+        <div className="py-8 flex items-center justify-center gap-5">
+          {[...Array(count)].map((_, idx) => (
+            <div
+              key={idx}
+              onClick={() => api?.scrollTo(idx)}
+              className={cn(
+                "w-[11px] h-[11px] rounded-full",
+                current === idx + 1 ? "bg-primary" : "bg-[#D9D9D9]"
+              )}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

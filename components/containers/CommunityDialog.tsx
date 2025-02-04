@@ -1,21 +1,12 @@
 "use client";
 
-import React from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import DialogContainer from "../common/DialogContainer";
+import { Button } from "@/components/ui/Button";
+import send from "@/public/send.svg";
 import { setModalOpen } from "@/store/reducers/ModalReducer";
 import { AppState, useAppDispatch, useAppSelector } from "@/store/store";
-import send from "@/public/send.svg";
 import Image from "next/image";
 import ComponentHeader from "../common/ComponentHeader";
-import { Button } from "@/components/ui/Button";
+import DialogContainer from "../common/DialogContainer";
 
 const CommunityDialog = () => {
   const dispatch = useAppDispatch();

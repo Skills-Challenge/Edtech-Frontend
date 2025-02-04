@@ -41,7 +41,7 @@ const UpdateChallenge = () => {
         console.error("Invalid challenge Id");
       }
     } catch (error: any) {
-      console.error("Failed to fetch challenge");
+      console.error("Failed to fetch challenge:",error);
     } finally {
       setIsLoading(false);
     }

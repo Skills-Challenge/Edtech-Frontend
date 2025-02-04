@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import React, { ReactNode } from 'react';
+import bg1 from "@/public/bg1.png";
+import bg2 from "@/public/bg2.svg";
 
 interface ReusableBGProps {
   children: ReactNode;
@@ -12,19 +14,15 @@ const ReusableBG: React.FC<ReusableBGProps> = ({ children, className }) => {
       className={`w-full h-full flex items-center justify-center relative bg-blue-600 rounded-lg overflow-hidden ${className}`}
     >
       <Image
-        src="/bg1.png"
+        src={bg1}
         alt="Top-right image"
-        width={200}
-        height={200}
         className="absolute top-0 right-0"
       />
       {children}
-      <img
-        src="/bg2.png"
+      <Image
+        src={bg2}
         alt="Bottom-left image"
-        width={250}
-        height={250}
-        className="absolute bottom-0 left-0"
+        className="absolute bottom-0 left-10"
       />
     </div>
   );

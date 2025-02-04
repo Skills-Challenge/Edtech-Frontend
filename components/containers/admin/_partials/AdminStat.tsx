@@ -1,17 +1,4 @@
-import React, { FC } from "react";
-import { Icon } from "@iconify/react";
-import { cn, displayNumbers } from "@/lib/utils";
 import { IconButton } from "@/components/ui/IconButton";
-import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
-import {
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropDown";
-import { Button } from "@/components/ui/Button";
 import {
   Select,
   SelectContent,
@@ -21,6 +8,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { cn, displayNumbers } from "@/lib/utils";
+import { Icon } from "@iconify/react";
+import { FC } from "react";
 
 type props = {
   title: string;
@@ -63,7 +53,7 @@ const AdminStat: FC<props> = ({ title, value, percentage }) => {
           />
         </IconButton>
         <div className="flex flex-col">
-          <h2 className="text-text font-normal text-base leading344054-5">
+          <h2 className="text-text font-normal text-base leading-5">
             {title}
           </h2>
           <div className="flex items-center gap-[10px]">

@@ -1,7 +1,6 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import { Input } from "../ui/input";
-import { Button } from "@/components/ui/Button";
 import Avatar from "./Avatar";
 import { IconButton } from "../ui/IconButton";
 import { setIsOpen } from "@/store/reducers/sidebarReducer";
