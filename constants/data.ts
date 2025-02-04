@@ -1,3 +1,237 @@
+import slider1 from "@/public/slider1.png";
+import {
+  BriefcaseBusiness,
+  ChartLine,
+  GraduationCap,
+  Medal,
+  Briefcase,
+  Globe,
+  User,
+} from "lucide-react";
+import slideIcon from "@/public/slideIcon.png"
+import signupForm from "@/public/signUpform.png";
+import browseChallenge from "@/public/browseChallenge.png";
+import institution1 from "@/public/institutions/1.png";
+import institution2 from "@/public/institutions/2.png";
+import institution3 from "@/public/institutions/3.png";
+import institution4 from "@/public/institutions/4.png";
+import institution5 from "@/public/institutions/5.png";
+import institution6 from "@/public/institutions/6.png";
+import institution7 from "@/public/institutions/7.png";
+import institution8 from "@/public/institutions/8.png";
+import institution9 from "@/public/institutions/9.png";
+import institution10 from "@/public/institutions/10.png";
+import institution11 from "@/public/institutions/11.png";
+import institution12 from "@/public/institutions/12.png";
+import { TestimonialData } from "@/types/common";
+
+export const slidesData = [
+  {
+    icon: slideIcon,
+    description:
+      "The Embedded Finance Platform and Payroll Management Software Solutions for your organization and Workforce.",
+    imageSrc: slider1,
+  },
+  {
+    icon: slideIcon,
+    description:
+      "The Embedded Finance Platform and Payroll Management Software Solutions for your organization and Workforce.s",
+    imageSrc: slider1,
+  },
+  {
+    icon: slideIcon,
+    description:
+      "The Embedded Finance Platform and Payroll Management Software Solutions for your organization and Workforce.",
+    imageSrc: slider1,
+  },
+  {
+    icon: slideIcon,
+    description:
+      "The Embedded Finance Platform and Payroll Management Software Solutions for your organization and Workforce.",
+    imageSrc: slider1,
+  },
+];
+
+export const skillsData = [
+  "UI/UX Design",
+  "Data Science",
+  "Graphic Design",
+  "Data Analysis & Research",
+  "Animation",
+  "Videography & Photography",
+  "Data Science",
+  "AI & Machine Learning",
+  "Web3",
+  "Digital Marketing & Communications",
+];
+
+export const whatweoffer = [
+  {
+    icon: BriefcaseBusiness,
+    title: "Enhance Your Employment Path",
+    desc: "Network with other talented individuals and learn from their experiences ",
+  },
+  {
+    icon: GraduationCap,
+    title: "Earn Recognition and Prizes",
+    desc: "Gain valuable experience and knowledge to advance your career in the digital economy: ",
+  },
+  {
+    icon: ChartLine,
+    title: "Personal Growth",
+    desc: "Challenge yourself, learn new skills, and expand your professional network.  ",
+  },
+  {
+    icon: Medal,
+    title: "Learn from Industry Experts",
+    desc: "Access valuable insights and guidance from experienced professionals in the digital careers fields and spaces. ",
+  },
+];
+
+export const testimonialData: TestimonialData[] = [
+  {
+    imageUrl:
+      "https://cdn.builder.io/api/v1/image/assets/TEMP/67f60e376be8e831f66c721d9cb02bb8ee604349adc47575a8299d20e34b2f1e",
+    name: "Manzi Jack",
+    role: "Product Designer",
+    location: "Kigali",
+  },
+  {
+    imageUrl:
+      "https://cdn.builder.io/api/v1/image/assets/TEMP/67f60e376be8e831f66c721d9cb02bb8ee604349adc47575a8299d20e34b2f1e",
+    name: "Sarah Chen",
+    role: "UX Researcher",
+    location: "Singapore",
+  },
+  {
+    imageUrl:
+      "https://cdn.builder.io/api/v1/image/assets/TEMP/67f60e376be8e831f66c721d9cb02bb8ee604349adc47575a8299d20e34b2f1e",
+    name: "John Smith",
+    role: "Senior Developer",
+    location: "London",
+  },
+  {
+    imageUrl:
+      "https://cdn.builder.io/api/v1/image/assets/TEMP/67f60e376be8e831f66c721d9cb02bb8ee604349adc47575a8299d20e34b2f1e",
+    name: "Maria Garcia",
+    role: "Project Manager",
+    location: "Madrid",
+  },
+];
+
+export const stepsData = [
+  {
+    stepNumber: 1,
+    title: "Sign up on Umurava Platform",
+    description: "Submit your completed project for evaluation",
+    imageSrc: signupForm,
+    imageAlt: "Sign up illustration",
+  },
+  {
+    stepNumber: 2,
+    title: "Browse Open Challenges",
+    description:
+      "Explore the range of challenges and hackathons and choose one that aligns with your interests and career goals",
+    imageSrc: browseChallenge,
+    imageAlt: "Browse challenges illustration",
+  },
+  {
+    stepNumber: 3,
+    title: "Register and Participate",
+    description: "Sign up for the challenge and start working on the project.",
+  },
+  {
+    stepNumber: 4,
+    title: "Submit your work",
+    description: "Submit your completed project for evaluation",
+  },
+  {
+    stepNumber: 5,
+    title: "Receive Feedback and Recognition",
+    description: "Get feedback on your work and celebrate your achievements",
+  },
+];
+
+export const solveProblemsData = [
+  {
+    icon: User,
+    title: "Bridging the Experience Gap",
+    description:
+      "Many talents acquired theoretical knowledge and are rejected from jobs because they lack work experience and are not able to put in actions what they acquired in the schools.",
+    colSpan: 2,
+  },
+  {
+    icon: Briefcase,
+    title: "Bridging Education and Employment",
+    description:
+      "Traditional education doesnt’ always prepare talents for the demands of the tech and digital economy and we are providing in-demand skills through Skills Challenges.",
+  },
+  {
+    icon: Globe,
+    title: "Preparing Talents for Global Job Markets",
+    description:
+      "We are ensuring that African talents shine globally and that’s why we are equipping them with global technical experience and shandout globally. ",
+  },
+];
+
+export const institutionParteners = [
+  { institution: institution1 },
+  { institution: institution2 },
+  { institution: institution3 },
+  { institution: institution4 },
+  { institution: institution5 },
+  { institution: institution6 },
+  { institution: institution7 },
+  { institution: institution8 },
+  { institution: institution9 },
+  { institution: institution10 },
+  { institution: institution11 },
+  { institution: institution12 },
+];
+
+export const howCtaList = [
+  "As Career Development and Job Readiness Program",
+  "As Skills Assessments Method after a course or a term",
+  "As extracurricular activities to complement academic courses",
+  "As the portfolio of the Students",
+  "As part of Capstone Projects or final-year assignments ",
+];
+
+export const offeringsData = [
+    {
+      icon: User,
+      title: "Employability and Career Development Opportunities",
+      description:
+        "Students gain hands-on experience working on real-world challenges and help them build professional networks that increase their chances and readiness of landing job opportunities and this lead to career advancement and long-term succes..",
+    },
+    {
+      icon: Briefcase,
+      title: "Practical Application of Classroom Knowledge",
+      description:
+        "The Skills Challenges bridge the gap between theoretical learning and practical application, reinforcing what students learn in their academic courses. ",
+    },
+    {
+      icon: Globe,
+      title: "Students & Trainees Engagement",
+      description:
+        "Embed and incorporate Skills Challenges into your courses to give students and trainees hands-on projects and practices  that enhance their learning experience and skills mastery. Competitive and project-based challenges keep students motivated and actively engaged in their learning journey.",
+    },
+    {
+      icon: User,
+      title: "Access to the Industry Experts & Mentors",
+      description:
+        "Skills Challenges expose students to industry experts and mentors who offer guidance, support, and insights on the trends of digital careers. This can help students gain a deep understanding of their chosen field.",
+      colSpan: 2,
+    },
+    {
+      icon: Briefcase,
+      title: "Skills Assessments",
+      description:
+        "Embed our projects based tests and skills assessments directly into your curriculum.",
+    },
+  ];
+
+
 export const challengeData = 
   {
     title: "Payroll and HR Management System",
@@ -51,4 +285,5 @@ export const challengeData =
       },
     ],
   };
+
 

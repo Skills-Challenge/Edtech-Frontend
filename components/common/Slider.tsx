@@ -10,9 +10,9 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { skillsData, slidesData } from "@/data/data";
 import learn from "@/public/learn.svg";
 import SkillsCard from "./SkillsCard";
+import { skillsData, slidesData } from "@/constants/data";
 
 const Slider = () => {
   const [api, setApi] = React.useState<CarouselApi>();
@@ -69,7 +69,7 @@ const Slider = () => {
                 className="flex items-center justify-between bg-[#F1F1F1] rounded-xl p-20 lg:gap-10"
               >
                 <div className="flex flex-col gap-10 lg:w-[50%]">
-                  <img src={item.icon} alt="icon" width={70} height={70} />
+                  <Image src={item.icon} alt="icon" width={70} height={70} className="object-contain" />
                   <p className="text-[#687588] text-lg">{item.description}</p>
                   <Link href="/" className="flex items-center gap-2">
                     <p className="text-blue-600 font-semibold">Learn more </p>

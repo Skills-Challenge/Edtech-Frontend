@@ -1,9 +1,9 @@
 import React from "react";
 import SectionHeader from "../common/SectionHeader";
-import { whatweoffer } from "@/data/data";
 import WhatWeOfferCard from "./WhatWeOfferCard";
 import Image from "next/image";
 import whatYouGet from "@/public/whatYouGet.png";
+import { whatweoffer } from "@/constants/data";
 
 const WhatWeOffer = () => {
   return (

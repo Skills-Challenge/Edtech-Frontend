@@ -1,14 +1,14 @@
 "use client"
-import MainLayout from "@/components/common/MainLayout";
-import CommunityDialog from "@/components/containers/CommunityDialog";
+
+import MainLayout from "@/components/sharedLayout/MainLayout";
 import { useAppSelector } from "@/store/store";
 import { useRouter } from "next/navigation";
-import React, { FC, ReactNode, useEffect } from "react";
+import { FC, ReactNode, useEffect } from "react";
 
 type props = {
   children: ReactNode;
 };
-const layout: FC<props> = ({ children }) => {
+const Layout: FC<props> = ({ children }) => {
   const router = useRouter();
     const { isAuthenticated,user } = useAppSelector((state) => state.auth);
     const isAdmin = user?.role === "admin";
@@ -29,4 +29,4 @@ const layout: FC<props> = ({ children }) => {
   );
 };
 
-export default layout;
+export default Layout;

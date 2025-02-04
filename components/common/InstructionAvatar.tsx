@@ -6,7 +6,6 @@ import ListItem from "./Listitem";
 const InstructionAvatar = ({
   value,
   title,
-  icon,
 }: {
   value: string;
   title: string;

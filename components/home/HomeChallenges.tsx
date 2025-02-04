@@ -1,8 +1,8 @@
 import React from "react";
-import ChallengeCard from "./ChallengeCard";
+import ChallengeCard from "../common/ChallengeCard";
 import Link from "next/link";
 import { useAppSelector } from "@/store/store";
-import SectionHeader from "./SectionHeader";
+import SectionHeader from "../common/SectionHeader";
 
 const HomeChallenges = () => {
   const { challenges } = useAppSelector((state) => state.challenges);

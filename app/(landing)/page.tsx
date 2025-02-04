@@ -1,16 +1,15 @@
-"use client"
-import HomeChallenges from '@/components/common/HomeChallenges';
-import HomeCTA from '@/components/common/HomeCTA';
-import HomeExperience from '@/components/common/HomeExperience';
-import { HomeGetStarted } from '@/components/common/HomeGetStarted';
-import HomeHero from '@/components/common/HomeHero';
-import HomeSkills from '@/components/common/HomeSkills';
-import HomeStatistics from '@/components/common/HomeStatistics';
-import { TestimonialSlider } from '@/components/common/HomeTestimonials';
-import WhatWeOffer from '@/components/home/WhatWeOffer';
+"use client";
+import HomeChallenges from "@/components/home/HomeChallenges";
+import HomeCTA from "@/components/home/HomeCTA";
+import HomeExperience from "@/components/home/HomeExperience";
+import { HomeGetStarted } from "@/components/home/HomeGetStarted";
+import HomeHero from "@/components/home/HomeHero";
+import HomeSkills from "@/components/home/HomeSkills";
+import HomeStatistics from "@/components/home/HomeStatistics";
+import { TestimonialSlider } from "@/components/home/HomeTestimonials";
+import WhatWeOffer from "@/components/home/WhatWeOffer";
 
 const LandingPage = () => {
-  
   return (
     <div>
       <HomeHero />
@@ -18,12 +17,12 @@ const LandingPage = () => {
       <HomeStatistics />
       <HomeSkills />
       <HomeChallenges />
-      <WhatWeOffer/>
-      <TestimonialSlider  />
+      <WhatWeOffer />
+      <TestimonialSlider />
       <HomeGetStarted />
       <HomeCTA />
     </div>
-  )
-}
+  );
+};
 
 export default LandingPage;

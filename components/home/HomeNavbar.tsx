@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/Button";
-import { Menu, X } from "lucide-react";
-import Link from "next/link";
 import umuravaLogo from "@/public/umuravaLogo.png";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const HomeNavbar = () => {
   const [isClient, setIsClient] = useState(false);

@@ -1,7 +1,7 @@
 import * as React from "react";
-import { StepCard } from "./StepCard";
+import { StepCard } from "../common/StepCard";
 import { stepsData } from "@/data/data";
-import SectionHeader from "./SectionHeader";
+import SectionHeader from "../common/SectionHeader";
 
 export const HomeGetStarted: React.FC = () => {
   return (

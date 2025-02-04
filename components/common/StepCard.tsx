@@ -1,7 +1,7 @@
 import * as React from "react";
-import { StepCardProps } from "./types";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { StepCardProps } from "@/types/common";
 
 export const StepCard: React.FC<StepCardProps> = ({
   stepNumber,

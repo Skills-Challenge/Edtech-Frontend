@@ -1,20 +1,17 @@
 import { cn } from "@/lib/utils";
-import React, { FC } from "react";
-import { boolean } from "zod";
+import { FC } from "react";
 
 type props = {
   heading: string;
   subheading?: string;
   center?: boolean;
   maxWidth?: string;
-  start?:boolean
 };
 const SectionHeader: FC<props> = ({
   heading,
   subheading,
   center = true,
   maxWidth,
-  start=false,
 }) => {
   return (
     <div

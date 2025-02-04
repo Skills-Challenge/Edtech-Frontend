@@ -1,6 +1,5 @@
 "use client"
 import { setIsAuthenticated, setIsAuthenticating, setUser } from "@/store/reducers/authReducer";
-import { useAppDispatch } from "@/store/store"
 import axios from "../axios.config";
 import { deleteCookie, setCookie } from "../utils";
 

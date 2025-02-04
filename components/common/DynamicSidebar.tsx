@@ -1,19 +1,15 @@
 "use client";
 
-import React, { FC } from "react";
-import navLinks from "@/constants/navLinks";
+import { cn } from "@/lib/utils";
+import Logo from "@/public/logo.png";
+import { setIsOpen } from "@/store/reducers/sidebarReducer";
+import { AppState, useAppDispatch, useAppSelector } from "@/store/store";
+import { link } from "@/types/link";
+import { Tuser } from "@/types/user";
+import Image from "next/image";
+import { FC } from "react";
 import LinkItem from "./LinkItem";
 import UserCard from "./userCard";
-import { AppState, useAppDispatch, useAppSelector } from "@/store/store";
-import { Tuser } from "@/types/user";
-import { cn } from "@/lib/utils";
-import { setIsOpen } from "@/store/reducers/sidebarReducer";
-import Logo from "@/public/logo.png";
-import Image from "next/image";
-import { link } from "@/types/link";
-import { Button } from "@/components/ui/Button";
-import { Icon } from "@iconify/react";
-import { setModalOpen } from "@/store/reducers/ModalReducer";
 
 type props = {
   routes: link[];
@@ -22,9 +18,6 @@ const DynamicSidebar: FC<props> = ({ routes }) => {
   // hooks
   const dispatch = useAppDispatch();
   const isOpen = useAppSelector((state) => state.sidebar.isOpen);
-  const isModalOpen = useAppSelector(
-    (state: AppState) => state.modal.isModalOpen
-  );
   const { user } = useAppSelector((state: AppState) => state.auth);
 
   const topRoutes = routes.slice(0, 3);

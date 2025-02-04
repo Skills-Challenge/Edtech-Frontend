@@ -1,10 +1,8 @@
 "use client";
 
 import React from "react";
-import Slider from "./Slider";
-import ReusableList from "../reusable/ReusableList";
-import SectionHeader from "./SectionHeader";
-import { skillsData, slidesData } from "@/data/data";
+import SectionHeader from "../common/SectionHeader";
+import Slider from "../common/Slider";
 
 const HomeSkills: React.FC = () => {
   return (
@@ -15,7 +13,7 @@ const HomeSkills: React.FC = () => {
         maxWidth="970px"
       />
       <div className="mt-10">
-        <Slider/>
+        <Slider />
       </div>
     </section>
   );

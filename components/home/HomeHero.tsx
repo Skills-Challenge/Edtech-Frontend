@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 const HomeHero: React.FC = () => {
   return (
-    <section className="container pb-[100px] pt-[50px]">
+    <section className="container pb-[100px] pt-[50px] rounded-xl h-full">
       <ReusableHero
         media={<Image src={heroImage} alt="Hero" className="rounded-lg w-full h-full" />}
         title="Build Work Experience through Skills Challenges Program "

@@ -50,7 +50,7 @@ const TextAreaWithList = ({
     setSentences(sentences.filter((_, i) => i !== index)); // Remove the sentence from the list for editing
   };
 
-  const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleInput = () => {
     const textarea = textareaRef.current;
     if (textarea) {
       textarea.style.height = "auto";

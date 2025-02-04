@@ -1,5 +1,6 @@
+import { TestimonialCardProps } from "@/types/common";
+import Image from "next/image";
 import * as React from "react";
-import { TestimonialCardProps } from "./types";
 
 export const TestimonialCard: React.FC<TestimonialCardProps> = ({
   imageUrl,
@@ -18,7 +19,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
       style={{ opacity: getOpacity() }}
     >
       <div className="flex flex-col justify-center items-center px-14 py-28 bg-blue-600 rounded-2xl max-md:px-5 max-md:py-24 max-md:max-w-full">
-        <img
+        <Image
           loading="lazy"
           src={imageUrl}
           alt={`Testimonial from ${name}`}

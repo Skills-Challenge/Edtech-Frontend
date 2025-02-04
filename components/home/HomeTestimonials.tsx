@@ -10,8 +10,8 @@ import {
   CarouselContent,
   CarouselItem,
 } from "../ui/carousel";
-import SectionHeader from "./SectionHeader";
-import { TestimonialCard } from "./TestimonialCard";
+import SectionHeader from "../common/SectionHeader";
+import { TestimonialCard } from "../common/TestimonialCard";
 
 export const TestimonialSlider = () => {
   const [api, setApi] = React.useState<CarouselApi>();
@@ -54,7 +54,7 @@ export const TestimonialSlider = () => {
               align: "center",
               loop: true,
               slidesToScroll: 1,
-            }}  
+            }}
           >
             <CarouselContent className="gap-2">
               {testimonials.map((testimonial, index) => (

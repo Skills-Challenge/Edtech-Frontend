@@ -6,7 +6,7 @@ import React, { ReactNode, useEffect } from "react";
 type props = {
   children: ReactNode;
 };
-const layout = ({ children }: props) => {
+const Layout = ({ children }: props) => {
   const router = useRouter();
   const { isAuthenticated , user } = useAppSelector((state) => state.auth);
   const isAdmin = user?.role === "admin"
@@ -31,4 +31,4 @@ const layout = ({ children }: props) => {
   );
 };
 
-export default layout;
+export default Layout;

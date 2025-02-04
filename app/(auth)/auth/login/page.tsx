@@ -19,7 +19,7 @@ const loginSchema = z.object({
   password: z.string().min(1, "Password is required"),
 });
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
@@ -97,7 +97,7 @@ const page = () => {
             Login
           </Button>
           <div className="flex items-center justify-end gap-2">
-            <h2 className="text-sm">Don't have an account?</h2>
+            <h2 className="text-sm">Don&apos;t have an account?</h2>
             <Link href={"/auth/signup"} className="text-primary text-sm">
               Sign up
             </Link>
@@ -108,4 +108,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

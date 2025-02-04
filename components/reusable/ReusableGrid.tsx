@@ -14,11 +14,10 @@ type ReusableGridProps = {
 };
 
 const ReusableGrid: React.FC<ReusableGridProps> = ({ columns, rows, items }) => {
-  const gridTemplate = `repeat(${columns}, minmax(0, 1fr))`;
-
+  // const gridTemplate = `repeat(${columns}, minmax(0, 1fr))`;
   return (
     <div
-      className="grid gap-6 max-w-[1072px] mx-auto"
+      className="grid gap-6 max-w-[1272px] mx-auto"
       style={{
         gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
         gridAutoRows: '1fr',

@@ -1,6 +1,5 @@
-import React, { FC } from "react";
-import { Dot } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { FC } from "react";
 
 type props = {
   text: string;

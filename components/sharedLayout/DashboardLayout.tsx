@@ -1,8 +1,6 @@
 import WelcomeBanner from '@/components/common/WelcomeBanner';
 import RecentChallengesContainer from '@/components/containers/RecentChallengesContainer';
-import TalentStatsContainer from '@/components/containers/talent/TalentStatsContainer';
-import React from 'react'
-import { useSelector } from 'react-redux';
+import React from 'react';
 interface IDashboardProps {
   children: React.ReactNode
 }

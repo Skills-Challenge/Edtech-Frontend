@@ -1,7 +1,7 @@
 import React from "react";
 import { User, Briefcase, Globe } from "lucide-react";
 import ReusableGrid from "../reusable/ReusableGrid";
-import SectionHeader from "./SectionHeader";
+import SectionHeader from "../common/SectionHeader";
 
 const experienceData = [
   {
