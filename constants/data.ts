@@ -23,6 +23,7 @@ import institution9 from "@/public/institutions/9.png";
 import institution10 from "@/public/institutions/10.png";
 import institution11 from "@/public/institutions/11.png";
 import institution12 from "@/public/institutions/12.png";
+import testimonials from "@/public/testimonials.png";
 import { TestimonialData } from "@/types/common";
 
 export const slidesData = [
@@ -90,29 +91,25 @@ export const whatweoffer = [
 
 export const testimonialData: TestimonialData[] = [
   {
-    imageUrl:
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/67f60e376be8e831f66c721d9cb02bb8ee604349adc47575a8299d20e34b2f1e",
+    imageUrl:testimonials,
     name: "Manzi Jack",
     role: "Product Designer",
     location: "Kigali",
   },
   {
-    imageUrl:
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/67f60e376be8e831f66c721d9cb02bb8ee604349adc47575a8299d20e34b2f1e",
+    imageUrl:testimonials,
     name: "Sarah Chen",
     role: "UX Researcher",
     location: "Singapore",
   },
   {
-    imageUrl:
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/67f60e376be8e831f66c721d9cb02bb8ee604349adc47575a8299d20e34b2f1e",
+    imageUrl:testimonials,
     name: "John Smith",
     role: "Senior Developer",
     location: "London",
   },
   {
-    imageUrl:
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/67f60e376be8e831f66c721d9cb02bb8ee604349adc47575a8299d20e34b2f1e",
+    imageUrl:testimonials,
     name: "Maria Garcia",
     role: "Project Manager",
     location: "Madrid",

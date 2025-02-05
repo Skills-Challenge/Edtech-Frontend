@@ -3,11 +3,10 @@
 import Breadcrumb from "@/components/common/BreadCrumps";
 import ChallengeForm from "@/components/common/form/ChallengeForm";
 import { Icons } from "@/components/common/icons";
-import {
-  getChallengeById,
-  updateChallenge,
-} from "@/lib/actions/challenge.action";
 import { challengeSchema } from "@/schemas/ChallengeSchema";
+import { getChallengeById } from "@/services/challenge.service";
+import { updateChallenge } from "@/store/actions/challenge.action";
+import { AppState, useAppDispatch, useAppSelector } from "@/store/store";
 import { TChallenge } from "@/types/challenge";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -22,9 +21,12 @@ const UpdateChallenge = () => {
   const [challengeData, setChallengeData] = useState<ChallengeType | null>(
     null
   );
+  const dispatch = useAppDispatch();
+  const updateLoading = useAppSelector(
+    (state: AppState) => state.challenges.updateLoading
+  );
 
   const [isLoading, setIsLoading] = useState(false);
-  const [isUpdating, setIsUpdating] = useState(false);
 
   const params = useParams();
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
@@ -33,15 +35,14 @@ const UpdateChallenge = () => {
     try {
       setIsLoading(true);
       if (id) {
-        const challenge = await getChallengeById(id);
-        setChallengeData(challenge);
+        const response = await getChallengeById(id);
+        setChallengeData(response.challenge);
         setIsLoading(false);
-        return challenge;
       } else {
         console.error("Invalid challenge Id");
       }
     } catch (error: any) {
-      console.error("Failed to fetch challenge:",error);
+      console.error("Failed to fetch challenge:", error);
     } finally {
       setIsLoading(false);
     }
@@ -52,23 +53,13 @@ const UpdateChallenge = () => {
   }, []);
 
   const handleSave = async (data: TChallenge) => {
-    try {
-      setIsUpdating(true);
-      if (id) {
-        const challenge = await updateChallenge(id, data);
-        toast.success("Successfully updated challenge");
-        setIsLoading(false);
+    if (id) {
+      const response = await dispatch(updateChallenge({ id, data }));
+      if (updateChallenge.fulfilled.match(response)) {
         router.replace("/admin/challenges&hackathons");
-        return challenge;
-      } else {
-        console.error("Invalid challenge ID");
-        toast.error("Invalid Challenge ID");
       }
-    } catch (error: any) {
-      console.error("Failed to update challenge: ", error?.message);
-      toast.error("Failed to update Challenge");
-    } finally {
-      setIsUpdating(false);
+    } else {
+      toast.error("Invalid Challenge ID");
     }
   };
 
@@ -95,7 +86,7 @@ const UpdateChallenge = () => {
       <ChallengeForm
         initialData={challengeData}
         onSubmit={handleSave}
-        isSavingUpdating={isUpdating}
+        isSavingUpdating={updateLoading}
       />
     </div>
   );

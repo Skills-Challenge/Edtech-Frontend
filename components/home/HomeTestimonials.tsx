@@ -1,6 +1,6 @@
 "use client";
 
-import { testimonialData as testimonials } from "@/data/data";
+import { testimonialData as testimonials } from "@/constants/data";
 import { cn } from "@/lib/utils";
 import Autoplay from "embla-carousel-autoplay";
 import * as React from "react";

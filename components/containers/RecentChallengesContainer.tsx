@@ -1,21 +1,21 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
-import { getChallenges } from "@/lib/actions/challenge.action";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import Link from "next/link";
 import { useEffect } from "react";
 import ChallengeCard from "../common/ChallengeCard";
 import ComponentHeader from "../common/ComponentHeader";
 import ChallengeCardSkeleton from "../skeletons/ChallengeCardSkeleton";
+import { getAllChallenges } from "@/store/actions/challenge.action";
 
 const RecentChallengesContainer = () => {
-  const { challenges, loading } = useAppSelector((state) => state.challenges);
+  const { challenges, fetchAllLoading } = useAppSelector((state) => state.challenges);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (challenges.length === 0) {
-      dispatch(getChallenges(1));
+      dispatch(getAllChallenges(1));
     }
   }, [dispatch, challenges.length]);
 
@@ -32,7 +32,7 @@ const RecentChallengesContainer = () => {
       </div>
       {/* recent challenges */}
       <div className="mt-5 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {loading ? (
+        {fetchAllLoading ? (
           <>
             {[...Array(3)].map((_, idx) => (
               <ChallengeCardSkeleton key={idx} />

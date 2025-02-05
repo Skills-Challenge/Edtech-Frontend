@@ -4,7 +4,7 @@ import ComponentHeader from "@/components/common/ComponentHeader";
 import FormInput from "@/components/common/form/FormInput";
 import { Icons } from "@/components/common/icons";
 import { Button } from "@/components/ui/Button";
-import { signup } from "@/lib/actions/auth.action";
+import { signup } from "@/store/actions/auth.action";
 import { useAppDispatch } from "@/store/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";

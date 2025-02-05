@@ -1,7 +1,8 @@
 "use client";
 import Breadcrumb from "@/components/common/BreadCrumps";
 import ChallengeForm from "@/components/common/form/ChallengeForm";
-import { createChallenge } from "@/lib/actions/challenge.action";
+import { createChallenge } from "@/store/actions/challenge.action";
+import { AppState, useAppDispatch, useAppSelector } from "@/store/store";
 import { TChallenge } from "@/types/challenge";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -9,22 +10,16 @@ import { toast } from "sonner";
 
 const Page = () => {
   const router = useRouter();
-  const [isSaving, setIsSaving] = useState(false);
+  const dispatch = useAppDispatch();
+  const isSaving = useAppSelector(
+    (state: AppState) => state.challenges.createLoading
+  );
 
   const handleSave = async (data: TChallenge) => {
-    setIsSaving(true);
-    try {
-       await createChallenge(data);
+    const response = await dispatch(createChallenge(data));
+    if (createChallenge.fulfilled.match(response)) {
       toast.success("Successfully created challenge");
-      setIsSaving(false);
       router.replace("/admin/challenges&hackathons");
-    } catch (error: any) {
-      console.error("Failed to create challenge: ", error?.message);
-      toast.error("Failed to create challenge", {
-        description: `${error?.message}`,
-      });
-    } finally {
-      setIsSaving(false);
     }
   };
   return (

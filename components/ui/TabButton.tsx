@@ -37,7 +37,7 @@ const TabButton: FC<props> = ({ title, total, highlighted, setFilter }) => {
       </h2>
       <div
         className={cn(
-          "h-[17px] w-[24px] rounded-full px-2 transition-colors duration-75",
+          "h-[17px] w-fit rounded-full px-2 transition-colors duration-75",
           highlighted ? "bg-primary" : "bg-body"
         )}
       >

@@ -3,8 +3,8 @@ import React, { FC } from "react";
 import Avatar from "./Avatar";
 import { Icon } from "@iconify/react";
 import { useAppDispatch } from "@/store/store";
-import { logout } from "@/lib/actions/auth.action";
 import { toast } from "sonner";
+import { logout } from "@/store/actions/auth.action";
 
 type props = {
   user: Tuser;

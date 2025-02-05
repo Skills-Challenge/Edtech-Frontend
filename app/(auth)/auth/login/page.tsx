@@ -4,7 +4,7 @@ import ComponentHeader from "@/components/common/ComponentHeader";
 import FormInput from "@/components/common/form/FormInput";
 import { Icons } from "@/components/common/icons";
 import { Button } from "@/components/ui/Button";
-import { login } from "@/lib/actions/auth.action";
+import { login } from "@/store/actions/auth.action";
 import { store, useAppDispatch } from "@/store/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
@@ -40,10 +40,6 @@ const Page = () => {
     try {
       await login(data.email, data.password, dispatch);
       setLoading(false);
-      toast.success("Successfully Logged In", {
-        description: "Welcome back! 🎉",
-      });
-      
       const user = store.getState().auth.user;
       if (user && user.role === "admin") {
         router.push("/admin");
@@ -52,10 +48,9 @@ const Page = () => {
       }
     } catch (error: any) {
       setLoading(false);
-      console.error("Login Failed!", error?.message);
-      toast.error("Incorrect Email or Password", {
-        description: "Please provide correct credentials",
-      });
+    }
+    finally{
+      setLoading(false);
     }
   };
 

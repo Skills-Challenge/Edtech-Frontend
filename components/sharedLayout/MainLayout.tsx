@@ -1,11 +1,11 @@
 "use client";
 
 import React, { FC, ReactNode } from "react";
-import DynamicSidebar from "./DynamicSidebar";
 import { AppState, useAppSelector } from "@/store/store";
 import navLinks from "@/constants/navLinks";
-import TopBar from "./TopBar";
 import CommunityDialog from "../containers/CommunityDialog";
+import DynamicSidebar from "../common/DynamicSidebar";
+import TopBar from "../common/TopBar";
 
 type props = {
   children: ReactNode;

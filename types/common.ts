@@ -1,5 +1,5 @@
 export interface TestimonialData {
-    imageUrl: string;
+    imageUrl: any;
     name: string;
     role: string;
     location: string;

@@ -1,6 +1,5 @@
 "use client";
 import { Button } from "@/components/ui/Button";
-import { deleteChallenge } from "@/lib/actions/challenge.action";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { FC, useState } from "react";
@@ -9,6 +8,8 @@ import { Icons } from "./icons";
 import InstructionAvatar from "./InstructionAvatar";
 import ListHeader from "./ListHeader";
 import ListItem from "./Listitem";
+import { deleteChallenges } from "@/store/actions/challenge.action";
+import { AppState, useAppDispatch, useAppSelector } from "@/store/store";
 
 type props = {
   email: string;
@@ -27,27 +28,22 @@ const InstructionCard: FC<props> = ({
 }) => {
   const router = useRouter();
   const { id } = useParams();
+
+  const dispatch = useAppDispatch();
+  const isDeleting = useAppSelector(
+    (state: AppState) => state.challenges.deleteLoading
+  );
+
   const challengeId = typeof id === "string" ? id.split("-").pop() : undefined;
-  const [isDeleting, setIslDeleting] = useState(false);
 
   const handleDeleteChallenge = async () => {
-    try {
-      setIslDeleting(true);
-      if (challengeId) {
-        const challenge = await deleteChallenge(challengeId);
-        if (challenge) {
-          toast.success("Successfully Deleted Challenge");
-          setIslDeleting(false);
-          router.replace("/admin/challenges&hackathons");
-        }
-      } else {
-        console.error("Challenge ID is undefined");
+    if (challengeId) {
+      const response = await dispatch(deleteChallenges(challengeId));
+      if (deleteChallenges.fulfilled.match(response)) {
+        router.replace("/admin/challenges&hackathons");
       }
-    } catch (error: any) {
-      toast.error("Failed to delete challenge");
-      console.error("Failed to delete challenge", error?.message);
-    } finally {
-      setIslDeleting(false);
+    } else {
+      console.error("Challenge ID is undefined");
     }
   };
   return (
@@ -69,7 +65,10 @@ const InstructionCard: FC<props> = ({
               disabled={isDeleting}
               className="h-[50px] bg-[#E5533C] w-full"
               onClick={handleDeleteChallenge}
-            >{isDeleting && <Icons.spinner className="w-4 h-4 text-white mr-2"/>}
+            >
+              {isDeleting && (
+                <Icons.spinner className="w-4 h-4 text-white mr-2" />
+              )}
               <h2 className="text-base font-semibold leading-[23.5px]">
                 Delete
               </h2>

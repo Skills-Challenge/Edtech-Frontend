@@ -14,7 +14,7 @@ const HomeNavbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Challenges & Hackathons", path: "/challenges" },
+    { name: "Challenges & Hackathons", path: "/challenges&hackathons" },
     { name: "For Educational Institutions", path: "/institutions" },
     { name: "About Us", path: "/about" },
     { name: "Contact Us", path: "/contact" },

@@ -6,10 +6,10 @@ export type TChallenge = {
     duration: string;
     prize: string;
     contactEmail: string;
-    description: string[];
+    description: [string, ...string[]]; // Ensure at least one element
     brief: string;
-    requirements: string[];
-    deliverables: string[];
+    requirements: [string, ...string[]]; // Ensure at least one element
+    deliverables: [string, ...string[]];
     status: string;
     participants?: string[];  
   };

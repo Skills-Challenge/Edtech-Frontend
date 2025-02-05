@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/Button";
 import ComponentHeader from "../ComponentHeader";
 import { useEffect } from "react";
 import { Icons } from "../icons";
+import { DatePickerDemo } from "@/components/ui/DatePicker";
 
 interface ChallengeFormProps {
   initialData?: typeof updateChallengeSchema._type | null;
@@ -53,7 +54,7 @@ const ChallengeForm: React.FC<ChallengeFormProps> = ({
     }
   }, [initialData, reset]);
 
-  console.log("isSavingUpdating: ",isSavingUpdating);
+  console.log("isSavingUpdating: ", isSavingUpdating);
 
   const handleSubmitWithPartialData = (data: any) => {
     const updatedData = Object.keys(data).reduce(
@@ -94,6 +95,7 @@ const ChallengeForm: React.FC<ChallengeFormProps> = ({
             name="deadline"
             label="Deadline"
             register={register}
+            type="date"
             placeholder="Date"
             defaultValue={initialData?.deadline}
             error={errors.deadline && errors?.deadline.message}
@@ -101,6 +103,7 @@ const ChallengeForm: React.FC<ChallengeFormProps> = ({
           <FormInput
             name="duration"
             label="Duration"
+            type="date"
             register={register}
             placeholder="duration"
             defaultValue={initialData?.duration}
@@ -171,7 +174,7 @@ const ChallengeForm: React.FC<ChallengeFormProps> = ({
             className="py-4 w-[60%] text-white font-semibold leading-[23.5px] rounded-lg"
           >
             {isSavingUpdating && (
-              <Icons.spinner className="w-4 h-4 text-white mr-2" />
+              <Icons.spinner className="w-4 h-4 text-white mr-2 animate-spin" />
             )}
             {initialData ? "Update Challenge" : "Create Challenge"}
           </Button>
