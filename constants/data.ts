@@ -8,7 +8,7 @@ import {
   Globe,
   User,
 } from "lucide-react";
-import slideIcon from "@/public/slideIcon.png"
+import slideIcon from "@/public/slideIcon.png";
 import signupForm from "@/public/signUpform.png";
 import browseChallenge from "@/public/browseChallenge.png";
 import institution1 from "@/public/institutions/1.png";
@@ -91,25 +91,25 @@ export const whatweoffer = [
 
 export const testimonialData: TestimonialData[] = [
   {
-    imageUrl:testimonials,
+    imageUrl: testimonials,
     name: "Manzi Jack",
     role: "Product Designer",
     location: "Kigali",
   },
   {
-    imageUrl:testimonials,
+    imageUrl: testimonials,
     name: "Sarah Chen",
     role: "UX Researcher",
     location: "Singapore",
   },
   {
-    imageUrl:testimonials,
+    imageUrl: testimonials,
     name: "John Smith",
     role: "Senior Developer",
     location: "London",
   },
   {
-    imageUrl:testimonials,
+    imageUrl: testimonials,
     name: "Maria Garcia",
     role: "Project Manager",
     location: "Madrid",
@@ -195,92 +195,166 @@ export const howCtaList = [
 ];
 
 export const offeringsData = [
-    {
-      icon: User,
-      title: "Employability and Career Development Opportunities",
-      description:
-        "Students gain hands-on experience working on real-world challenges and help them build professional networks that increase their chances and readiness of landing job opportunities and this lead to career advancement and long-term succes..",
-    },
-    {
-      icon: Briefcase,
-      title: "Practical Application of Classroom Knowledge",
-      description:
-        "The Skills Challenges bridge the gap between theoretical learning and practical application, reinforcing what students learn in their academic courses. ",
-    },
-    {
-      icon: Globe,
-      title: "Students & Trainees Engagement",
-      description:
-        "Embed and incorporate Skills Challenges into your courses to give students and trainees hands-on projects and practices  that enhance their learning experience and skills mastery. Competitive and project-based challenges keep students motivated and actively engaged in their learning journey.",
-    },
-    {
-      icon: User,
-      title: "Access to the Industry Experts & Mentors",
-      description:
-        "Skills Challenges expose students to industry experts and mentors who offer guidance, support, and insights on the trends of digital careers. This can help students gain a deep understanding of their chosen field.",
-      colSpan: 2,
-    },
-    {
-      icon: Briefcase,
-      title: "Skills Assessments",
-      description:
-        "Embed our projects based tests and skills assessments directly into your curriculum.",
-    },
-  ];
-
-
-export const challengeData = 
   {
-    title: "Payroll and HR Management System",
-    projectBrief:
-      "A Fintech company that is developing a Digital Financial Platform designed for businesses and their workforce in Africa is partnering with Umurava to run a Skills Challenge for Product Design. This Fintech Company offers Payroll Management System to Employers and Embedded Financial services and products to Employees and Gig Workers across Africa.",
-    requirements: [
-      "UX research to understand Project Requirements",
-      "Understanding User Needs",
-      "Understanding Business Goals",
-      "Determine interaction between users ",
-      "Requirements Catalog",
-    ],
-    productDesign: [
-      "User Interface Design for each step",
-      "Creating wireframes to outline the basic structure and layout of the web and mobile app.",
-      "Designing visually appealing and user-friendly interfaces for the web and mobile apps focusing on usability and user experience.",
-      "Ensuring the web application works seamlessly across web, mobile, and tablet devices.",
-      "Provide a feedback session for in-development guidance",
-    ],
-    deliverables: [
-      "Requirements Catalog and User Interaction Diagram",
-      "User Interface Mockups",
-      "Payroll and HR System Design Completed",
-      "The Product Designer will provide all documents and deliverables to the client before the review meetings",
-    ],
-    note: "Find Product Requirements Summary and Features Description for Saway Pay HERE",
-    email: "talent@umurava.africa",
-    category: "Web design",
-    duration: "7 days",
-    prize: "$140 - $400",
-    participants: [
-      {
-        name: "Hilaire Sh",
-        role: "Product Designer",
-      },
-      {
-        name: "Christian Manzi",
-        role: "UI/UX Designer",
-      },
-      {
-        name: "Jolly Mutesi",
-        role: "Content Creator",
-      },
-      {
-        name: "Dr. Samuel Smith",
-        role: "Mental Health Professional",
-      },
-      {
-        name: "Dr. Lily Chen",
-        role: "Dermatologist",
-      },
-    ],
-  };
+    icon: User,
+    title: "Employability and Career Development Opportunities",
+    description:
+      "Students gain hands-on experience working on real-world challenges and help them build professional networks that increase their chances and readiness of landing job opportunities and this lead to career advancement and long-term succes..",
+  },
+  {
+    icon: Briefcase,
+    title: "Practical Application of Classroom Knowledge",
+    description:
+      "The Skills Challenges bridge the gap between theoretical learning and practical application, reinforcing what students learn in their academic courses. ",
+  },
+  {
+    icon: Globe,
+    title: "Students & Trainees Engagement",
+    description:
+      "Embed and incorporate Skills Challenges into your courses to give students and trainees hands-on projects and practices  that enhance their learning experience and skills mastery. Competitive and project-based challenges keep students motivated and actively engaged in their learning journey.",
+  },
+  {
+    icon: User,
+    title: "Access to the Industry Experts & Mentors",
+    description:
+      "Skills Challenges expose students to industry experts and mentors who offer guidance, support, and insights on the trends of digital careers. This can help students gain a deep understanding of their chosen field.",
+    colSpan: 2,
+  },
+  {
+    icon: Briefcase,
+    title: "Skills Assessments",
+    description:
+      "Embed our projects based tests and skills assessments directly into your curriculum.",
+  },
+];
 
+export const challengeData = {
+  title: "Payroll and HR Management System",
+  projectBrief:
+    "A Fintech company that is developing a Digital Financial Platform designed for businesses and their workforce in Africa is partnering with Umurava to run a Skills Challenge for Product Design. This Fintech Company offers Payroll Management System to Employers and Embedded Financial services and products to Employees and Gig Workers across Africa.",
+  requirements: [
+    "UX research to understand Project Requirements",
+    "Understanding User Needs",
+    "Understanding Business Goals",
+    "Determine interaction between users ",
+    "Requirements Catalog",
+  ],
+  productDesign: [
+    "User Interface Design for each step",
+    "Creating wireframes to outline the basic structure and layout of the web and mobile app.",
+    "Designing visually appealing and user-friendly interfaces for the web and mobile apps focusing on usability and user experience.",
+    "Ensuring the web application works seamlessly across web, mobile, and tablet devices.",
+    "Provide a feedback session for in-development guidance",
+  ],
+  deliverables: [
+    "Requirements Catalog and User Interaction Diagram",
+    "User Interface Mockups",
+    "Payroll and HR System Design Completed",
+    "The Product Designer will provide all documents and deliverables to the client before the review meetings",
+  ],
+  note: "Find Product Requirements Summary and Features Description for Saway Pay HERE",
+  email: "talent@umurava.africa",
+  category: "Web design",
+  duration: "7 days",
+  prize: "$140 - $400",
+  participants: [
+    {
+      name: "Hilaire Sh",
+      role: "Product Designer",
+    },
+    {
+      name: "Christian Manzi",
+      role: "UI/UX Designer",
+    },
+    {
+      name: "Jolly Mutesi",
+      role: "Content Creator",
+    },
+    {
+      name: "Dr. Samuel Smith",
+      role: "Mental Health Professional",
+    },
+    {
+      name: "Dr. Lily Chen",
+      role: "Dermatologist",
+    },
+  ],
+};
 
+export const homeGrid = [
+  {
+    Icon: User,
+    title: "Build a Strong Portfolio and Hand-On Experience",
+    description:
+      "Tackle real-world projects through challenges and hackathons that mirror real world challenges faced by businesses and organizations. Therefore, showcase your skills and accomplishments to potential employers and clients through a portofolio  of completed projects.",
+    className: "md:col-span-2",
+  },
+  {
+    Icon: Briefcase,
+    title: "Enhance Your Employment Path",
+    description:
+      "Delop the in-demand skills and build a strong portofolio to increase your chances of landing your dream job or contract.",
+  },
+  {
+    Icon: Globe,
+    title: "Earn Recognition and Prizes",
+    description:
+      "Earn both Money and Knowledge Prizes by participating in various contests and competitions by working on real world projects and hackathons from our partner companies & organizations",
+  },
+];
+
+export const aboutGrid = [
+  {
+    Icon: User,
+    title: "Bridging the Experience Gap",
+    description:
+      "Many talents acquired theoretical knowledge and are rejected from jobs because they lack work experience and are not able to put in actions what they acquired in the schools.",
+    className: "md:col-span-2",
+  },
+  {
+    Icon: Briefcase,
+    title: "Bridging Education and Employment",
+    description:
+      "Traditional education doesnt’ always prepare talents for the demands of the tech and digital economy and we are providing in-demand skills through Skills Challenges.",
+  },
+  {
+    Icon: Globe,
+    title: "Preparing Talents for Global Job Markets",
+    description:
+      "We are ensuring that African talents shine globally and that’s why we are equipping them with global technical experience and shandout globally. ",
+  },
+];
+
+export const keyOfferings = [
+  {
+    Icon: User,
+    title: "Employability and Career Development Opportunities",
+    description:
+      "Students gain hands-on experience working on real-world challenges and help them build professional networks that increase their chances and readiness of landing job opportunities and this lead to career advancement and long-term succes.",
+  },
+  {
+    Icon: Briefcase,
+    title: "Practical Application of Classroom Knowledge",
+    description:
+      "The Skills Challenges bridge the gap between theoretical learning and practical application, reinforcing what students learn in their academic courses.",
+  },
+  {
+    Icon: Globe,
+    title: "Students & Trainees Engagement",
+    description:
+      "Embed and incorporate Skills Challenges into your courses to give students and trainees hands-on projects and practices  that enhance their learning experience and skills mastery. Competitive and project-based challenges keep students motivated and actively engaged in their learning journey.",
+  },
+  {
+    Icon: Briefcase,
+    title: "Access to the Industry Experts & Mentors",
+    description:
+      "Skills Challenges expose students to industry experts and mentors who offer guidance, support, and insights on the trends of digital careers. This can help students gain a deep understanding of their chosen field. ",
+    className: "lg:col-span-2",
+  },
+  {
+    Icon: Globe,
+    title: "Skills Assessments",
+    description:
+      "Embed our projects based tests and skills assessments directly into your curriculum.",
+  },
+];

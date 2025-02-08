@@ -6,7 +6,7 @@ import { institutionParteners } from "@/constants/data";
 
 const PartenersMarque = () => {
   return (
-    <div className="lg:px-24">
+    <div className="lg:px-24 py-[100px]">
       <div className="flex flex-col gap-12">
         <SectionHeader
           heading="

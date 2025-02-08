@@ -3,22 +3,17 @@
 import Breadcrumb from "@/components/common/BreadCrumps";
 import ChallengeForm from "@/components/common/form/ChallengeForm";
 import { Icons } from "@/components/common/icons";
-import { challengeSchema } from "@/schemas/ChallengeSchema";
 import { getChallengeById } from "@/services/challenge.service";
 import { updateChallenge } from "@/store/actions/challenge.action";
 import { AppState, useAppDispatch, useAppSelector } from "@/store/store";
 import { TChallenge } from "@/types/challenge";
-import { useParams } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { z } from "zod";
-
-type ChallengeType = z.infer<typeof challengeSchema>;
 
 const UpdateChallenge = () => {
   const router = useRouter();
-  const [challengeData, setChallengeData] = useState<ChallengeType | null>(
+  const [challengeData, setChallengeData] = useState<TChallenge | null>(
     null
   );
   const dispatch = useAppDispatch();
