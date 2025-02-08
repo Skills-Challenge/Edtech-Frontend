@@ -11,7 +11,7 @@ const Challenges = () => {
         <Breadcrumb border={false} />
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-12 py-12">
-        {challenges.slice(0, 9).map((challenge) => (
+        {challenges.slice(0, 8).map((challenge) => (
           <ChallengeCard
             key={challenge._id}
             _id={challenge._id}

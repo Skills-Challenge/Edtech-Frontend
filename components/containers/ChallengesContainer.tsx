@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import TabButton from "../ui/TabButton";
 import { Button } from "@/components/ui/Button";
 import { Plus } from "lucide-react";
@@ -16,10 +16,12 @@ export type filterValue = "all" | "completed" | "open" | "ongoing";
 
 type ChallengesContainerProps = {
   showRecent?: boolean;
+  showtitle?: boolean;
 };
 
 const ChallengesContainer: React.FC<ChallengesContainerProps> = ({
   showRecent = false,
+  showtitle = true,
 }) => {
   const [filter, setFilter] = useState<filterValue>("all");
   const pathname = usePathname();
@@ -87,14 +89,16 @@ const ChallengesContainer: React.FC<ChallengesContainerProps> = ({
           )}
         </div>
       ) : (
-        <div className="flex items-center justify-between pt-10">
-          <ComponentHeader heading="Recent Challenges" />
-          <Button className="" variant={"ghost"}>
-            <Link href={""} className="flex items-center gap-3">
-              View All
-            </Link>
-          </Button>
-        </div>
+        !!showtitle && (
+          <div className="flex items-center justify-between pt-10">
+            <ComponentHeader heading="Recent Challenges" />
+            <Button className="" variant={"ghost"}>
+              <Link href={""} className="flex items-center gap-3">
+                View All
+              </Link>
+            </Button>
+          </div>
+        )
       )}
 
       {/* Challenges Container */}
