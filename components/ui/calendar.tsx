@@ -8,7 +8,7 @@ const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 type calendarProps = {
   selectedDate: Date | null;
-  setSelectedDate: React.Dispatch<React.SetStateAction<Date | null>>;
+  setSelectedDate: (date:Date)=>void;
 };
 const CustomCalendar: FC<calendarProps> = ({
   selectedDate,

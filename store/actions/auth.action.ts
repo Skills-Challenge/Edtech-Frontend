@@ -57,7 +57,6 @@ export const logout = async (dispatch: any) => {
     await axios.post("/auth/logout", {});
     deleteCookie("token");
     dispatch(resetUser());
-    dispatch(resetChallengeState());
   } catch (error: any) {
     console.log("Logout failed!", error?.message);
     toast.error("failed to logout");

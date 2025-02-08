@@ -14,6 +14,8 @@ import ComponentHeader from "../ComponentHeader";
 import { useEffect } from "react";
 import { Icons } from "../icons";
 import { DatePickerDemo } from "@/components/ui/DatePicker";
+import FormDatePicker from "./FormDatePicker";
+import { useRouter } from "next/router";
 
 interface ChallengeFormProps {
   initialData?: typeof updateChallengeSchema._type | null;
@@ -38,7 +40,7 @@ const ChallengeForm: React.FC<ChallengeFormProps> = ({
     defaultValues: initialData || {
       title: "",
       deadline: "",
-      duration: "",
+      startTime: "",
       prize: "",
       contactEmail: "",
       description: [],
@@ -54,7 +56,7 @@ const ChallengeForm: React.FC<ChallengeFormProps> = ({
     }
   }, [initialData, reset]);
 
-  console.log("isSavingUpdating: ", isSavingUpdating);
+  const router = useRouter();
 
   const handleSubmitWithPartialData = (data: any) => {
     const updatedData = Object.keys(data).reduce(
@@ -68,6 +70,9 @@ const ChallengeForm: React.FC<ChallengeFormProps> = ({
     );
     onSubmit(updatedData);
   };
+
+  const deadline = watch("deadline");
+  const startTime = watch("startTime");
 
   return (
     <div className=" w-[90%] md:w-[80%] 2xl:w-[60%] mx-auto mt-9 pt-8 px-6 pb-6 mb-20 bg-white rounded-xl border border-border">
@@ -91,23 +96,17 @@ const ChallengeForm: React.FC<ChallengeFormProps> = ({
           error={errors.title && errors?.title.message}
         />
         <div className="grid grid-cols-2 gap-x-[18px] gap-y-6">
-          <FormInput
-            name="deadline"
+          <FormDatePicker
             label="Deadline"
-            register={register}
-            type="date"
-            placeholder="Date"
-            defaultValue={initialData?.deadline}
+            value={deadline ? new Date(deadline) : null}
             error={errors.deadline && errors?.deadline.message}
+            onChange={(date) => setValue("deadline", date.toISOString())}
           />
-          <FormInput
-            name="duration"
-            label="Duration"
-            type="date"
-            register={register}
-            placeholder="duration"
-            defaultValue={initialData?.duration}
-            error={errors.duration && errors.duration.message}
+          <FormDatePicker
+            label="Start time"
+            value={startTime ? new Date(startTime) : null}
+            error={errors.startTime && errors?.startTime.message}
+            onChange={(date) => setValue("startTime", date.toISOString())}
           />
           <FormInput
             name="prize"
@@ -152,6 +151,24 @@ const ChallengeForm: React.FC<ChallengeFormProps> = ({
           defaultValues={watch("requirements")}
         />
         <TextAreaWithList
+          label="Seniority Levels"
+          name="seniorityLevel"
+          register={register}
+          setValue={setValue}
+          value={watch("seniorityLevel") || []}
+          error={errors.seniorityLevel && errors.seniorityLevel.message}
+          defaultValues={watch("seniorityLevel")}
+        />
+        <TextAreaWithList
+          label="Skills Required"
+          name="skills"
+          register={register}
+          setValue={setValue}
+          value={watch("skills") || []}
+          error={errors.skills && errors.skills.message}
+          defaultValues={watch("skills")}
+        />
+        <TextAreaWithList
           label="Deliverables"
           name="deliverables"
           register={register}
@@ -165,6 +182,7 @@ const ChallengeForm: React.FC<ChallengeFormProps> = ({
           <Button
             className="py-4 w-[40%] text-primary font-semibold leading-[23.5px] rounded-lg"
             variant={"outline"}
+            onClick={() => router.back()}
           >
             Cancel
           </Button>

@@ -6,7 +6,7 @@ import { useAppSelector } from "@/store/store";
 const Challenges = () => {
   const { challenges } = useAppSelector((state) => state.challenges);
   return (
-    <div className="container relative">
+    <div className="container relative min-h-[40.3vh]">
       <div className="pt-5 bg-white sticky top-0">
         <Breadcrumb border={false} />
       </div>

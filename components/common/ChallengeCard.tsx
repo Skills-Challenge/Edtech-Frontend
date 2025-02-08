@@ -7,6 +7,8 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSelector } from "react-redux";
+import { AppState, useAppSelector } from "@/store/store";
 
 type props = {
   _id: string;
@@ -24,8 +26,11 @@ const ChallengeCard: FC<props> = ({
   skills,
   seniorityLevels,
 }) => {
+  const isAuthenticated = useAppSelector(
+    (state: AppState) => state.auth.isAuthenticated
+  );
   const pathname = usePathname();
-  const currentPath = pathname.split("/")[1];
+  const currentUser = pathname.split("/")[1];
 
   return (
     <div className="py-5 bg-white border border-border rounded-xl">
@@ -95,10 +100,14 @@ const ChallengeCard: FC<props> = ({
       <div className="px-5">
         <Button className="py-2 px-4">
           <Link
-            href={`/${currentPath}/challenges&hackathons/${generateSlug(
-              title,
-              `${_id}`
-            )}`}
+            href={
+              isAuthenticated
+                ? `/${currentUser}/challenges&hackathons/${generateSlug(
+                    title,
+                    `${_id}`
+                  )}`
+                : "/auth/login"
+            }
           >
             <h2 className="text-sm font-semibold leading-[19px] text-white">
               View Challenge
