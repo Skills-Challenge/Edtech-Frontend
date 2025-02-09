@@ -15,7 +15,7 @@ import { useEffect } from "react";
 import { Icons } from "../icons";
 import { DatePickerDemo } from "@/components/ui/DatePicker";
 import FormDatePicker from "./FormDatePicker";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface ChallengeFormProps {
   initialData?: typeof updateChallengeSchema._type | null;

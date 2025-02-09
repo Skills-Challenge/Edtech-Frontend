@@ -1,7 +1,8 @@
 "use client";
 import { challengeData } from "@/constants/data";
 import umuravaLogo from "@/public/umuravaLogo2.png";
-import { AppState, useAppSelector } from "@/store/store";
+import { getChallengeById } from "@/services/challenge.service";
+import { useAppSelector } from "@/store/store";
 import { TChallenge } from "@/types/challenge";
 import Image from "next/image";
 import { useParams } from "next/navigation";
@@ -12,30 +13,32 @@ import ListHeader from "../common/ListHeader";
 import ListItem from "../common/Listitem";
 import ParticipantsCard from "../common/ParticipantsCard";
 import ProjectDetailsSkeleton from "../skeletons/ProjectDetailsSkeleton";
-import { getChallengeById } from "@/services/challenge.service";
 
 const SingleChallengeContainer = () => {
   const { id } = useParams();
   const { user } = useAppSelector((state) => state.auth);
-  const loading = useAppSelector(
-    (state: AppState) => state.challenges.fetchSingleLoading
-  );
+
+  const [loading, setIsLoading] = useState(false);
 
   const [challenge, setChallenge] = useState<TChallenge | null>(null);
   const challengeId = typeof id === "string" ? id.split("-").pop() : undefined;
 
   // fetching the challenge
   const fetchChallenge = async () => {
+    setIsLoading(true);
     if (challengeId) {
       try {
         const response = await getChallengeById(challengeId);
         setChallenge(response.challenge);
       } catch (error: any) {
         console.error("Error while fetching the challenge: ", error?.message);
+      } finally {
+        setIsLoading(false);
       }
     } else {
       console.error("Challenge ID is undefined");
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
