@@ -14,7 +14,7 @@ const Contact = () => {
             </p>
             <div>
               <h3 className="text-xl font-semibold text-primary">Our Location</h3>
-              <p className="text-gray-600">Kigali, Rwanda</p>
+              <p className="text-gray-600">1234 Your Street, City, Country</p>
             </div>
           </div>
 
@@ -26,7 +26,7 @@ const Contact = () => {
                   id="name"
                   type="text"
                   placeholder="Enter your name"
-                  className="w-full mt-2 px-4 py-3 border border-gray-300 rounded-md shadow-sm focus-visible:ring-1 focus:ring-primary"
+                  className="w-full mt-2 px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
 
@@ -36,7 +36,7 @@ const Contact = () => {
                   id="email"
                   type="email"
                   placeholder="Enter your email"
-                  className="w-full mt-2 px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus-visible:ring-1 focus:ring-primary"
+                  className="w-full mt-2 px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
 
@@ -46,7 +46,7 @@ const Contact = () => {
                   id="message"
                   rows={6}
                   placeholder="Write your message here"
-                  className="w-full mt-2 px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus-visible:ring-1 focus:ring-primary"
+                  className="w-full mt-2 px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
 
